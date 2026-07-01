@@ -213,9 +213,13 @@
       <span class="muted" id="exploreStatus">準備中</span>
       <span class="muted" id="exploreFloor"></span>
     </div>
-    <div class="row">
+    <div class="row" style="margin-bottom:10px;">
       <button class="secondary small" id="btnRetreat">途中帰還</button>
       <button class="small" id="btnNextStep">次のターンへ進む</button>
+    </div>
+    <div style="border-top:1px solid #34363f;padding-top:8px;">
+      <div style="color:#9a9ba5;font-size:11px;margin-bottom:6px;">現在の探索ログ（タップで詳細）</div>
+      <div id="currentExploreLog"></div>
     </div>
   </div>
 </div>
@@ -234,8 +238,7 @@
       <div class="icon-btn" id="btnOpenAnalysis" title="解析">📖</div>
     </div>
     <div class="segctrl" id="itemCategoryTabs">
-      <button class="active" data-cat="all">すべて</button>
-      <button data-cat="weapon">武器</button>
+      <button class="active" data-cat="weapon">武器</button>
       <button data-cat="shield">盾</button>
       <button data-cat="ring">指輪</button>
     </div>
@@ -280,7 +283,7 @@
 <script id="game-data" type="application/json">
 {
   "baseStats": {
-    "hp": 35,
+    "hp": 30,
     "str": 10,
     "vit": 10,
     "spd": 1,
@@ -297,1049 +300,4105 @@
     {
       "id": 1,
       "name": "はじめの草むら",
-      "floors": 10,
-      "enemyAtkBase": 8,
-      "enemyDefBase": 5
+      "floors": 10
     },
     {
       "id": 2,
       "name": "迷いの森",
-      "floors": 12,
-      "enemyAtkBase": 18,
-      "enemyDefBase": 12
+      "floors": 12
     },
     {
       "id": 3,
       "name": "深い洞穴",
-      "floors": 14,
-      "enemyAtkBase": 35,
-      "enemyDefBase": 25
+      "floors": 14
     },
     {
       "id": 4,
       "name": "黄昏の洋館",
-      "floors": 16,
-      "enemyAtkBase": 55,
-      "enemyDefBase": 38
+      "floors": 16
     },
     {
       "id": 5,
       "name": "秘密の抜け道",
-      "floors": 18,
-      "enemyAtkBase": 90,
-      "enemyDefBase": 60
+      "floors": 18
     },
     {
       "id": 6,
       "name": "濃霧の古戦場",
-      "floors": 20,
-      "enemyAtkBase": 140,
-      "enemyDefBase": 95
+      "floors": 20
     },
     {
       "id": 7,
       "name": "正義の巨塔",
-      "floors": 24,
-      "enemyAtkBase": 220,
-      "enemyDefBase": 150
+      "floors": 24
     },
     {
       "id": 8,
       "name": "異世界への扉",
-      "floors": 24,
-      "enemyAtkBase": 340,
-      "enemyDefBase": 230
+      "floors": 24
     },
     {
       "id": 9,
       "name": "次元の裂け目",
-      "floors": 28,
-      "enemyAtkBase": 520,
-      "enemyDefBase": 350
+      "floors": 28
     },
     {
       "id": 10,
       "name": "終わりの魔城",
-      "floors": 20,
-      "enemyAtkBase": 800,
-      "enemyDefBase": 500
+      "floors": 20
     }
   ],
   "weapons": [
     {
-      "id": "w_000",
+      "id": "w_001",
+      "no": 1,
       "name": "木の棒",
       "atk": 5,
-      "finalAtk": 310,
-      "enhanceCap": 360,
-      "dungeon": 1,
-      "evolvesTo": "w_001"
-    },
-    {
-      "id": "w_001",
-      "name": "こん棒",
-      "atk": 15,
-      "finalAtk": 470,
-      "enhanceCap": 350,
-      "dungeon": 1,
-      "evolvesTo": "w_002"
+      "enhanceCap": 10,
+      "lv1": {
+        "hp": 0,
+        "str": 0,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 0
+      },
+      "type": "打撃",
+      "setShield": "堅木の盾",
+      "dropFrom": "スライム",
+      "evolvesTo": "w_002",
+      "dungeon": 1
     },
     {
       "id": "w_002",
-      "name": "木の剣",
-      "atk": 30,
-      "finalAtk": 470,
-      "enhanceCap": 335,
-      "dungeon": 2,
-      "evolvesTo": "w_003"
-    },
-    {
-      "id": "w_003",
-      "name": "霊木の剣",
-      "atk": 120,
-      "finalAtk": 470,
-      "enhanceCap": 280,
-      "dungeon": 3,
-      "evolvesTo": "w_004"
-    },
-    {
-      "id": "w_004",
-      "name": "ユグドラシル",
-      "atk": 260,
-      "finalAtk": 470,
-      "enhanceCap": 210,
-      "dungeon": 4,
-      "evolvesTo": null
-    },
-    {
-      "id": "w_005",
-      "name": "ショートソード",
-      "atk": 20,
-      "finalAtk": 512,
-      "enhanceCap": 391,
-      "dungeon": 1,
-      "evolvesTo": "w_006"
-    },
-    {
-      "id": "w_006",
-      "name": "ロングソード",
-      "atk": 30,
-      "finalAtk": 512,
-      "enhanceCap": 376,
-      "dungeon": 2,
-      "evolvesTo": "w_007"
-    },
-    {
-      "id": "w_007",
-      "name": "グレートソード",
-      "atk": 55,
-      "finalAtk": 512,
-      "enhanceCap": 356,
-      "dungeon": 3,
-      "evolvesTo": "w_008"
-    },
-    {
-      "id": "w_008",
-      "name": "ドラゴンキラー",
-      "atk": 140,
-      "finalAtk": 512,
-      "enhanceCap": 306,
-      "dungeon": 4,
-      "evolvesTo": "w_009"
-    },
-    {
-      "id": "w_009",
-      "name": "タワー",
-      "atk": 256,
-      "finalAtk": 512,
-      "enhanceCap": 256,
-      "dungeon": 5,
-      "evolvesTo": null
-    },
-    {
-      "id": "w_010",
-      "name": "ワスプナイフ",
-      "atk": 40,
-      "finalAtk": 50,
-      "enhanceCap": 10,
-      "dungeon": 1,
-      "evolvesTo": null
-    },
-    {
-      "id": "w_011",
-      "name": "スタンナックル",
-      "atk": 45,
-      "finalAtk": 60,
+      "no": 2,
+      "name": "こん棒",
+      "atk": 15,
       "enhanceCap": 15,
-      "dungeon": 1,
-      "evolvesTo": null
-    },
-    {
-      "id": "w_012",
-      "name": "鉄塊",
-      "atk": 50,
-      "finalAtk": 290,
-      "enhanceCap": 200,
-      "dungeon": 2,
-      "evolvesTo": "w_013"
-    },
-    {
-      "id": "w_013",
-      "name": "大鉄塊",
-      "atk": 60,
-      "finalAtk": 290,
-      "enhanceCap": 170,
-      "dungeon": 3,
-      "evolvesTo": "w_014"
-    },
-    {
-      "id": "w_014",
-      "name": "極大鉄塊",
-      "atk": 170,
-      "finalAtk": 290,
-      "enhanceCap": 120,
-      "dungeon": 4,
-      "evolvesTo": null
-    },
-    {
-      "id": "w_015",
-      "name": "バトルサイス",
-      "atk": 55,
-      "finalAtk": 75,
-      "enhanceCap": 20,
-      "dungeon": 2,
-      "evolvesTo": null
-    },
-    {
-      "id": "w_016",
-      "name": "タツマキ",
-      "atk": 45,
-      "finalAtk": 80,
-      "enhanceCap": 60,
-      "dungeon": 2,
-      "evolvesTo": "w_017"
-    },
-    {
-      "id": "w_017",
-      "name": "オオタツマキ",
-      "atk": 50,
-      "finalAtk": 80,
-      "enhanceCap": 30,
-      "dungeon": 3,
-      "evolvesTo": null
-    },
-    {
-      "id": "w_018",
-      "name": "フェアリーソード",
-      "atk": 35,
-      "finalAtk": 75,
-      "enhanceCap": 40,
-      "dungeon": 2,
-      "evolvesTo": null
-    },
-    {
-      "id": "w_019",
-      "name": "ピンポイント",
-      "atk": 25,
-      "finalAtk": 75,
-      "enhanceCap": 50,
-      "dungeon": 2,
-      "evolvesTo": null
-    },
-    {
-      "id": "w_020",
-      "name": "装飾刀",
-      "atk": 65,
-      "finalAtk": 68,
-      "enhanceCap": 3,
-      "dungeon": 3,
-      "evolvesTo": null
-    },
-    {
-      "id": "w_021",
-      "name": "エメラルドソード",
-      "atk": 60,
-      "finalAtk": 80,
-      "enhanceCap": 20,
-      "dungeon": 3,
-      "evolvesTo": null
-    },
-    {
-      "id": "w_022",
-      "name": "サラマンダー",
-      "atk": 55,
-      "finalAtk": 490,
-      "enhanceCap": 410,
-      "dungeon": 3,
-      "evolvesTo": "w_023"
-    },
-    {
-      "id": "w_023",
-      "name": "ウンディーネ",
-      "atk": 57,
-      "finalAtk": 490,
-      "enhanceCap": 390,
-      "dungeon": 3,
-      "evolvesTo": "w_024"
+      "lv1": {
+        "hp": 0,
+        "str": 0,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 0
+      },
+      "type": "打撃",
+      "setShield": "堅木の盾",
+      "dropFrom": "ゴブリン",
+      "evolvesTo": "w_024",
+      "dungeon": 1
     },
     {
       "id": "w_024",
-      "name": "シルフ",
-      "atk": 58,
-      "finalAtk": 490,
-      "enhanceCap": 365,
-      "dungeon": 4,
-      "evolvesTo": "w_025"
+      "no": 24,
+      "name": "木の剣",
+      "atk": 30,
+      "enhanceCap": 55,
+      "lv1": {
+        "hp": 0,
+        "str": 0,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 1,
+        "vit": 0
+      },
+      "type": "打撃",
+      "setShield": "堅木の盾",
+      "dropFrom": "スラ仏",
+      "evolvesTo": "w_025",
+      "dungeon": 4
     },
     {
       "id": "w_025",
-      "name": "ノーム",
-      "atk": 59,
-      "finalAtk": 490,
-      "enhanceCap": 335,
-      "dungeon": 4,
-      "evolvesTo": "w_026"
+      "no": 25,
+      "name": "霊木の剣",
+      "atk": 120,
+      "enhanceCap": 70,
+      "lv1": {
+        "hp": 10,
+        "str": 10,
+        "vit": 0,
+        "spd": 5
+      },
+      "lvup": {
+        "str": 4,
+        "vit": 0
+      },
+      "type": "斬撃",
+      "setShield": "堅木の盾",
+      "dropFrom": null,
+      "evolvesTo": "w_026",
+      "dungeon": 4
     },
     {
       "id": "w_026",
-      "name": "エレメンタリー",
-      "atk": 190,
-      "finalAtk": 490,
-      "enhanceCap": 300,
-      "dungeon": 5,
-      "evolvesTo": null
+      "no": 26,
+      "name": "ユグドラシル",
+      "atk": 260,
+      "enhanceCap": 210,
+      "lv1": {
+        "hp": 10,
+        "str": 10,
+        "vit": 10,
+        "spd": 10
+      },
+      "lvup": {
+        "str": 7,
+        "vit": 4
+      },
+      "type": "斬撃",
+      "setShield": "堅木の盾",
+      "dropFrom": null,
+      "evolvesTo": null,
+      "dungeon": 4
+    },
+    {
+      "id": "w_003",
+      "no": 3,
+      "name": "ショートソード",
+      "atk": 20,
+      "enhanceCap": 15,
+      "lv1": {
+        "hp": 0,
+        "str": 3,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 0
+      },
+      "type": "斬撃",
+      "setShield": "タワーシールド",
+      "dropFrom": "盗賊",
+      "evolvesTo": "w_004",
+      "dungeon": 1
+    },
+    {
+      "id": "w_004",
+      "no": 4,
+      "name": "ロングソード",
+      "atk": 30,
+      "enhanceCap": 20,
+      "lv1": {
+        "hp": 0,
+        "str": 5,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 1,
+        "vit": 0
+      },
+      "type": "斬撃",
+      "setShield": "タワーシールド",
+      "dropFrom": "巨大コウモリ",
+      "evolvesTo": "w_027",
+      "dungeon": 1
     },
     {
       "id": "w_027",
-      "name": "幻影剣",
-      "atk": 70,
-      "finalAtk": 190,
-      "enhanceCap": 110,
-      "dungeon": 4,
-      "evolvesTo": "w_028"
-    },
-    {
-      "id": "w_028",
-      "name": "夢想剣",
-      "atk": 120,
-      "finalAtk": 190,
-      "enhanceCap": 70,
-      "dungeon": 5,
-      "evolvesTo": null
-    },
-    {
-      "id": "w_029",
-      "name": "ピースメーカー",
+      "no": 27,
+      "name": "グレイトソード",
       "atk": 55,
-      "finalAtk": 669,
-      "enhanceCap": 346,
-      "dungeon": 4,
-      "evolvesTo": "w_030"
-    },
-    {
-      "id": "w_030",
-      "name": "デイドリーム",
-      "atk": 70,
-      "finalAtk": 669,
-      "enhanceCap": 339,
-      "dungeon": 4,
-      "evolvesTo": "w_031"
-    },
-    {
-      "id": "w_031",
-      "name": "カリオストロ",
-      "atk": 100,
-      "finalAtk": 669,
-      "enhanceCap": 319,
-      "dungeon": 5,
-      "evolvesTo": "w_032"
-    },
-    {
-      "id": "w_032",
-      "name": "グラナダ",
-      "atk": 200,
-      "finalAtk": 669,
-      "enhanceCap": 269,
-      "dungeon": 5,
-      "evolvesTo": "w_033"
-    },
-    {
-      "id": "w_033",
-      "name": "パンゲア",
-      "atk": 570,
-      "finalAtk": 669,
-      "enhanceCap": 99,
-      "dungeon": 6,
-      "evolvesTo": null
-    },
-    {
-      "id": "w_034",
-      "name": "ファントム",
-      "atk": 80,
-      "finalAtk": 110,
-      "enhanceCap": 30,
-      "dungeon": 4,
-      "evolvesTo": null
-    },
-    {
-      "id": "w_035",
-      "name": "キリサメ",
-      "atk": 80,
-      "finalAtk": 379,
-      "enhanceCap": 290,
-      "dungeon": 4,
-      "evolvesTo": "w_036"
-    },
-    {
-      "id": "w_036",
-      "name": "クロキリサメ",
-      "atk": 85,
-      "finalAtk": 379,
-      "enhanceCap": 246,
-      "dungeon": 4,
-      "evolvesTo": "w_037"
-    },
-    {
-      "id": "w_037",
-      "name": "アカキリサメ",
-      "atk": 199,
-      "finalAtk": 379,
-      "enhanceCap": 180,
-      "dungeon": 5,
-      "evolvesTo": null
-    },
-    {
-      "id": "w_038",
-      "name": "ハンドアクス",
-      "atk": 54,
-      "finalAtk": 520,
-      "enhanceCap": 255,
-      "dungeon": 4,
-      "evolvesTo": "w_039"
+      "enhanceCap": 50,
+      "lv1": {
+        "hp": 0,
+        "str": 5,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 2,
+        "vit": 0
+      },
+      "type": "打撃",
+      "setShield": "タワーシールド",
+      "dropFrom": null,
+      "evolvesTo": "w_039",
+      "dungeon": 4
     },
     {
       "id": "w_039",
-      "name": "クレセント",
-      "atk": 100,
-      "finalAtk": 520,
-      "enhanceCap": 240,
-      "dungeon": 4,
-      "evolvesTo": "w_040"
-    },
-    {
-      "id": "w_040",
-      "name": "ボルケイノ",
-      "atk": 250,
-      "finalAtk": 520,
-      "enhanceCap": 200,
-      "dungeon": 5,
-      "evolvesTo": "w_041"
-    },
-    {
-      "id": "w_041",
-      "name": "イラプション",
-      "atk": 420,
-      "finalAtk": 520,
-      "enhanceCap": 100,
-      "dungeon": 5,
-      "evolvesTo": null
-    },
-    {
-      "id": "w_042",
-      "name": "サンダーウィップ",
-      "atk": 120,
-      "finalAtk": 140,
-      "enhanceCap": 20,
-      "dungeon": 5,
-      "evolvesTo": null
-    },
-    {
-      "id": "w_043",
-      "name": "くない",
-      "atk": 60,
-      "finalAtk": 360,
-      "enhanceCap": 225,
-      "dungeon": 4,
-      "evolvesTo": "w_044"
-    },
-    {
-      "id": "w_044",
-      "name": "十字手裏剣",
-      "atk": 72,
-      "finalAtk": 360,
-      "enhanceCap": 210,
-      "dungeon": 4,
-      "evolvesTo": "w_045"
-    },
-    {
-      "id": "w_045",
-      "name": "風車",
-      "atk": 80,
-      "finalAtk": 360,
-      "enhanceCap": 190,
-      "dungeon": 5,
-      "evolvesTo": "w_046"
-    },
-    {
-      "id": "w_046",
-      "name": "火車",
-      "atk": 210,
-      "finalAtk": 360,
-      "enhanceCap": 150,
-      "dungeon": 5,
-      "evolvesTo": null
-    },
-    {
-      "id": "w_047",
-      "name": "サーペント",
-      "atk": 150,
-      "finalAtk": 427,
-      "enhanceCap": 272,
-      "dungeon": 5,
-      "evolvesTo": "w_048"
-    },
-    {
-      "id": "w_048",
-      "name": "クラーケン",
-      "atk": 220,
-      "finalAtk": 427,
-      "enhanceCap": 237,
-      "dungeon": 5,
-      "evolvesTo": "w_049"
+      "no": 39,
+      "name": "ドラゴンキラー",
+      "atk": 140,
+      "enhanceCap": 50,
+      "lv1": {
+        "hp": 30,
+        "str": 4,
+        "vit": 4,
+        "spd": 4
+      },
+      "lvup": {
+        "str": 5,
+        "vit": 4
+      },
+      "type": "打撃",
+      "setShield": "タワーシールド",
+      "dropFrom": null,
+      "evolvesTo": "w_049",
+      "dungeon": 5
     },
     {
       "id": "w_049",
-      "name": "ホワイトスネイク",
-      "atk": 350,
-      "finalAtk": 427,
-      "enhanceCap": 77,
-      "dungeon": 6,
-      "evolvesTo": null
+      "no": 49,
+      "name": "タワー",
+      "atk": 256,
+      "enhanceCap": 256,
+      "lv1": {
+        "hp": 10,
+        "str": 10,
+        "vit": 0,
+        "spd": 5
+      },
+      "lvup": {
+        "str": 6,
+        "vit": 6
+      },
+      "type": "打撃",
+      "setShield": "タワーシールド",
+      "dropFrom": null,
+      "evolvesTo": null,
+      "dungeon": 5
+    },
+    {
+      "id": "w_005",
+      "no": 5,
+      "name": "ワスプナイフ",
+      "atk": 40,
+      "enhanceCap": 10,
+      "lv1": {
+        "hp": 0,
+        "str": 0,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 1,
+        "vit": 0
+      },
+      "type": "刺突",
+      "setShield": "チタンシールド",
+      "dropFrom": "からくり兵",
+      "evolvesTo": null,
+      "dungeon": 1
+    },
+    {
+      "id": "w_006",
+      "no": 6,
+      "name": "スタンナックル",
+      "atk": 60,
+      "enhanceCap": 15,
+      "lv1": {
+        "hp": 0,
+        "str": 0,
+        "vit": 0,
+        "spd": 1
+      },
+      "lvup": {
+        "str": 1,
+        "vit": 0
+      },
+      "type": "打撃",
+      "setShield": "ゴブリンの手",
+      "dropFrom": "デスマシーン2",
+      "evolvesTo": null,
+      "dungeon": 1
+    },
+    {
+      "id": "w_007",
+      "no": 7,
+      "name": "バトルサイス",
+      "atk": 55,
+      "enhanceCap": 20,
+      "lv1": {
+        "hp": 0,
+        "str": 5,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 2,
+        "vit": 0
+      },
+      "type": "斬撃",
+      "setShield": "プラチナリング",
+      "dropFrom": "キマイラ",
+      "evolvesTo": null,
+      "dungeon": 2
+    },
+    {
+      "id": "w_008",
+      "no": 8,
+      "name": "鉄塊",
+      "atk": 50,
+      "enhanceCap": 30,
+      "lv1": {
+        "hp": 10,
+        "str": 5,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 2,
+        "vit": 0
+      },
+      "type": "打撃",
+      "setShield": "戦士の大盾",
+      "dropFrom": "デスマシーン2",
+      "evolvesTo": "w_022",
+      "dungeon": 2
+    },
+    {
+      "id": "w_022",
+      "no": 22,
+      "name": "大鉄塊",
+      "atk": 60,
+      "enhanceCap": 50,
+      "lv1": {
+        "hp": 10,
+        "str": 5,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 3,
+        "vit": 0
+      },
+      "type": "打撃",
+      "setShield": "戦士の大盾",
+      "dropFrom": "デスマシーン4",
+      "evolvesTo": "w_023",
+      "dungeon": 3
+    },
+    {
+      "id": "w_023",
+      "no": 23,
+      "name": "極大鉄塊",
+      "atk": 170,
+      "enhanceCap": 120,
+      "lv1": {
+        "hp": 20,
+        "str": 5,
+        "vit": 5,
+        "spd": 5
+      },
+      "lvup": {
+        "str": 4,
+        "vit": 2
+      },
+      "type": "打撃",
+      "setShield": "戦士の大盾",
+      "dropFrom": null,
+      "evolvesTo": null,
+      "dungeon": 3
+    },
+    {
+      "id": "w_009",
+      "no": 9,
+      "name": "装飾刀",
+      "atk": 65,
+      "enhanceCap": 3,
+      "lv1": {
+        "hp": 0,
+        "str": 0,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 0
+      },
+      "type": "打撃",
+      "setShield": "高いなべのふた",
+      "dropFrom": "フェアリーハンター",
+      "evolvesTo": null,
+      "dungeon": 2
+    },
+    {
+      "id": "w_010",
+      "no": 10,
+      "name": "サラマンダー",
+      "atk": 55,
+      "enhanceCap": 20,
+      "lv1": {
+        "hp": 5,
+        "str": 0,
+        "vit": 10,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 2,
+        "vit": 0
+      },
+      "type": "刺突",
+      "setShield": "サモンリング",
+      "dropFrom": "クレイゴーレム",
+      "evolvesTo": "w_018",
+      "dungeon": 2
+    },
+    {
+      "id": "w_018",
+      "no": 18,
+      "name": "ウンディーネ",
+      "atk": 57,
+      "enhanceCap": 25,
+      "lv1": {
+        "hp": 5,
+        "str": 0,
+        "vit": 10,
+        "spd": 4
+      },
+      "lvup": {
+        "str": 5,
+        "vit": 4
+      },
+      "type": "刺突",
+      "setShield": "サモンリング",
+      "dropFrom": null,
+      "evolvesTo": "w_019",
+      "dungeon": 3
+    },
+    {
+      "id": "w_019",
+      "no": 19,
+      "name": "シルフ",
+      "atk": 58,
+      "enhanceCap": 30,
+      "lv1": {
+        "hp": 5,
+        "str": 0,
+        "vit": 10,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 2,
+        "vit": 0
+      },
+      "type": "刺突",
+      "setShield": "サモンリング",
+      "dropFrom": "門番",
+      "evolvesTo": "w_020",
+      "dungeon": 3
+    },
+    {
+      "id": "w_020",
+      "no": 20,
+      "name": "ノーム",
+      "atk": 59,
+      "enhanceCap": 35,
+      "lv1": {
+        "hp": 5,
+        "str": 0,
+        "vit": 10,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 2,
+        "vit": 0
+      },
+      "type": "刺突",
+      "setShield": "サモンリング",
+      "dropFrom": "門番",
+      "evolvesTo": "w_021",
+      "dungeon": 3
+    },
+    {
+      "id": "w_021",
+      "no": 21,
+      "name": "エレメンタリー",
+      "atk": 190,
+      "enhanceCap": 300,
+      "lv1": {
+        "hp": 10,
+        "str": 10,
+        "vit": 10,
+        "spd": 5
+      },
+      "lvup": {
+        "str": 4,
+        "vit": 5
+      },
+      "type": "刺突",
+      "setShield": "サモンリング",
+      "dropFrom": null,
+      "evolvesTo": null,
+      "dungeon": 3
+    },
+    {
+      "id": "w_011",
+      "no": 11,
+      "name": "タツマキ",
+      "atk": 40,
+      "enhanceCap": 30,
+      "lv1": {
+        "hp": 0,
+        "str": 5,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 2,
+        "vit": 1
+      },
+      "type": "斬撃",
+      "setShield": "暴風壁",
+      "dropFrom": "フェアリーハンター",
+      "evolvesTo": "w_014",
+      "dungeon": 2
+    },
+    {
+      "id": "w_014",
+      "no": 14,
+      "name": "オオタツマキ",
+      "atk": 90,
+      "enhanceCap": 70,
+      "lv1": {
+        "hp": 0,
+        "str": 10,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 3,
+        "vit": 1
+      },
+      "type": "斬撃",
+      "setShield": "暴風壁",
+      "dropFrom": "ライトニングフェアリー",
+      "evolvesTo": null,
+      "dungeon": 2
+    },
+    {
+      "id": "w_012",
+      "no": 12,
+      "name": "ピンポイント",
+      "atk": 70,
+      "enhanceCap": 70,
+      "lv1": {
+        "hp": 0,
+        "str": 15,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 2,
+        "vit": 0
+      },
+      "type": "打撃",
+      "setShield": "第三の目",
+      "dropFrom": "アイアンゴーレム",
+      "evolvesTo": null,
+      "dungeon": 2
+    },
+    {
+      "id": "w_013",
+      "no": 13,
+      "name": "フェアリーソード",
+      "atk": 35,
+      "enhanceCap": 60,
+      "lv1": {
+        "hp": 0,
+        "str": 0,
+        "vit": 0,
+        "spd": 5
+      },
+      "lvup": {
+        "str": 2,
+        "vit": 1
+      },
+      "type": "斬撃",
+      "setShield": "フェアリーリング",
+      "dropFrom": "アークフェアリー",
+      "evolvesTo": null,
+      "dungeon": 2
+    },
+    {
+      "id": "w_015",
+      "no": 15,
+      "name": "エメラルドソード",
+      "atk": 65,
+      "enhanceCap": 20,
+      "lv1": {
+        "hp": 20,
+        "str": 0,
+        "vit": 0,
+        "spd": 5
+      },
+      "lvup": {
+        "str": 2,
+        "vit": 2
+      },
+      "type": "斬撃",
+      "setShield": "エメラルドシールド",
+      "dropFrom": "エメラルドゴーレム",
+      "evolvesTo": null,
+      "dungeon": 3
+    },
+    {
+      "id": "w_016",
+      "no": 16,
+      "name": "ファントムサイス",
+      "atk": 200,
+      "enhanceCap": 30,
+      "lv1": {
+        "hp": 0,
+        "str": 0,
+        "vit": 10,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 3,
+        "vit": 0
+      },
+      "type": "斬撃",
+      "setShield": "モルヒネリング",
+      "dropFrom": "スラ仏",
+      "evolvesTo": null,
+      "dungeon": 3
+    },
+    {
+      "id": "w_017",
+      "no": 17,
+      "name": "幻影剣",
+      "atk": 70,
+      "enhanceCap": 40,
+      "lv1": {
+        "hp": 0,
+        "str": 7,
+        "vit": 6,
+        "spd": 5
+      },
+      "lvup": {
+        "str": 3,
+        "vit": 0
+      },
+      "type": "斬撃",
+      "setShield": "オーロラシールド",
+      "dropFrom": "ゴーストナイト",
+      "evolvesTo": "w_028",
+      "dungeon": 3
+    },
+    {
+      "id": "w_028",
+      "no": 28,
+      "name": "夢想剣",
+      "atk": 180,
+      "enhanceCap": 100,
+      "lv1": {
+        "hp": 8,
+        "str": 8,
+        "vit": 0,
+        "spd": 5
+      },
+      "lvup": {
+        "str": 3,
+        "vit": 0
+      },
+      "type": "斬撃",
+      "setShield": "オーロラシールド",
+      "dropFrom": "眠り鼠",
+      "evolvesTo": null,
+      "dungeon": 4
+    },
+    {
+      "id": "w_029",
+      "no": 29,
+      "name": "キリサメ",
+      "atk": 80,
+      "enhanceCap": 44,
+      "lv1": {
+        "hp": 0,
+        "str": 0,
+        "vit": 4,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 4,
+        "vit": 3
+      },
+      "type": "斬撃",
+      "setShield": "Cマグナム",
+      "dropFrom": "ミストドラゴン",
+      "evolvesTo": "w_030",
+      "dungeon": 4
+    },
+    {
+      "id": "w_030",
+      "no": 30,
+      "name": "クロキリサメ",
+      "atk": 85,
+      "enhanceCap": 66,
+      "lv1": {
+        "hp": 10,
+        "str": 5,
+        "vit": 4,
+        "spd": 5
+      },
+      "lvup": {
+        "str": 4,
+        "vit": 3
+      },
+      "type": "斬撃",
+      "setShield": "Cマグナム",
+      "dropFrom": null,
+      "evolvesTo": "w_034",
+      "dungeon": 4
+    },
+    {
+      "id": "w_034",
+      "no": 34,
+      "name": "アカキリサメ",
+      "atk": 199,
+      "enhanceCap": 200,
+      "lv1": {
+        "hp": 10,
+        "str": 7,
+        "vit": 7,
+        "spd": 8
+      },
+      "lvup": {
+        "str": 6,
+        "vit": 3
+      },
+      "type": "斬撃",
+      "setShield": "Cマグナム",
+      "dropFrom": null,
+      "evolvesTo": null,
+      "dungeon": 4
+    },
+    {
+      "id": "w_031",
+      "no": 31,
+      "name": "ピースメーカー",
+      "atk": 55,
+      "enhanceCap": 7,
+      "lv1": {
+        "hp": 10,
+        "str": 10,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 0
+      },
+      "type": "投射",
+      "setShield": "ライオット",
+      "dropFrom": "偽霊媒師",
+      "evolvesTo": "w_032",
+      "dungeon": 4
+    },
+    {
+      "id": "w_032",
+      "no": 32,
+      "name": "デイドリーム",
+      "atk": 100,
+      "enhanceCap": 20,
+      "lv1": {
+        "hp": 30,
+        "str": 0,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 0
+      },
+      "type": "投射",
+      "setShield": "ライオット",
+      "dropFrom": null,
+      "evolvesTo": "w_033",
+      "dungeon": 4
+    },
+    {
+      "id": "w_033",
+      "no": 33,
+      "name": "カリオストロ",
+      "atk": 120,
+      "enhanceCap": 70,
+      "lv1": {
+        "hp": 30,
+        "str": 0,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 1,
+        "vit": 3
+      },
+      "type": "投射",
+      "setShield": "ライオット",
+      "dropFrom": "マッドハッター",
+      "evolvesTo": "w_050",
+      "dungeon": 4
     },
     {
       "id": "w_050",
-      "name": "アルカード",
-      "atk": 160,
-      "finalAtk": 310,
-      "enhanceCap": 280,
-      "dungeon": 5,
-      "evolvesTo": "w_051"
-    },
-    {
-      "id": "w_051",
-      "name": "プログレス",
-      "atk": 60,
-      "finalAtk": 310,
-      "enhanceCap": 250,
-      "dungeon": 6,
-      "evolvesTo": null
-    },
-    {
-      "id": "w_052",
-      "name": "死に神の鎌",
+      "no": 50,
+      "name": "グラナダ",
       "atk": 200,
-      "finalAtk": 210,
-      "enhanceCap": 10,
-      "dungeon": 6,
-      "evolvesTo": null
-    },
-    {
-      "id": "w_053",
-      "name": "妖刀時雨",
-      "atk": 1120,
-      "finalAtk": 121,
-      "enhanceCap": 120,
-      "dungeon": 6,
-      "evolvesTo": null
-    },
-    {
-      "id": "w_054",
-      "name": "ダンシング",
-      "atk": 350,
-      "finalAtk": 470,
-      "enhanceCap": 120,
-      "dungeon": 5,
-      "evolvesTo": null
-    },
-    {
-      "id": "w_055",
-      "name": "パルスナイフ",
-      "atk": 350,
-      "finalAtk": 598,
-      "enhanceCap": 256,
-      "dungeon": 5,
-      "evolvesTo": "w_056"
-    },
-    {
-      "id": "w_056",
-      "name": "インパルス",
-      "atk": 470,
-      "finalAtk": 598,
-      "enhanceCap": 128,
-      "dungeon": 6,
-      "evolvesTo": null
-    },
-    {
-      "id": "w_057",
-      "name": "錆びた包丁",
-      "atk": 105,
-      "finalAtk": 600,
-      "enhanceCap": 350,
-      "dungeon": 5,
-      "evolvesTo": "w_058"
-    },
-    {
-      "id": "w_058",
-      "name": "柳刃",
-      "atk": 500,
-      "finalAtk": 600,
-      "enhanceCap": 300,
-      "dungeon": 5,
-      "evolvesTo": "w_059"
-    },
-    {
-      "id": "w_059",
-      "name": "薄刃",
-      "atk": 400,
-      "finalAtk": 600,
-      "enhanceCap": 200,
-      "dungeon": 6,
-      "evolvesTo": "w_060"
-    },
-    {
-      "id": "w_060",
-      "name": "三徳",
-      "atk": 480,
-      "finalAtk": 600,
-      "enhanceCap": 100,
-      "dungeon": 6,
-      "evolvesTo": null
-    },
-    {
-      "id": "w_061",
-      "name": "ルビーナックル",
-      "atk": 300,
-      "finalAtk": 620,
-      "enhanceCap": 270,
-      "dungeon": 5,
-      "evolvesTo": "w_062"
-    },
-    {
-      "id": "w_062",
-      "name": "ダイヤナックル",
-      "atk": 356,
-      "finalAtk": 620,
-      "enhanceCap": 220,
-      "dungeon": 5,
-      "evolvesTo": "w_063"
-    },
-    {
-      "id": "w_063",
-      "name": "ムーンナックル",
-      "atk": 500,
-      "finalAtk": 620,
-      "enhanceCap": 120,
-      "dungeon": 6,
-      "evolvesTo": null
+      "enhanceCap": 170,
+      "lv1": {
+        "hp": 40,
+        "str": 5,
+        "vit": 10,
+        "spd": 5
+      },
+      "lvup": {
+        "str": 5,
+        "vit": 4
+      },
+      "type": "投射",
+      "setShield": "ライオット",
+      "dropFrom": "スナイパー",
+      "evolvesTo": "w_064",
+      "dungeon": 5
     },
     {
       "id": "w_064",
+      "no": 64,
+      "name": "パンゲア",
+      "atk": 570,
+      "enhanceCap": 99,
+      "lv1": {
+        "hp": 60,
+        "str": 0,
+        "vit": 0,
+        "spd": 15
+      },
+      "lvup": {
+        "str": 10,
+        "vit": 6
+      },
+      "type": "投射",
+      "setShield": "ライオット",
+      "dropFrom": "？",
+      "evolvesTo": null,
+      "dungeon": 6
+    },
+    {
+      "id": "w_035",
+      "no": 35,
+      "name": "くない",
+      "atk": 60,
+      "enhanceCap": 10,
+      "lv1": {
+        "hp": 9,
+        "str": 7,
+        "vit": 1,
+        "spd": 2
+      },
+      "lvup": {
+        "str": 2,
+        "vit": 1
+      },
+      "type": "投射",
+      "setShield": "粘着糸の盾",
+      "dropFrom": "メカシノビ",
+      "evolvesTo": "w_036",
+      "dungeon": 4
+    },
+    {
+      "id": "w_036",
+      "no": 36,
+      "name": "十字手裏剣",
+      "atk": 100,
+      "enhanceCap": 20,
+      "lv1": {
+        "hp": 0,
+        "str": 5,
+        "vit": 2,
+        "spd": 3
+      },
+      "lvup": {
+        "str": 3,
+        "vit": 2
+      },
+      "type": "投射",
+      "setShield": "粘着糸の盾",
+      "dropFrom": null,
+      "evolvesTo": "w_037",
+      "dungeon": 5
+    },
+    {
+      "id": "w_037",
+      "no": 37,
+      "name": "風車",
+      "atk": 180,
+      "enhanceCap": 40,
+      "lv1": {
+        "hp": 5,
+        "str": 6,
+        "vit": 3,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 5,
+        "vit": 3
+      },
+      "type": "投射",
+      "setShield": "粘着糸の盾",
+      "dropFrom": "チェシャー",
+      "evolvesTo": "w_038",
+      "dungeon": 5
+    },
+    {
+      "id": "w_038",
+      "no": 38,
+      "name": "火車",
+      "atk": 210,
+      "enhanceCap": 390,
+      "lv1": {
+        "hp": 20,
+        "str": 4,
+        "vit": 5,
+        "spd": 5
+      },
+      "lvup": {
+        "str": 5,
+        "vit": 4
+      },
+      "type": "投射",
+      "setShield": "粘着糸の盾",
+      "dropFrom": null,
+      "evolvesTo": null,
+      "dungeon": 5
+    },
+    {
+      "id": "w_040",
+      "no": 40,
+      "name": "ハンドアクス",
+      "atk": 54,
+      "enhanceCap": 15,
+      "lv1": {
+        "hp": 7,
+        "str": 5,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 2,
+        "vit": 1
+      },
+      "type": "打撃",
+      "setShield": "ゴーレムシールド",
+      "dropFrom": "ガーディアン",
+      "evolvesTo": "w_041",
+      "dungeon": 5
+    },
+    {
+      "id": "w_041",
+      "no": 41,
+      "name": "クレセント",
+      "atk": 100,
+      "enhanceCap": 40,
+      "lv1": {
+        "hp": 8,
+        "str": 5,
+        "vit": 2,
+        "spd": 5
+      },
+      "lvup": {
+        "str": 4,
+        "vit": 1
+      },
+      "type": "斬撃",
+      "setShield": "ゴーレムシールド",
+      "dropFrom": "ガーディアン",
+      "evolvesTo": "w_042",
+      "dungeon": 5
+    },
+    {
+      "id": "w_042",
+      "no": 42,
+      "name": "ボルケイノ",
+      "atk": 250,
+      "enhanceCap": 100,
+      "lv1": {
+        "hp": 10,
+        "str": 6,
+        "vit": 4,
+        "spd": 5
+      },
+      "lvup": {
+        "str": 5,
+        "vit": 4
+      },
+      "type": "斬撃",
+      "setShield": "ゴーレムシールド",
+      "dropFrom": "サモンウォーリア",
+      "evolvesTo": "w_054",
+      "dungeon": 5
+    },
+    {
+      "id": "w_054",
+      "no": 54,
+      "name": "イラプション",
+      "atk": 420,
+      "enhanceCap": 100,
+      "lv1": {
+        "hp": 10,
+        "str": 30,
+        "vit": 20,
+        "spd": 5
+      },
+      "lvup": {
+        "str": 9,
+        "vit": 3
+      },
+      "type": "斬撃",
+      "setShield": "ゴーレムシールド",
+      "dropFrom": null,
+      "evolvesTo": null,
+      "dungeon": 6
+    },
+    {
+      "id": "w_043",
+      "no": 43,
+      "name": "サンダーウィップ",
+      "atk": 200,
+      "enhanceCap": 220,
+      "lv1": {
+        "hp": 10,
+        "str": 10,
+        "vit": 10,
+        "spd": 5
+      },
+      "lvup": {
+        "str": 4,
+        "vit": 1
+      },
+      "type": "打撃",
+      "setShield": "金の指輪",
+      "dropFrom": "デスマシーン4",
+      "evolvesTo": null,
+      "dungeon": 5
+    },
+    {
+      "id": "w_044",
+      "no": 44,
+      "name": "サーペント",
+      "atk": 200,
+      "enhanceCap": 35,
+      "lv1": {
+        "hp": 20,
+        "str": 5,
+        "vit": 5,
+        "spd": 5
+      },
+      "lvup": {
+        "str": 4,
+        "vit": 3
+      },
+      "type": "打撃",
+      "setShield": "ブラックボックス",
+      "dropFrom": "メデューサ",
+      "evolvesTo": "w_045",
+      "dungeon": 5
+    },
+    {
+      "id": "w_045",
+      "no": 45,
+      "name": "クラーケン",
+      "atk": 250,
+      "enhanceCap": 160,
+      "lv1": {
+        "hp": 10,
+        "str": 13,
+        "vit": 10,
+        "spd": 5
+      },
+      "lvup": {
+        "str": 6,
+        "vit": 4
+      },
+      "type": "打撃",
+      "setShield": "ブラックボックス",
+      "dropFrom": null,
+      "evolvesTo": "w_060",
+      "dungeon": 5
+    },
+    {
+      "id": "w_060",
+      "no": 60,
+      "name": "ホワイトスネイク",
+      "atk": 350,
+      "enhanceCap": 177,
+      "lv1": {
+        "hp": 40,
+        "str": 7,
+        "vit": 7,
+        "spd": 7
+      },
+      "lvup": {
+        "str": 7,
+        "vit": 7
+      },
+      "type": "打撃",
+      "setShield": "ブラックボックス",
+      "dropFrom": "ホワイトスネイク",
+      "evolvesTo": null,
+      "dungeon": 6
+    },
+    {
+      "id": "w_046",
+      "no": 46,
+      "name": "アルカード",
+      "atk": 160,
+      "enhanceCap": 30,
+      "lv1": {
+        "hp": 10,
+        "str": 10,
+        "vit": 12,
+        "spd": 7
+      },
+      "lvup": {
+        "str": 5,
+        "vit": 4
+      },
+      "type": "打撃",
+      "setShield": "オブシダンリング",
+      "dropFrom": "ヒュドラ",
+      "evolvesTo": "w_047",
+      "dungeon": 5
+    },
+    {
+      "id": "w_047",
+      "no": 47,
+      "name": "プログレス",
+      "atk": 60,
+      "enhanceCap": 500,
+      "lv1": {
+        "hp": 20,
+        "str": 10,
+        "vit": 10,
+        "spd": 10
+      },
+      "lvup": {
+        "str": 10,
+        "vit": 7
+      },
+      "type": "打撃",
+      "setShield": "オブシダンリング",
+      "dropFrom": "リリス",
+      "evolvesTo": null,
+      "dungeon": 5
+    },
+    {
+      "id": "w_048",
+      "no": 48,
+      "name": "死に神の鎌",
+      "atk": 800,
+      "enhanceCap": 200,
+      "lv1": {
+        "hp": 4,
+        "str": 4,
+        "vit": 4,
+        "spd": 5
+      },
+      "lvup": {
+        "str": 7,
+        "vit": 3
+      },
+      "type": "斬撃",
+      "setShield": "死に神のマスク",
+      "dropFrom": "死に神",
+      "evolvesTo": null,
+      "dungeon": 5
+    },
+    {
+      "id": "w_051",
+      "no": 51,
+      "name": "ルビーナックル",
+      "atk": 300,
+      "enhanceCap": 50,
+      "lv1": {
+        "hp": 0,
+        "str": 0,
+        "vit": 10,
+        "spd": 10
+      },
+      "lvup": {
+        "str": 4,
+        "vit": 3
+      },
+      "type": "打撃",
+      "setShield": "エナジーシールド",
+      "dropFrom": "ルビーゴーレム",
+      "evolvesTo": "w_052",
+      "dungeon": 6
+    },
+    {
+      "id": "w_052",
+      "no": 52,
+      "name": "ダイヤナックル",
+      "atk": 356,
+      "enhanceCap": 100,
+      "lv1": {
+        "hp": 10,
+        "str": 20,
+        "vit": 10,
+        "spd": 10
+      },
+      "lvup": {
+        "str": 6,
+        "vit": 5
+      },
+      "type": "打撃",
+      "setShield": "エナジーシールド",
+      "dropFrom": "ダイヤゴーレム",
+      "evolvesTo": "w_053",
+      "dungeon": 6
+    },
+    {
+      "id": "w_053",
+      "no": 53,
+      "name": "ムーンナックル",
+      "atk": 600,
+      "enhanceCap": 400,
+      "lv1": {
+        "hp": 15,
+        "str": 30,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 8,
+        "vit": 8
+      },
+      "type": "打撃",
+      "setShield": "エナジーシールド",
+      "dropFrom": null,
+      "evolvesTo": null,
+      "dungeon": 6
+    },
+    {
+      "id": "w_055",
+      "no": 55,
+      "name": "ダンシング",
+      "atk": 350,
+      "enhanceCap": 300,
+      "lv1": {
+        "hp": 100,
+        "str": 0,
+        "vit": 0,
+        "spd": 10
+      },
+      "lvup": {
+        "str": 5,
+        "vit": 0
+      },
+      "type": "斬撃",
+      "setShield": "ラピッドラビット",
+      "dropFrom": "ダンシングソード",
+      "evolvesTo": null,
+      "dungeon": 6
+    },
+    {
+      "id": "w_056",
+      "no": 56,
+      "name": "錆びた包丁",
+      "atk": 10,
+      "enhanceCap": 50,
+      "lv1": {
+        "hp": 5,
+        "str": 5,
+        "vit": 0,
+        "spd": 5
+      },
+      "lvup": {
+        "str": 5,
+        "vit": 5
+      },
+      "type": "刺突",
+      "setShield": "フライパン",
+      "dropFrom": "黒点",
+      "evolvesTo": "w_057",
+      "dungeon": 6
+    },
+    {
+      "id": "w_057",
+      "no": 57,
+      "name": "柳刃",
+      "atk": 500,
+      "enhanceCap": 100,
+      "lv1": {
+        "hp": 10,
+        "str": 20,
+        "vit": 0,
+        "spd": 5
+      },
+      "lvup": {
+        "str": 12,
+        "vit": 6
+      },
+      "type": "刺突",
+      "setShield": "フライパン",
+      "dropFrom": "青点",
+      "evolvesTo": "w_058",
+      "dungeon": 6
+    },
+    {
+      "id": "w_058",
+      "no": 58,
+      "name": "薄刃",
+      "atk": 400,
+      "enhanceCap": 100,
+      "lv1": {
+        "hp": 70,
+        "str": 5,
+        "vit": 20,
+        "spd": 15
+      },
+      "lvup": {
+        "str": 5,
+        "vit": 10
+      },
+      "type": "刺突",
+      "setShield": "フライパン",
+      "dropFrom": null,
+      "evolvesTo": "w_059",
+      "dungeon": 6
+    },
+    {
+      "id": "w_059",
+      "no": 59,
+      "name": "三徳",
+      "atk": 480,
+      "enhanceCap": 300,
+      "lv1": {
+        "hp": 20,
+        "str": 10,
+        "vit": 10,
+        "spd": 10
+      },
+      "lvup": {
+        "str": 10,
+        "vit": 8
+      },
+      "type": "刺突",
+      "setShield": "フライパン",
+      "dropFrom": null,
+      "evolvesTo": null,
+      "dungeon": 6
+    },
+    {
+      "id": "w_061",
+      "no": 61,
       "name": "ツラヌキ",
       "atk": 600,
-      "finalAtk": 640,
       "enhanceCap": 40,
-      "dungeon": 6,
-      "evolvesTo": null
+      "lv1": {
+        "hp": 0,
+        "str": 10,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 14,
+        "vit": 0
+      },
+      "type": "刺突",
+      "setShield": "ダイボウギョ",
+      "dropFrom": "オフェンサー",
+      "evolvesTo": null,
+      "dungeon": 6
+    },
+    {
+      "id": "w_062",
+      "no": 62,
+      "name": "グラディウス",
+      "atk": 560,
+      "enhanceCap": 240,
+      "lv1": {
+        "hp": 10,
+        "str": 8,
+        "vit": 5,
+        "spd": 12
+      },
+      "lvup": {
+        "str": 9,
+        "vit": 11
+      },
+      "type": "斬撃",
+      "setShield": "合成獣の堅翼",
+      "dropFrom": "グラディウス",
+      "evolvesTo": null,
+      "dungeon": 6
+    },
+    {
+      "id": "w_063",
+      "no": 63,
+      "name": "グランドスラム",
+      "atk": 899,
+      "enhanceCap": 1,
+      "lv1": {
+        "hp": 0,
+        "str": 0,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 0
+      },
+      "type": "打撃",
+      "setShield": "メタル化",
+      "dropFrom": "タイラント",
+      "evolvesTo": null,
+      "dungeon": 6
     },
     {
       "id": "w_065",
-      "name": "グランドスラム",
-      "atk": 699,
-      "finalAtk": 700,
-      "enhanceCap": 1,
-      "dungeon": 7,
-      "evolvesTo": null
+      "no": 65,
+      "name": "パルスナイフ",
+      "atk": 350,
+      "enhanceCap": 128,
+      "lv1": {
+        "hp": 0,
+        "str": 100,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 15,
+        "vit": 12
+      },
+      "type": "刺突",
+      "setShield": "メビウスリング",
+      "dropFrom": "サイボーグ",
+      "evolvesTo": "w_066",
+      "dungeon": 6
     },
     {
       "id": "w_066",
-      "name": "グラディウス",
-      "atk": 560,
-      "finalAtk": 750,
-      "enhanceCap": 190,
-      "dungeon": 7,
-      "evolvesTo": null
+      "no": 66,
+      "name": "インパルス",
+      "atk": 770,
+      "enhanceCap": 128,
+      "lv1": {
+        "hp": 60,
+        "str": 120,
+        "vit": 30,
+        "spd": 10
+      },
+      "lvup": {
+        "str": 15,
+        "vit": 13
+      },
+      "type": "刺突",
+      "setShield": "メビウスリング",
+      "dropFrom": null,
+      "evolvesTo": null,
+      "dungeon": 7
     },
     {
       "id": "w_067",
-      "name": "クラスターボム",
-      "atk": 600,
-      "finalAtk": 999,
-      "enhanceCap": 1099,
-      "dungeon": 7,
-      "evolvesTo": "w_068"
+      "no": 67,
+      "name": "木のブーメラン",
+      "atk": 10,
+      "enhanceCap": 60,
+      "lv1": {
+        "hp": 10,
+        "str": 0,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 3,
+        "vit": 1
+      },
+      "type": "投射",
+      "setShield": "銀の指輪",
+      "dropFrom": "ソゼ",
+      "evolvesTo": "w_068",
+      "dungeon": 7
     },
     {
       "id": "w_068",
-      "name": "ビッグバン",
-      "atk": 999,
-      "finalAtk": 999,
-      "enhanceCap": 999,
-      "dungeon": 8,
-      "evolvesTo": null
+      "no": 68,
+      "name": "クラシック",
+      "atk": 100,
+      "enhanceCap": 200,
+      "lv1": {
+        "hp": 0,
+        "str": 12,
+        "vit": 12,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 10,
+        "vit": 5
+      },
+      "type": "投射",
+      "setShield": "銀の指輪",
+      "dropFrom": null,
+      "evolvesTo": "w_069",
+      "dungeon": 7
     },
     {
       "id": "w_069",
-      "name": "ジャックナイフ",
-      "atk": 450,
-      "finalAtk": 580,
-      "enhanceCap": 130,
-      "dungeon": 7,
-      "evolvesTo": null
+      "no": 69,
+      "name": "ベーシック",
+      "atk": 445,
+      "enhanceCap": 754,
+      "lv1": {
+        "hp": 20,
+        "str": 15,
+        "vit": 15,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 0
+      },
+      "type": "投射",
+      "setShield": "銀の指輪",
+      "dropFrom": null,
+      "evolvesTo": null,
+      "dungeon": 7
     },
     {
       "id": "w_070",
-      "name": "正義の槌",
-      "atk": 650,
-      "finalAtk": 850,
-      "enhanceCap": 200,
-      "dungeon": 7,
-      "evolvesTo": null
+      "no": 70,
+      "name": "クラスターボム",
+      "atk": 600,
+      "enhanceCap": 100,
+      "lv1": {
+        "hp": 100,
+        "str": 0,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 0
+      },
+      "type": "投射",
+      "setShield": "ホワイトホール",
+      "dropFrom": "ガチ戦車",
+      "evolvesTo": "w_071",
+      "dungeon": 7
     },
     {
       "id": "w_071",
-      "name": "ポータルソード",
-      "atk": 800,
-      "finalAtk": 980,
-      "enhanceCap": 180,
-      "dungeon": 8,
-      "evolvesTo": null
+      "no": 71,
+      "name": "ビッグバン",
+      "atk": 333,
+      "enhanceCap": 1555,
+      "lv1": {
+        "hp": 300,
+        "str": 0,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 0
+      },
+      "type": "投射",
+      "setShield": "ホワイトホール",
+      "dropFrom": null,
+      "evolvesTo": null,
+      "dungeon": 7
     },
     {
       "id": "w_072",
-      "name": "ドロイドハンマー",
-      "atk": 1100,
-      "finalAtk": 1320,
-      "enhanceCap": 220,
-      "dungeon": 8,
-      "evolvesTo": null
-    },
-    {
-      "id": "w_073",
-      "name": "イカヅチ",
-      "atk": 770,
-      "finalAtk": 1120,
-      "enhanceCap": 350,
-      "dungeon": 8,
-      "evolvesTo": null
-    },
-    {
-      "id": "w_074",
-      "name": "ゴッドハンド",
-      "atk": 900,
-      "finalAtk": 1100,
-      "enhanceCap": 200,
-      "dungeon": 9,
-      "evolvesTo": null
-    },
-    {
-      "id": "w_075",
-      "name": "蒼の剣",
-      "atk": 500,
-      "finalAtk": 800,
-      "enhanceCap": 300,
-      "dungeon": 7,
-      "evolvesTo": null
+      "no": 72,
+      "name": "妖刀時雨",
+      "atk": 1,
+      "enhanceCap": 1200,
+      "lv1": {
+        "hp": 200,
+        "str": 666,
+        "vit": 40,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 17,
+        "vit": 0
+      },
+      "type": "斬撃",
+      "setShield": "黒刀息吹",
+      "dropFrom": "エンペラードラゴン",
+      "evolvesTo": null,
+      "dungeon": 7
     },
     {
       "id": "w_076",
-      "name": "神竜刀",
-      "atk": 600,
-      "finalAtk": 610,
-      "enhanceCap": 10,
-      "dungeon": 9,
-      "evolvesTo": null
+      "no": 76,
+      "name": "ポータルソード",
+      "atk": 800,
+      "enhanceCap": 180,
+      "lv1": {
+        "hp": 0,
+        "str": 0,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 12,
+        "vit": 20
+      },
+      "type": "刺突",
+      "setShield": "プチ召喚陣",
+      "dropFrom": "髑髏の騎士",
+      "evolvesTo": null,
+      "dungeon": 8
     },
     {
       "id": "w_077",
-      "name": "回帰の槍",
-      "atk": 104,
-      "finalAtk": 420,
-      "enhanceCap": 410,
-      "dungeon": 9,
-      "evolvesTo": null
+      "no": 77,
+      "name": "ドロイドハンマー",
+      "atk": 1100,
+      "enhanceCap": 220,
+      "lv1": {
+        "hp": 300,
+        "str": 0,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 0
+      },
+      "type": "打撃",
+      "setShield": "グレーズド",
+      "dropFrom": "電気羊",
+      "evolvesTo": null,
+      "dungeon": 8
     },
     {
       "id": "w_078",
-      "name": "スターゲイザー",
-      "atk": 800,
-      "finalAtk": 1400,
-      "enhanceCap": 600,
-      "dungeon": 9,
-      "evolvesTo": null
+      "no": 78,
+      "name": "イカヅチ",
+      "atk": 770,
+      "enhanceCap": 350,
+      "lv1": {
+        "hp": 120,
+        "str": 130,
+        "vit": 80,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 11,
+        "vit": 13
+      },
+      "type": "刺突",
+      "setShield": "超電導バリア",
+      "dropFrom": "雷神",
+      "evolvesTo": null,
+      "dungeon": 8
     },
     {
       "id": "w_079",
-      "name": "ゾディアックス",
-      "atk": 1400,
-      "finalAtk": 1410,
-      "enhanceCap": 10,
-      "dungeon": 9,
-      "evolvesTo": null
+      "no": 79,
+      "name": "ゴッドハンド",
+      "atk": 900,
+      "enhanceCap": 200,
+      "lv1": {
+        "hp": 120,
+        "str": 0,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 20,
+        "vit": 10
+      },
+      "type": "打撃",
+      "setShield": "千手の護り",
+      "dropFrom": "グリーフ",
+      "evolvesTo": null,
+      "dungeon": 8
     },
     {
       "id": "w_080",
-      "name": "てっけん",
-      "atk": 999,
-      "finalAtk": 1400,
-      "enhanceCap": 401,
-      "dungeon": 9,
-      "evolvesTo": null
+      "no": 80,
+      "name": "蒼の剣",
+      "atk": 500,
+      "enhanceCap": 300,
+      "lv1": {
+        "hp": 0,
+        "str": 0,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 35,
+        "vit": 8
+      },
+      "type": "斬撃",
+      "setShield": "スラフィールド",
+      "dropFrom": "蒼色弐号",
+      "evolvesTo": null,
+      "dungeon": 8
     },
     {
       "id": "w_081",
+      "no": 81,
+      "name": "神竜刀",
+      "atk": 600,
+      "enhanceCap": 10,
+      "lv1": {
+        "hp": 300,
+        "str": 400,
+        "vit": 120,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 19,
+        "vit": 8
+      },
+      "type": "斬撃",
+      "setShield": "龍の頭",
+      "dropFrom": "ゴッドドラゴン",
+      "evolvesTo": null,
+      "dungeon": 9
+    },
+    {
+      "id": "w_082",
+      "no": 82,
+      "name": "回帰の槍",
+      "atk": 10,
+      "enhanceCap": 410,
+      "lv1": {
+        "hp": 200,
+        "str": 1000,
+        "vit": 100,
+        "spd": 50
+      },
+      "lvup": {
+        "str": 16,
+        "vit": 4
+      },
+      "type": "刺突",
+      "setShield": "白紙の盾",
+      "dropFrom": "浪漫の騎士",
+      "evolvesTo": null,
+      "dungeon": 9
+    },
+    {
+      "id": "w_083",
+      "no": 83,
+      "name": "スターゲイザー",
+      "atk": 800,
+      "enhanceCap": 600,
+      "lv1": {
+        "hp": 300,
+        "str": 150,
+        "vit": 120,
+        "spd": 20
+      },
+      "lvup": {
+        "str": 24,
+        "vit": 24
+      },
+      "type": "斬撃",
+      "setShield": "クラウドシールド",
+      "dropFrom": "異邦の騎士",
+      "evolvesTo": null,
+      "dungeon": 9
+    },
+    {
+      "id": "w_084",
+      "no": 84,
+      "name": "ゾディアックス",
+      "atk": 1400,
+      "enhanceCap": 10,
+      "lv1": {
+        "hp": 100,
+        "str": 0,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 30,
+        "vit": 10
+      },
+      "type": "斬撃",
+      "setShield": "力の指輪",
+      "dropFrom": "ゾッド",
+      "evolvesTo": null,
+      "dungeon": 9
+    },
+    {
+      "id": "w_085",
+      "no": 85,
+      "name": "ジャックナイフ",
+      "atk": 450,
+      "enhanceCap": 130,
+      "lv1": {
+        "hp": 0,
+        "str": 250,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 20,
+        "vit": 0
+      },
+      "type": "刺突",
+      "setShield": "キングシールド",
+      "dropFrom": "ジャック",
+      "evolvesTo": null,
+      "dungeon": 9
+    },
+    {
+      "id": "w_086",
+      "no": 86,
+      "name": "正義の槌",
+      "atk": 650,
+      "enhanceCap": 200,
+      "lv1": {
+        "hp": 0,
+        "str": 0,
+        "vit": 100,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 10,
+        "vit": 12
+      },
+      "type": "打撃",
+      "setShield": "銅の指輪",
+      "dropFrom": "ジャッジメント",
+      "evolvesTo": null,
+      "dungeon": 9
+    },
+    {
+      "id": "w_087",
+      "no": 87,
+      "name": "マジカル",
+      "atk": 300,
+      "enhanceCap": 100,
+      "lv1": {
+        "hp": 0,
+        "str": 0,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 40,
+        "vit": 0
+      },
+      "type": "投射",
+      "setShield": "プリズムシールド",
+      "dropFrom": "魔法使い",
+      "evolvesTo": null,
+      "dungeon": 10
+    },
+    {
+      "id": "w_088",
+      "no": 88,
+      "name": "てっけん",
+      "atk": 999,
+      "enhanceCap": 401,
+      "lv1": {
+        "hp": 0,
+        "str": 100,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 5,
+        "vit": 0
+      },
+      "type": "打撃",
+      "setShield": "波動剣",
+      "dropFrom": "武道家",
+      "evolvesTo": null,
+      "dungeon": 10
+    },
+    {
+      "id": "w_089",
+      "no": 89,
       "name": "悪霊の剣",
-      "atk": 2000,
-      "finalAtk": 2500,
+      "atk": 9999,
       "enhanceCap": 500,
-      "dungeon": 10,
-      "evolvesTo": null
+      "lv1": {
+        "hp": 0,
+        "str": 0,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": -999,
+        "vit": 0
+      },
+      "type": "斬撃",
+      "setShield": "ゴーストシールド",
+      "dropFrom": "スピリット",
+      "evolvesTo": null,
+      "dungeon": 10
+    },
+    {
+      "id": "w_090",
+      "no": 90,
+      "name": "ニューラルエッジ",
+      "atk": 1024,
+      "enhanceCap": 512,
+      "lv1": {
+        "hp": 0,
+        "str": 200,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 40,
+        "vit": 0
+      },
+      "type": "斬撃",
+      "setShield": "覇王の証",
+      "dropFrom": "皇帝テバ",
+      "evolvesTo": null,
+      "dungeon": 10
+    },
+    {
+      "id": "w_091",
+      "no": 91,
+      "name": "むらくも",
+      "atk": 888,
+      "enhanceCap": 1000,
+      "lv1": {
+        "hp": 1000,
+        "str": 200,
+        "vit": 0,
+        "spd": 100
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 0
+      },
+      "type": "刺突",
+      "setShield": "イージス",
+      "dropFrom": "やまたのおろち",
+      "evolvesTo": null,
+      "dungeon": 10
     }
   ],
   "shields": [
     {
-      "id": "s_000",
-      "name": "なべのふた",
-      "def": 5,
-      "finalDef": 200,
-      "enhanceCap": 360,
-      "dungeon": 1,
-      "evolvesTo": "s_001"
-    },
-    {
       "id": "s_001",
-      "name": "木の盾",
-      "def": 15,
-      "finalDef": 280,
-      "enhanceCap": 340,
-      "dungeon": 1,
-      "evolvesTo": "s_002"
+      "no": 1,
+      "name": "なべのふた",
+      "def": 3,
+      "enhanceCap": 10,
+      "lv1": {
+        "hp": 0,
+        "str": 0,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 0
+      },
+      "boostStat": "HP",
+      "dropFrom": "スライム",
+      "evolvesTo": "s_002",
+      "dungeon": 1
     },
     {
       "id": "s_002",
-      "name": "革の盾",
-      "def": 30,
-      "finalDef": 320,
-      "enhanceCap": 300,
-      "dungeon": 2,
-      "evolvesTo": "s_003"
+      "no": 2,
+      "name": "高いなべのふた",
+      "def": 10,
+      "enhanceCap": 10,
+      "lv1": {
+        "hp": 0,
+        "str": 0,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 0
+      },
+      "boostStat": "HP",
+      "dropFrom": "ホーネット",
+      "evolvesTo": null,
+      "dungeon": 1
     },
     {
       "id": "s_003",
-      "name": "鉄甲の盾",
-      "def": 80,
-      "finalDef": 360,
-      "enhanceCap": 240,
-      "dungeon": 3,
-      "evolvesTo": "s_004"
+      "no": 3,
+      "name": "木の盾",
+      "def": 15,
+      "enhanceCap": 35,
+      "lv1": {
+        "hp": 0,
+        "str": 0,
+        "vit": 5,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 0
+      },
+      "boostStat": "VIT",
+      "dropFrom": "キラービー",
+      "evolvesTo": "s_023",
+      "dungeon": 1
+    },
+    {
+      "id": "s_023",
+      "no": 23,
+      "name": "堅木の盾",
+      "def": 40,
+      "enhanceCap": 40,
+      "lv1": {
+        "hp": 20,
+        "str": 0,
+        "vit": 0,
+        "spd": 8
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 1
+      },
+      "boostStat": "VIT",
+      "dropFrom": null,
+      "evolvesTo": null,
+      "dungeon": 4
     },
     {
       "id": "s_004",
-      "name": "竜鱗の盾",
-      "def": 200,
-      "finalDef": 380,
-      "enhanceCap": 180,
-      "dungeon": 5,
-      "evolvesTo": null
-    },
-    {
-      "id": "s_005",
-      "name": "堅木の盾",
-      "def": 20,
-      "finalDef": 70,
-      "enhanceCap": 50,
-      "dungeon": 2,
-      "evolvesTo": null
+      "no": 4,
+      "name": "鉄の盾",
+      "def": 25,
+      "enhanceCap": 20,
+      "lv1": {
+        "hp": 0,
+        "str": 0,
+        "vit": 8,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 0
+      },
+      "boostStat": "VIT",
+      "dropFrom": "アルビノスライム",
+      "evolvesTo": "s_006",
+      "dungeon": 1
     },
     {
       "id": "s_006",
-      "name": "合成獣の翼",
-      "def": 40,
-      "finalDef": 160,
-      "enhanceCap": 120,
-      "dungeon": 3,
-      "evolvesTo": "s_007"
-    },
-    {
-      "id": "s_007",
-      "name": "合成獣の堅翼",
-      "def": 120,
-      "finalDef": 270,
-      "enhanceCap": 150,
-      "dungeon": 3,
-      "evolvesTo": null
-    },
-    {
-      "id": "s_008",
-      "name": "スライムシールド",
-      "def": 128,
-      "finalDef": 338,
-      "enhanceCap": 210,
-      "dungeon": 3,
-      "evolvesTo": "s_009"
-    },
-    {
-      "id": "s_009",
-      "name": "スラフィールド",
-      "def": 210,
-      "finalDef": 300,
-      "enhanceCap": 90,
-      "dungeon": 4,
-      "evolvesTo": null
-    },
-    {
-      "id": "s_010",
-      "name": "黒刀息吹",
-      "def": 250,
-      "finalDef": 310,
-      "enhanceCap": 60,
-      "dungeon": 6,
-      "evolvesTo": null
-    },
-    {
-      "id": "s_011",
-      "name": "オーロラシールド",
-      "def": 70,
-      "finalDef": 940,
-      "enhanceCap": 870,
-      "dungeon": 8,
-      "evolvesTo": null
-    },
-    {
-      "id": "s_012",
-      "name": "正義の盾",
-      "def": 400,
-      "finalDef": 480,
-      "enhanceCap": 80,
-      "dungeon": 7,
-      "evolvesTo": "s_013"
+      "no": 6,
+      "name": "鉄の大盾",
+      "def": 30,
+      "enhanceCap": 35,
+      "lv1": {
+        "hp": 0,
+        "str": 0,
+        "vit": 10,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 1
+      },
+      "boostStat": "VIT",
+      "dropFrom": "デスマシーン3",
+      "evolvesTo": "s_013",
+      "dungeon": 1
     },
     {
       "id": "s_013",
-      "name": "神盾",
-      "def": 700,
-      "finalDef": 760,
+      "no": 13,
+      "name": "タワーシールド",
+      "def": 80,
+      "enhanceCap": 30,
+      "lv1": {
+        "hp": 40,
+        "str": 0,
+        "vit": 5,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 1
+      },
+      "boostStat": "VIT",
+      "dropFrom": "ゴーストパラディン",
+      "evolvesTo": null,
+      "dungeon": 2
+    },
+    {
+      "id": "s_005",
+      "no": 5,
+      "name": "チタンシールド",
+      "def": 30,
+      "enhanceCap": 30,
+      "lv1": {
+        "hp": 0,
+        "str": 0,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 1
+      },
+      "boostStat": "VIT",
+      "dropFrom": "デスマシーン",
+      "evolvesTo": null,
+      "dungeon": 1
+    },
+    {
+      "id": "s_007",
+      "no": 7,
+      "name": "マジックシールド",
+      "def": 40,
+      "enhanceCap": 30,
+      "lv1": {
+        "hp": 0,
+        "str": 0,
+        "vit": 5,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 2
+      },
+      "boostStat": "HP",
+      "dropFrom": "ファイアフェアリー",
+      "evolvesTo": "s_011",
+      "dungeon": 2
+    },
+    {
+      "id": "s_011",
+      "no": 11,
+      "name": "クリアシールド",
+      "def": 40,
+      "enhanceCap": 10,
+      "lv1": {
+        "hp": 30,
+        "str": 0,
+        "vit": 5,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 1
+      },
+      "boostStat": "HP",
+      "dropFrom": "ゴーストウィザード",
+      "evolvesTo": "s_012",
+      "dungeon": 2
+    },
+    {
+      "id": "s_012",
+      "no": 12,
+      "name": "プリズムシールド",
+      "def": 70,
+      "enhanceCap": 50,
+      "lv1": {
+        "hp": 50,
+        "str": 0,
+        "vit": 5,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 2
+      },
+      "boostStat": "HP",
+      "dropFrom": null,
+      "evolvesTo": null,
+      "dungeon": 2
+    },
+    {
+      "id": "s_008",
+      "no": 8,
+      "name": "電導バリア",
+      "def": 35,
       "enhanceCap": 60,
-      "dungeon": 8,
-      "evolvesTo": null
+      "lv1": {
+        "hp": 0,
+        "str": 5,
+        "vit": 5,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 1,
+        "vit": 2
+      },
+      "boostStat": "SPD",
+      "dropFrom": "デスマシーン3",
+      "evolvesTo": "s_020",
+      "dungeon": 2
+    },
+    {
+      "id": "s_020",
+      "no": 20,
+      "name": "超電導バリア",
+      "def": 100,
+      "enhanceCap": 120,
+      "lv1": {
+        "hp": 10,
+        "str": 15,
+        "vit": 10,
+        "spd": 5
+      },
+      "lvup": {
+        "str": 2,
+        "vit": 5
+      },
+      "boostStat": "SPD",
+      "dropFrom": null,
+      "evolvesTo": null,
+      "dungeon": 3
+    },
+    {
+      "id": "s_009",
+      "no": 9,
+      "name": "エメラルドシールド",
+      "def": 50,
+      "enhanceCap": 20,
+      "lv1": {
+        "hp": 10,
+        "str": 0,
+        "vit": 0,
+        "spd": 5
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 3
+      },
+      "boostStat": "VIT",
+      "dropFrom": "エメラルドゴーレム",
+      "evolvesTo": null,
+      "dungeon": 2
+    },
+    {
+      "id": "s_010",
+      "no": 10,
+      "name": "合成獣の翼",
+      "def": 40,
+      "enhanceCap": 55,
+      "lv1": {
+        "hp": 10,
+        "str": 0,
+        "vit": 5,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 2
+      },
+      "boostStat": "STR",
+      "dropFrom": "キマイラ",
+      "evolvesTo": "s_022",
+      "dungeon": 2
+    },
+    {
+      "id": "s_022",
+      "no": 22,
+      "name": "合成獣の堅翼",
+      "def": 120,
+      "enhanceCap": 130,
+      "lv1": {
+        "hp": 20,
+        "str": 10,
+        "vit": 5,
+        "spd": 2
+      },
+      "lvup": {
+        "str": 1,
+        "vit": 2
+      },
+      "boostStat": "STR",
+      "dropFrom": "パーフェクトキメラ",
+      "evolvesTo": null,
+      "dungeon": 3
     },
     {
       "id": "s_014",
-      "name": "次元の盾",
-      "def": 1000,
-      "finalDef": 1050,
-      "enhanceCap": 50,
-      "dungeon": 9,
-      "evolvesTo": null
+      "no": 14,
+      "name": "死に神のマスク",
+      "def": 700,
+      "enhanceCap": 200,
+      "lv1": {
+        "hp": 4,
+        "str": 4,
+        "vit": 4,
+        "spd": 6
+      },
+      "lvup": {
+        "str": 2,
+        "vit": 6
+      },
+      "boostStat": "HP",
+      "dropFrom": "死に神",
+      "evolvesTo": null,
+      "dungeon": 2
     },
     {
       "id": "s_015",
-      "name": "魔王の鎧",
-      "def": 1500,
-      "finalDef": 1540,
-      "enhanceCap": 40,
-      "dungeon": 10,
-      "evolvesTo": null
+      "no": 15,
+      "name": "龍の鱗",
+      "def": 90,
+      "enhanceCap": 30,
+      "lv1": {
+        "hp": 40,
+        "str": 10,
+        "vit": 5,
+        "spd": 3
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 3
+      },
+      "boostStat": "VIT",
+      "dropFrom": "セイントドラゴン",
+      "evolvesTo": "s_016",
+      "dungeon": 3
     },
     {
       "id": "s_016",
-      "name": "ポータルシールド",
-      "def": 800,
-      "finalDef": 980,
-      "enhanceCap": 180,
-      "dungeon": 8,
-      "evolvesTo": null
+      "no": 16,
+      "name": "龍の翼",
+      "def": 300,
+      "enhanceCap": 35,
+      "lv1": {
+        "hp": 50,
+        "str": 10,
+        "vit": 6,
+        "spd": 5
+      },
+      "lvup": {
+        "str": 1,
+        "vit": 3
+      },
+      "boostStat": "VIT",
+      "dropFrom": null,
+      "evolvesTo": "s_017",
+      "dungeon": 3
+    },
+    {
+      "id": "s_017",
+      "no": 17,
+      "name": "龍の頭",
+      "def": 400,
+      "enhanceCap": 130,
+      "lv1": {
+        "hp": 50,
+        "str": 15,
+        "vit": 6,
+        "spd": 5
+      },
+      "lvup": {
+        "str": 2,
+        "vit": 4
+      },
+      "boostStat": "VIT",
+      "dropFrom": null,
+      "evolvesTo": null,
+      "dungeon": 3
+    },
+    {
+      "id": "s_018",
+      "no": 18,
+      "name": "小太刀",
+      "def": 30,
+      "enhanceCap": 30,
+      "lv1": {
+        "hp": 10,
+        "str": 30,
+        "vit": 5,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 3,
+        "vit": 1
+      },
+      "boostStat": "STR",
+      "dropFrom": "メカサムライ",
+      "evolvesTo": "s_019",
+      "dungeon": 3
+    },
+    {
+      "id": "s_019",
+      "no": 19,
+      "name": "小獅子",
+      "def": 50,
+      "enhanceCap": 30,
+      "lv1": {
+        "hp": 30,
+        "str": 30,
+        "vit": 5,
+        "spd": 5
+      },
+      "lvup": {
+        "str": 5,
+        "vit": 2
+      },
+      "boostStat": "STR",
+      "dropFrom": null,
+      "evolvesTo": "s_024",
+      "dungeon": 3
+    },
+    {
+      "id": "s_024",
+      "no": 24,
+      "name": "小龍剣",
+      "def": 60,
+      "enhanceCap": 50,
+      "lv1": {
+        "hp": 30,
+        "str": 15,
+        "vit": 10,
+        "spd": 3
+      },
+      "lvup": {
+        "str": 6,
+        "vit": 2
+      },
+      "boostStat": "STR",
+      "dropFrom": null,
+      "evolvesTo": "s_025",
+      "dungeon": 4
+    },
+    {
+      "id": "s_025",
+      "no": 25,
+      "name": "昇龍剣",
+      "def": 0,
+      "enhanceCap": 100,
+      "lv1": {
+        "hp": 0,
+        "str": 50,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 14,
+        "vit": 0
+      },
+      "boostStat": "STR",
+      "dropFrom": null,
+      "evolvesTo": "s_026",
+      "dungeon": 4
+    },
+    {
+      "id": "s_026",
+      "no": 26,
+      "name": "波動剣",
+      "def": 0,
+      "enhanceCap": 300,
+      "lv1": {
+        "hp": 20,
+        "str": 32,
+        "vit": 12,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 14,
+        "vit": 0
+      },
+      "boostStat": "STR",
+      "dropFrom": null,
+      "evolvesTo": null,
+      "dungeon": 4
+    },
+    {
+      "id": "s_021",
+      "no": 21,
+      "name": "スライムシールド",
+      "def": 128,
+      "enhanceCap": 140,
+      "lv1": {
+        "hp": 50,
+        "str": 0,
+        "vit": 10,
+        "spd": 7
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 5
+      },
+      "boostStat": "HP",
+      "dropFrom": "ヒュージスライム",
+      "evolvesTo": "s_032",
+      "dungeon": 3
+    },
+    {
+      "id": "s_032",
+      "no": 32,
+      "name": "スラフィールド",
+      "def": 260,
+      "enhanceCap": 140,
+      "lv1": {
+        "hp": 120,
+        "str": 0,
+        "vit": 20,
+        "spd": 8
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 6
+      },
+      "boostStat": "HP",
+      "dropFrom": "ラストスライム",
+      "evolvesTo": null,
+      "dungeon": 4
+    },
+    {
+      "id": "s_027",
+      "no": 27,
+      "name": "エナジーシールド",
+      "def": 0,
+      "enhanceCap": 600,
+      "lv1": {
+        "hp": 0,
+        "str": 0,
+        "vit": 150,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 7
+      },
+      "boostStat": "HP",
+      "dropFrom": "サモンプリースト",
+      "evolvesTo": null,
+      "dungeon": 4
+    },
+    {
+      "id": "s_028",
+      "no": 28,
+      "name": "メタル化",
+      "def": 220,
+      "enhanceCap": 200,
+      "lv1": {
+        "hp": 200,
+        "str": 60,
+        "vit": 150,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 0
+      },
+      "boostStat": "VIT",
+      "dropFrom": "メタルリザード",
+      "evolvesTo": null,
+      "dungeon": 4
+    },
+    {
+      "id": "s_029",
+      "no": 29,
+      "name": "ブラックホール",
+      "def": 230,
+      "enhanceCap": 120,
+      "lv1": {
+        "hp": 20,
+        "str": 0,
+        "vit": 30,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 6,
+        "vit": 6
+      },
+      "boostStat": "LUK",
+      "dropFrom": "クリーム",
+      "evolvesTo": "s_030",
+      "dungeon": 4
+    },
+    {
+      "id": "s_030",
+      "no": 30,
+      "name": "ホワイトホール",
+      "def": 300,
+      "enhanceCap": 550,
+      "lv1": {
+        "hp": 20,
+        "str": 0,
+        "vit": 30,
+        "spd": 5
+      },
+      "lvup": {
+        "str": 6,
+        "vit": 7
+      },
+      "boostStat": "LUK",
+      "dropFrom": null,
+      "evolvesTo": null,
+      "dungeon": 4
+    },
+    {
+      "id": "s_031",
+      "no": 31,
+      "name": "フライパン",
+      "def": 90,
+      "enhanceCap": 410,
+      "lv1": {
+        "hp": 500,
+        "str": 0,
+        "vit": 0,
+        "spd": 25
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 0
+      },
+      "boostStat": "VIT",
+      "dropFrom": "白点",
+      "evolvesTo": null,
+      "dungeon": 4
+    },
+    {
+      "id": "s_033",
+      "no": 33,
+      "name": "ミストシールド",
+      "def": 270,
+      "enhanceCap": 280,
+      "lv1": {
+        "hp": 80,
+        "str": 0,
+        "vit": 0,
+        "spd": 5
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 5
+      },
+      "boostStat": "HP",
+      "dropFrom": "ミスト",
+      "evolvesTo": "s_041",
+      "dungeon": 5
+    },
+    {
+      "id": "s_041",
+      "no": 41,
+      "name": "クラウドシールド",
+      "def": 490,
+      "enhanceCap": 600,
+      "lv1": {
+        "hp": 0,
+        "str": 0,
+        "vit": 0,
+        "spd": 15
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 9
+      },
+      "boostStat": "HP",
+      "dropFrom": "デスクラウド",
+      "evolvesTo": null,
+      "dungeon": 5
+    },
+    {
+      "id": "s_034",
+      "no": 34,
+      "name": "ダイボウギョ",
+      "def": 600,
+      "enhanceCap": 100,
+      "lv1": {
+        "hp": 100,
+        "str": 0,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 10
+      },
+      "boostStat": "VIT",
+      "dropFrom": "ディフェンサー",
+      "evolvesTo": null,
+      "dungeon": 5
+    },
+    {
+      "id": "s_035",
+      "no": 35,
+      "name": "防弾盾",
+      "def": 300,
+      "enhanceCap": 150,
+      "lv1": {
+        "hp": 0,
+        "str": 5,
+        "vit": 60,
+        "spd": 4
+      },
+      "lvup": {
+        "str": 2,
+        "vit": 7
+      },
+      "boostStat": "VIT",
+      "dropFrom": "ヨワ戦車",
+      "evolvesTo": "s_036",
+      "dungeon": 5
+    },
+    {
+      "id": "s_036",
+      "no": 36,
+      "name": "ライオット",
+      "def": 410,
+      "enhanceCap": 500,
+      "lv1": {
+        "hp": 50,
+        "str": 6,
+        "vit": 60,
+        "spd": 5
+      },
+      "lvup": {
+        "str": 3,
+        "vit": 8
+      },
+      "boostStat": "VIT",
+      "dropFrom": "ツヨ戦車",
+      "evolvesTo": null,
+      "dungeon": 5
+    },
+    {
+      "id": "s_037",
+      "no": 37,
+      "name": "マグナム",
+      "def": 0,
+      "enhanceCap": 90,
+      "lv1": {
+        "hp": 0,
+        "str": 200,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 7,
+        "vit": 0
+      },
+      "boostStat": "SPD",
+      "dropFrom": "歩兵",
+      "evolvesTo": "s_038",
+      "dungeon": 5
+    },
+    {
+      "id": "s_038",
+      "no": 38,
+      "name": "Vマグナム",
+      "def": 0,
+      "enhanceCap": 130,
+      "lv1": {
+        "hp": 0,
+        "str": 300,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 8,
+        "vit": 0
+      },
+      "boostStat": "SPD",
+      "dropFrom": null,
+      "evolvesTo": "s_039",
+      "dungeon": 5
+    },
+    {
+      "id": "s_039",
+      "no": 39,
+      "name": "Cマグナム",
+      "def": 0,
+      "enhanceCap": 600,
+      "lv1": {
+        "hp": 0,
+        "str": 400,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 9,
+        "vit": 0
+      },
+      "boostStat": "SPD",
+      "dropFrom": null,
+      "evolvesTo": null,
+      "dungeon": 5
+    },
+    {
+      "id": "s_040",
+      "no": 40,
+      "name": "オーロラシールド",
+      "def": 440,
+      "enhanceCap": 500,
+      "lv1": {
+        "hp": 60,
+        "str": 0,
+        "vit": 70,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 10
+      },
+      "boostStat": "LUK",
+      "dropFrom": "ブラックモア",
+      "evolvesTo": null,
+      "dungeon": 5
+    },
+    {
+      "id": "s_042",
+      "no": 42,
+      "name": "暴風壁",
+      "def": 600,
+      "enhanceCap": 600,
+      "lv1": {
+        "hp": 300,
+        "str": 100,
+        "vit": 200,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 15
+      },
+      "boostStat": "STR",
+      "dropFrom": "風神",
+      "evolvesTo": null,
+      "dungeon": 5
+    },
+    {
+      "id": "s_043",
+      "no": 43,
+      "name": "落書き",
+      "def": 1,
+      "enhanceCap": 600,
+      "lv1": {
+        "hp": 0,
+        "str": 0,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 0
+      },
+      "boostStat": "LUK",
+      "dropFrom": "カシミール",
+      "evolvesTo": "s_044",
+      "dungeon": 6
+    },
+    {
+      "id": "s_044",
+      "no": 44,
+      "name": "白紙の盾",
+      "def": 700,
+      "enhanceCap": 1000,
+      "lv1": {
+        "hp": 0,
+        "str": 0,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 20
+      },
+      "boostStat": "LUK",
+      "dropFrom": null,
+      "evolvesTo": null,
+      "dungeon": 6
+    },
+    {
+      "id": "s_045",
+      "no": 45,
+      "name": "ゴーレムシールド",
+      "def": 1200,
+      "enhanceCap": 300,
+      "lv1": {
+        "hp": 250,
+        "str": 0,
+        "vit": 100,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 25
+      },
+      "boostStat": "VIT",
+      "dropFrom": "人造ゴーレム",
+      "evolvesTo": null,
+      "dungeon": 6
+    },
+    {
+      "id": "s_046",
+      "no": 46,
+      "name": "千手の護り",
+      "def": 1500,
+      "enhanceCap": 10,
+      "lv1": {
+        "hp": 0,
+        "str": 0,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 50
+      },
+      "boostStat": "STR",
+      "dropFrom": "千手",
+      "evolvesTo": null,
+      "dungeon": 6
+    },
+    {
+      "id": "s_047",
+      "no": 47,
+      "name": "粘着糸の盾",
+      "def": 300,
+      "enhanceCap": 350,
+      "lv1": {
+        "hp": 150,
+        "str": 0,
+        "vit": 10,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 8
+      },
+      "boostStat": "SPD",
+      "dropFrom": "クロウラ",
+      "evolvesTo": null,
+      "dungeon": 7
+    },
+    {
+      "id": "s_048",
+      "no": 48,
+      "name": "キングシールド",
+      "def": 360,
+      "enhanceCap": 400,
+      "lv1": {
+        "hp": 120,
+        "str": 0,
+        "vit": 50,
+        "spd": 12
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 6
+      },
+      "boostStat": "VIT",
+      "dropFrom": "キング",
+      "evolvesTo": null,
+      "dungeon": 7
+    },
+    {
+      "id": "s_049",
+      "no": 49,
+      "name": "戦士の大盾",
+      "def": 390,
+      "enhanceCap": 550,
+      "lv1": {
+        "hp": 200,
+        "str": 0,
+        "vit": 200,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 4
+      },
+      "boostStat": "HP",
+      "dropFrom": "戦士",
+      "evolvesTo": null,
+      "dungeon": 7
+    },
+    {
+      "id": "s_050",
+      "no": 50,
+      "name": "ゴブリンの手",
+      "def": 200,
+      "enhanceCap": 420,
+      "lv1": {
+        "hp": 120,
+        "str": 50,
+        "vit": 60,
+        "spd": 10
+      },
+      "lvup": {
+        "str": 5,
+        "vit": 6
+      },
+      "boostStat": "HP",
+      "dropFrom": "ラストゴブリン",
+      "evolvesTo": null,
+      "dungeon": 8
+    },
+    {
+      "id": "s_051",
+      "no": 51,
+      "name": "ゴーストシールド",
+      "def": 200,
+      "enhanceCap": 600,
+      "lv1": {
+        "hp": 0,
+        "str": 0,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 12
+      },
+      "boostStat": "HP",
+      "dropFrom": "ゴーストアーマー",
+      "evolvesTo": null,
+      "dungeon": 8
+    },
+    {
+      "id": "s_052",
+      "no": 52,
+      "name": "黒刀息吹",
+      "def": 0,
+      "enhanceCap": 800,
+      "lv1": {
+        "hp": 0,
+        "str": 200,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 35,
+        "vit": 0
+      },
+      "boostStat": "STR",
+      "dropFrom": "ダークドラゴン",
+      "evolvesTo": null,
+      "dungeon": 9
+    },
+    {
+      "id": "s_053",
+      "no": 53,
+      "name": "イージス",
+      "def": 0,
+      "enhanceCap": 2000,
+      "lv1": {
+        "hp": 1000,
+        "str": 0,
+        "vit": 0,
+        "spd": 100
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 0
+      },
+      "boostStat": "HP",
+      "dropFrom": "パノプテス",
+      "evolvesTo": null,
+      "dungeon": 10
     }
   ],
   "rings": [
     {
-      "id": "r_000",
-      "name": "銅の指輪",
-      "dungeon": 1
-    },
-    {
       "id": "r_001",
-      "name": "葉っぱの指輪",
+      "no": 1,
+      "name": "銅の指輪",
+      "lv1": {
+        "hp": 0,
+        "str": 0,
+        "vit": 5,
+        "spd": 0,
+        "luk": 0
+      },
+      "boostStat": "VIT",
+      "skill": "極意：打撃",
+      "dropFrom": "大コウモリ、ファイアフェアリー",
       "dungeon": 1
     },
     {
       "id": "r_002",
+      "no": 2,
       "name": "銀の指輪",
-      "dungeon": 2
+      "lv1": {
+        "hp": 0,
+        "str": 5,
+        "vit": 0,
+        "spd": 0,
+        "luk": 0
+      },
+      "boostStat": "VIT",
+      "skill": "極意：投射",
+      "dropFrom": "おおむかで、アイスフェアリー",
+      "dungeon": 1
     },
     {
       "id": "r_003",
-      "name": "フェアリーリング",
-      "dungeon": 2
+      "no": 3,
+      "name": "金の指輪",
+      "lv1": {
+        "hp": 5,
+        "str": 0,
+        "vit": 0,
+        "spd": 0,
+        "luk": 0
+      },
+      "boostStat": "HP",
+      "skill": "スキル：不屈",
+      "dropFrom": "キラービー",
+      "dungeon": 1
     },
     {
       "id": "r_004",
-      "name": "石の指輪",
-      "dungeon": 3
+      "no": 4,
+      "name": "プラチナリング",
+      "lv1": {
+        "hp": 5,
+        "str": 0,
+        "vit": 20,
+        "spd": 0,
+        "luk": 0
+      },
+      "boostStat": "SPD",
+      "skill": "ブースト：SPD",
+      "dropFrom": "盗賊、ドラゴンベビー",
+      "dungeon": 2
     },
     {
       "id": "r_005",
-      "name": "コウモリの指輪",
-      "dungeon": 3
+      "no": 5,
+      "name": "フェアリーリング",
+      "lv1": {
+        "hp": 10,
+        "str": 0,
+        "vit": 10,
+        "spd": 0,
+        "luk": 0
+      },
+      "boostStat": "SPD",
+      "skill": "極意：斬撃",
+      "dropFrom": "フェアリー、アークフェアリー",
+      "dungeon": 2
     },
     {
       "id": "r_006",
-      "name": "金の指輪",
-      "dungeon": 4
+      "no": 6,
+      "name": "サモンリング",
+      "lv1": {
+        "hp": 10,
+        "str": 5,
+        "vit": 0,
+        "spd": 0,
+        "luk": 0
+      },
+      "boostStat": "VIT",
+      "skill": "極意：刺突",
+      "dropFrom": "クレイゴーレム等",
+      "dungeon": 2
     },
     {
       "id": "r_007",
-      "name": "幽霊の指輪",
-      "dungeon": 4
+      "no": 7,
+      "name": "竜の涙",
+      "lv1": {
+        "hp": 10,
+        "str": 10,
+        "vit": 10,
+        "spd": 0,
+        "luk": 0
+      },
+      "boostStat": "LUK",
+      "skill": "スキル：宝物狩り",
+      "dropFrom": "ミストドラゴン、セイントドラゴン",
+      "dungeon": 3
     },
     {
       "id": "r_008",
-      "name": "ラピッドラビット",
-      "dungeon": 5
+      "no": 8,
+      "name": "プチ召喚陣",
+      "lv1": {
+        "hp": 10,
+        "str": 20,
+        "vit": 0,
+        "spd": 0,
+        "luk": 0
+      },
+      "boostStat": "STR",
+      "skill": "スキル：毒",
+      "dropFrom": "グランドサモナー",
+      "dungeon": 3
     },
     {
       "id": "r_009",
-      "name": "力の指輪",
-      "dungeon": 5
+      "no": 9,
+      "name": "グレーズド",
+      "lv1": {
+        "hp": 15,
+        "str": 5,
+        "vit": 50,
+        "spd": 0,
+        "luk": 0
+      },
+      "boostStat": "HP",
+      "skill": "極意：打撃",
+      "dropFrom": "クリスピー",
+      "dungeon": 3
     },
     {
       "id": "r_010",
-      "name": "オブシダンリング",
-      "dungeon": 6
+      "no": 10,
+      "name": "猛毒の環",
+      "lv1": {
+        "hp": 5,
+        "str": 30,
+        "vit": 10,
+        "spd": 0,
+        "luk": 0
+      },
+      "boostStat": "HP",
+      "skill": "スキル：毒",
+      "dropFrom": "ポイズンゴブリン、ポイズンスライム",
+      "dungeon": 4
     },
     {
       "id": "r_011",
-      "name": "戦士の指輪",
-      "dungeon": 6
+      "no": 11,
+      "name": "モルヒネリング",
+      "lv1": {
+        "hp": 10,
+        "str": 0,
+        "vit": 100,
+        "spd": 0,
+        "luk": 0
+      },
+      "boostStat": "VIT",
+      "skill": "ブースト：HP",
+      "dropFrom": "衛生兵",
+      "dungeon": 4
     },
     {
       "id": "r_012",
-      "name": "正義の指輪",
-      "dungeon": 7
+      "no": 12,
+      "name": "パンドラリング",
+      "lv1": {
+        "hp": 0,
+        "str": 30,
+        "vit": 60,
+        "spd": 0,
+        "luk": 0
+      },
+      "boostStat": "LUK",
+      "skill": "ブースト：HP",
+      "dropFrom": "サブリミナル",
+      "dungeon": 4
     },
     {
       "id": "r_013",
-      "name": "ヴォイドリング",
-      "dungeon": 8
+      "no": 13,
+      "name": "ラピッドラビット",
+      "lv1": {
+        "hp": 20,
+        "str": 0,
+        "vit": 30,
+        "spd": 0,
+        "luk": 0
+      },
+      "boostStat": "SPD",
+      "skill": "スキル：先制",
+      "dropFrom": "アリス",
+      "dungeon": 5
     },
     {
       "id": "r_014",
-      "name": "次元の指輪",
-      "dungeon": 9
+      "no": 14,
+      "name": "力の指輪",
+      "lv1": {
+        "hp": 0,
+        "str": 100,
+        "vit": 0,
+        "spd": 0,
+        "luk": 0
+      },
+      "boostStat": "STR",
+      "skill": "極意：斬撃",
+      "dropFrom": "フォース",
+      "dungeon": 5
     },
     {
       "id": "r_015",
-      "name": "覇王の指輪",
-      "dungeon": 10
+      "no": 15,
+      "name": "オキュラスリング",
+      "lv1": {
+        "hp": 50,
+        "str": 60,
+        "vit": 0,
+        "spd": 0,
+        "luk": 0
+      },
+      "boostStat": "STR",
+      "skill": "スキル：水源探知",
+      "dropFrom": "オキュラス",
+      "dungeon": 5
+    },
+    {
+      "id": "r_016",
+      "no": 16,
+      "name": "メビウスリング",
+      "lv1": {
+        "hp": 20,
+        "str": 20,
+        "vit": 50,
+        "spd": 0,
+        "luk": 2
+      },
+      "boostStat": "STR",
+      "skill": "極意：刺突",
+      "dropFrom": "エニグマ",
+      "dungeon": 6
+    },
+    {
+      "id": "r_017",
+      "no": 17,
+      "name": "サーチリング",
+      "lv1": {
+        "hp": 0,
+        "str": 30,
+        "vit": 0,
+        "spd": 0,
+        "luk": 2
+      },
+      "boostStat": "STR",
+      "skill": "極意：投射",
+      "dropFrom": "シソーラス",
+      "dungeon": 6
+    },
+    {
+      "id": "r_018",
+      "no": 18,
+      "name": "終点",
+      "lv1": {
+        "hp": 60,
+        "str": 50,
+        "vit": 100,
+        "spd": 0,
+        "luk": 0
+      },
+      "boostStat": "VIT",
+      "skill": "孤高",
+      "dropFrom": "ピリオド",
+      "dungeon": 6
+    },
+    {
+      "id": "r_019",
+      "no": 19,
+      "name": "覇王の証",
+      "lv1": {
+        "hp": 0,
+        "str": 0,
+        "vit": 120,
+        "spd": 0,
+        "luk": 6
+      },
+      "boostStat": "STR",
+      "skill": "孤高",
+      "dropFrom": "魔王",
+      "dungeon": 7
+    },
+    {
+      "id": "r_020",
+      "no": 20,
+      "name": "オブシダンリング",
+      "lv1": {
+        "hp": 100,
+        "str": 100,
+        "vit": 100,
+        "spd": 10,
+        "luk": 4
+      },
+      "boostStat": "STR",
+      "skill": "極意：打撃",
+      "dropFrom": "千手",
+      "dungeon": 7
+    },
+    {
+      "id": "r_021",
+      "no": 21,
+      "name": "マリッジリング",
+      "lv1": {
+        "hp": 10,
+        "str": 10,
+        "vit": 50,
+        "spd": 0,
+        "luk": 2
+      },
+      "boostStat": "VIT",
+      "skill": "スキル：二撃",
+      "dropFrom": "踊り子",
+      "dungeon": 7
+    },
+    {
+      "id": "r_022",
+      "no": 22,
+      "name": "第三の目",
+      "lv1": {
+        "hp": 20,
+        "str": 20,
+        "vit": 50,
+        "spd": 0,
+        "luk": 0
+      },
+      "boostStat": "STR",
+      "skill": "極意：打撃",
+      "dropFrom": "サードアイ",
+      "dungeon": 8
+    },
+    {
+      "id": "r_023",
+      "no": 23,
+      "name": "ブラックボックス",
+      "lv1": {
+        "hp": 0,
+        "str": 0,
+        "vit": 0,
+        "spd": 10,
+        "luk": 20
+      },
+      "boostStat": "STR",
+      "skill": "極意：打撃",
+      "dropFrom": "皇帝テバ",
+      "dungeon": 8
+    },
+    {
+      "id": "r_024",
+      "no": 24,
+      "name": "狐火",
+      "lv1": {
+        "hp": 0,
+        "str": 0,
+        "vit": 0,
+        "spd": 40,
+        "luk": 0
+      },
+      "boostStat": "HP",
+      "skill": "スキル：毒",
+      "dropFrom": "九尾",
+      "dungeon": 8
+    }
+  ],
+  "monsters": [
+    {
+      "name": "スライム",
+      "hp": 10,
+      "spd": 1,
+      "atk": 20,
+      "def": 10,
+      "exp": 2,
+      "drop1": "木の棒",
+      "drop2": "なべのふた",
+      "dungeon": 1,
+      "kind": "雑魚"
+    },
+    {
+      "name": "ゴブリン",
+      "hp": 20,
+      "spd": 1,
+      "atk": 10,
+      "def": 10,
+      "exp": 3,
+      "drop1": "こん棒",
+      "drop2": null,
+      "dungeon": 1,
+      "kind": "雑魚"
+    },
+    {
+      "name": "ホーネット",
+      "hp": 25,
+      "spd": 1,
+      "atk": 10,
+      "def": 20,
+      "exp": 6,
+      "drop1": "高いなべのふた",
+      "drop2": null,
+      "dungeon": 1,
+      "kind": "雑魚"
+    },
+    {
+      "name": "大コウモリ",
+      "hp": 25,
+      "spd": 1,
+      "atk": 40,
+      "def": 30,
+      "exp": 8,
+      "drop1": "銅の指輪",
+      "drop2": null,
+      "dungeon": 1,
+      "kind": "雑魚"
+    },
+    {
+      "name": "キラービー",
+      "hp": 30,
+      "spd": 4,
+      "atk": 20,
+      "def": 20,
+      "exp": 8,
+      "drop1": "木の盾",
+      "drop2": "金の指輪",
+      "dungeon": 2,
+      "kind": "雑魚"
+    },
+    {
+      "name": "おおむかで",
+      "hp": 40,
+      "spd": 5,
+      "atk": 20,
+      "def": 20,
+      "exp": 7,
+      "drop1": "銀の指輪",
+      "drop2": null,
+      "dungeon": 2,
+      "kind": "雑魚"
+    },
+    {
+      "name": "盗賊",
+      "hp": 40,
+      "spd": 7,
+      "atk": 30,
+      "def": 20,
+      "exp": 10,
+      "drop1": "ショートソード",
+      "drop2": "プラチナリング",
+      "dungeon": 2,
+      "kind": "雑魚"
+    },
+    {
+      "name": "フェアリー",
+      "hp": 5,
+      "spd": 50,
+      "atk": 10,
+      "def": 10,
+      "exp": 1,
+      "drop1": "フェアリーリング",
+      "drop2": null,
+      "dungeon": 2,
+      "kind": "雑魚"
+    },
+    {
+      "name": "フェアリーハンター",
+      "hp": 55,
+      "spd": 3,
+      "atk": 40,
+      "def": 40,
+      "exp": 10,
+      "drop1": "装飾刀",
+      "drop2": "タツマキ",
+      "dungeon": 2,
+      "kind": "雑魚"
+    },
+    {
+      "name": "巨大コウモリ",
+      "hp": 40,
+      "spd": 4,
+      "atk": 30,
+      "def": 30,
+      "exp": 12,
+      "drop1": "ロングソード",
+      "drop2": null,
+      "dungeon": 3,
+      "kind": "雑魚"
+    },
+    {
+      "name": "アルビノスライム",
+      "hp": 40,
+      "spd": -7,
+      "atk": 40,
+      "def": 30,
+      "exp": 15,
+      "drop1": "なべのふた",
+      "drop2": "鉄の盾",
+      "dungeon": 3,
+      "kind": "雑魚"
+    },
+    {
+      "name": "ファイアフェアリー",
+      "hp": 80,
+      "spd": 10,
+      "atk": 70,
+      "def": 50,
+      "exp": 17,
+      "drop1": "銅の指輪",
+      "drop2": "マジックシールド",
+      "dungeon": 3,
+      "kind": "雑魚"
+    },
+    {
+      "name": "アイスフェアリー",
+      "hp": 80,
+      "spd": 10,
+      "atk": 80,
+      "def": 60,
+      "exp": 17,
+      "drop1": "銀の指輪",
+      "drop2": "マジックシールド",
+      "dungeon": 3,
+      "kind": "雑魚"
+    },
+    {
+      "name": "デスマシーン",
+      "hp": 60,
+      "spd": 10,
+      "atk": 60,
+      "def": 40,
+      "exp": 20,
+      "drop1": "鉄の盾",
+      "drop2": "チタンシールド",
+      "dungeon": 3,
+      "kind": "雑魚"
+    },
+    {
+      "name": "デスマシーン2",
+      "hp": 60,
+      "spd": 15,
+      "atk": 70,
+      "def": 40,
+      "exp": 24,
+      "drop1": "スタンナックル",
+      "drop2": "鉄塊",
+      "dungeon": 4,
+      "kind": "雑魚"
+    },
+    {
+      "name": "デスマシーン3",
+      "hp": 80,
+      "spd": 15,
+      "atk": 80,
+      "def": 70,
+      "exp": 26,
+      "drop1": "鉄の大盾",
+      "drop2": "電導バリア",
+      "dungeon": 4,
+      "kind": "雑魚"
+    },
+    {
+      "name": "ゴーストナイト",
+      "hp": 100,
+      "spd": 1,
+      "atk": 80,
+      "def": 50,
+      "exp": 1,
+      "drop1": "幻影剣",
+      "drop2": null,
+      "dungeon": 4,
+      "kind": "雑魚"
+    },
+    {
+      "name": "ゴーストウィザード",
+      "hp": 110,
+      "spd": 1,
+      "atk": 85,
+      "def": 60,
+      "exp": 1,
+      "drop1": "クリアシールド",
+      "drop2": null,
+      "dungeon": 4,
+      "kind": "雑魚"
+    },
+    {
+      "name": "ライトニングフェアリー",
+      "hp": 90,
+      "spd": 10,
+      "atk": 100,
+      "def": 90,
+      "exp": 20,
+      "drop1": "プラチナリング",
+      "drop2": "オオタツマキ",
+      "dungeon": 4,
+      "kind": "雑魚"
+    },
+    {
+      "name": "アークフェアリー",
+      "hp": 110,
+      "spd": 20,
+      "atk": 110,
+      "def": 90,
+      "exp": 30,
+      "drop1": "フェアリーリング",
+      "drop2": "フェアリーソード",
+      "dungeon": 5,
+      "kind": "雑魚"
+    },
+    {
+      "name": "クレイゴーレム",
+      "hp": 130,
+      "spd": 10,
+      "atk": 110,
+      "def": 90,
+      "exp": 32,
+      "drop1": "サラマンダー",
+      "drop2": "サモンリング",
+      "dungeon": 5,
+      "kind": "雑魚"
+    },
+    {
+      "name": "アイアンゴーレム",
+      "hp": 160,
+      "spd": 20,
+      "atk": 150,
+      "def": 100,
+      "exp": 36,
+      "drop1": "ピンポイント",
+      "drop2": "サモンリング",
+      "dungeon": 5,
+      "kind": "雑魚"
+    },
+    {
+      "name": "ゴーストパラディン",
+      "hp": 120,
+      "spd": 3,
+      "atk": 100,
+      "def": 70,
+      "exp": 1,
+      "drop1": "タワーシールド",
+      "drop2": null,
+      "dungeon": 5,
+      "kind": "雑魚"
+    },
+    {
+      "name": "エメラルドゴーレム",
+      "hp": 200,
+      "spd": 30,
+      "atk": 180,
+      "def": 100,
+      "exp": 40,
+      "drop1": "エメラルドソード",
+      "drop2": "エメラルドシールド",
+      "dungeon": 6,
+      "kind": "雑魚"
+    },
+    {
+      "name": "ミストドラゴン",
+      "hp": 150,
+      "spd": 3,
+      "atk": 130,
+      "def": 70,
+      "exp": 7,
+      "drop1": "キリサメ",
+      "drop2": "竜の涙",
+      "dungeon": 6,
+      "kind": "雑魚"
+    },
+    {
+      "name": "スラ仏",
+      "hp": 100,
+      "spd": 2,
+      "atk": 110,
+      "def": 70,
+      "exp": 5,
+      "drop1": "木の剣",
+      "drop2": "ファントムサイス",
+      "dungeon": 6,
+      "kind": "雑魚"
+    },
+    {
+      "name": "デスマシーン4",
+      "hp": 150,
+      "spd": 5,
+      "atk": 110,
+      "def": 110,
+      "exp": 20,
+      "drop1": "サンダーウィップ",
+      "drop2": "大鉄塊",
+      "dungeon": 6,
+      "kind": "雑魚"
+    },
+    {
+      "name": "メカシノビ",
+      "hp": 250,
+      "spd": 10,
+      "atk": 150,
+      "def": 120,
+      "exp": 21,
+      "drop1": "くない",
+      "drop2": null,
+      "dungeon": 6,
+      "kind": "雑魚"
+    },
+    {
+      "name": "ガーディアン",
+      "hp": 280,
+      "spd": 20,
+      "atk": 230,
+      "def": 110,
+      "exp": 30,
+      "drop1": "クレセント",
+      "drop2": "ハンドアクス",
+      "dungeon": 7,
+      "kind": "雑魚"
+    },
+    {
+      "name": "セイントドラゴン",
+      "hp": 340,
+      "spd": 43,
+      "atk": 540,
+      "def": 350,
+      "exp": 50,
+      "drop1": "龍の鱗",
+      "drop2": "竜の涙",
+      "dungeon": 7,
+      "kind": "雑魚"
+    },
+    {
+      "name": "メデューサ",
+      "hp": 270,
+      "spd": 42,
+      "atk": 250,
+      "def": 190,
+      "exp": 33,
+      "drop1": "サーペント",
+      "drop2": null,
+      "dungeon": 7,
+      "kind": "雑魚"
+    },
+    {
+      "name": "ヒュージスライム",
+      "hp": 280,
+      "spd": 35,
+      "atk": 220,
+      "def": 210,
+      "exp": 31,
+      "drop1": "スライムシールド",
+      "drop2": null,
+      "dungeon": 7,
+      "kind": "雑魚"
+    },
+    {
+      "dungeon": 7,
+      "name": "死に神",
+      "hp": 470,
+      "spd": 42,
+      "atk": 670,
+      "def": 550,
+      "exp": 500,
+      "drop1": "死に神の鎌",
+      "drop2": "死に神のマスク",
+      "kind": "ボス"
+    },
+    {
+      "name": "パーフェクトキメラ",
+      "hp": 300,
+      "spd": 35,
+      "atk": 450,
+      "def": 270,
+      "exp": 34,
+      "drop1": "合成獣の堅翼",
+      "drop2": null,
+      "dungeon": 8,
+      "kind": "雑魚"
+    },
+    {
+      "name": "ルビーゴーレム",
+      "hp": 400,
+      "spd": 24,
+      "atk": 560,
+      "def": 400,
+      "exp": 34,
+      "drop1": "ルビーナックル",
+      "drop2": null,
+      "dungeon": 8,
+      "kind": "雑魚"
+    },
+    {
+      "name": "ダイヤゴーレム",
+      "hp": 420,
+      "spd": 50,
+      "atk": 600,
+      "def": 450,
+      "exp": 40,
+      "drop1": "ダイヤナックル",
+      "drop2": null,
+      "dungeon": 8,
+      "kind": "雑魚"
+    },
+    {
+      "name": "グランドサモナー",
+      "hp": 420,
+      "spd": 60,
+      "atk": 640,
+      "def": 520,
+      "exp": 41,
+      "drop1": "プチ召喚陣",
+      "drop2": "サモンリング",
+      "dungeon": 8,
+      "kind": "雑魚"
+    },
+    {
+      "name": "ホワイトスネイク",
+      "hp": 650,
+      "spd": 60,
+      "atk": 700,
+      "def": 560,
+      "exp": 50,
+      "drop1": "ホワイトスネイク",
+      "drop2": null,
+      "dungeon": 8,
+      "kind": "雑魚"
+    },
+    {
+      "name": "グラディウス(敵)",
+      "hp": 680,
+      "spd": 62,
+      "atk": 750,
+      "def": 590,
+      "exp": 52,
+      "drop1": "グラディウス",
+      "drop2": null,
+      "dungeon": 9,
+      "kind": "雑魚"
+    },
+    {
+      "name": "タイラント",
+      "hp": 4000,
+      "spd": 40,
+      "atk": 1000,
+      "def": 150,
+      "exp": 50,
+      "drop1": "グランドスラム",
+      "drop2": null,
+      "dungeon": 9,
+      "kind": "雑魚"
+    },
+    {
+      "dungeon": 9,
+      "name": "チェシャー",
+      "hp": 620,
+      "spd": 80,
+      "atk": 100,
+      "def": 10,
+      "exp": 30,
+      "drop1": "風車",
+      "drop2": null,
+      "kind": "雑魚"
+    },
+    {
+      "dungeon": 9,
+      "name": "眠り鼠",
+      "hp": 680,
+      "spd": 60,
+      "atk": 240,
+      "def": 150,
+      "exp": 39,
+      "drop1": "夢想剣",
+      "drop2": null,
+      "kind": "雑魚"
+    },
+    {
+      "dungeon": 9,
+      "name": "ジャック",
+      "hp": 500,
+      "spd": 70,
+      "atk": 400,
+      "def": 200,
+      "exp": 44,
+      "drop1": "ジャックナイフ",
+      "drop2": null,
+      "kind": "雑魚"
+    },
+    {
+      "dungeon": 9,
+      "name": "キング",
+      "hp": 1200,
+      "spd": 60,
+      "atk": 380,
+      "def": 300,
+      "exp": 47,
+      "drop1": "キングシールド",
+      "drop2": null,
+      "kind": "雑魚"
+    },
+    {
+      "dungeon": 9,
+      "name": "ジャッジメント",
+      "hp": 1000,
+      "spd": 80,
+      "atk": 800,
+      "def": 400,
+      "exp": 500,
+      "drop1": "正義の槌",
+      "drop2": null,
+      "kind": "ボス"
+    },
+    {
+      "dungeon": 10,
+      "name": "門番",
+      "hp": 700,
+      "spd": 50,
+      "atk": 500,
+      "def": 400,
+      "exp": 40,
+      "drop1": "シルフ",
+      "drop2": "ノーム",
+      "kind": "雑魚"
+    },
+    {
+      "dungeon": 10,
+      "name": "ラストスライム",
+      "hp": 1500,
+      "spd": 60,
+      "atk": 800,
+      "def": 600,
+      "exp": 48,
+      "drop1": "スラフィールド",
+      "drop2": null,
+      "kind": "雑魚"
+    },
+    {
+      "dungeon": 10,
+      "name": "ラストゴブリン",
+      "hp": 2000,
+      "spd": 65,
+      "atk": 900,
+      "def": 700,
+      "exp": 50,
+      "drop1": "ゴブリンの手",
+      "drop2": null,
+      "kind": "雑魚"
+    },
+    {
+      "dungeon": 10,
+      "name": "スピリット",
+      "hp": 1000,
+      "spd": 70,
+      "atk": 1200,
+      "def": 500,
+      "exp": 58,
+      "drop1": "悪霊の剣",
+      "drop2": null,
+      "kind": "雑魚"
+    },
+    {
+      "name": "エンペラードラゴン",
+      "hp": 3000,
+      "spd": 77,
+      "atk": 1500,
+      "def": 720,
+      "exp": 85,
+      "drop1": "妖刀時雨",
+      "drop2": null,
+      "dungeon": 10,
+      "kind": "雑魚"
+    },
+    {
+      "dungeon": 10,
+      "name": "魔王",
+      "hp": 2000,
+      "spd": 80,
+      "atk": 2100,
+      "def": 900,
+      "exp": 1000,
+      "drop1": "覇王の証",
+      "drop2": null,
+      "kind": "ボス"
     }
   ],
   "enhanceMaterials": [
@@ -1385,65 +4444,200 @@
     "守りの鍛錬"
   ],
   "rareAbilities": [
+    "先制",
+    "毒",
+    "猛毒",
+    "不屈",
     "一撃",
     "二撃",
-    "先制"
+    "三途",
+    "四葉",
+    "五光",
+    "六感",
+    "七福",
+    "宝物狩り",
+    "水源探知"
   ],
   "breakthroughLines": [
     {
+      "analysisLv": 1,
+      "corruption": 0,
+      "neededExp": 1,
+      "effectWeapon": "強化上限確認",
+      "effectShield": "強化上限確認",
+      "effectRing": "Lv1時能力確認",
+      "cumulativeExp": 1
+    },
+    {
+      "analysisLv": 2,
+      "corruption": 0,
+      "neededExp": 2,
+      "effectWeapon": "Lv1時能力上昇値確認",
+      "effectShield": "Lv1時能力上昇値確認",
+      "effectRing": null,
+      "cumulativeExp": 3
+    },
+    {
+      "analysisLv": 3,
+      "corruption": 0,
+      "neededExp": 4,
+      "effectWeapon": "進化先確認",
+      "effectShield": "進化先確認",
+      "effectRing": null,
+      "cumulativeExp": 7
+    },
+    {
+      "analysisLv": 4,
+      "corruption": 0,
+      "neededExp": 8,
+      "effectWeapon": "LvUP時能力上昇値確認",
+      "effectShield": "LvUP時能力上昇値確認",
+      "effectRing": "LvUP時能力確認",
+      "cumulativeExp": 15
+    },
+    {
       "analysisLv": 5,
       "corruption": 0,
-      "effect": "強化上限アップ +100"
+      "neededExp": 16,
+      "effectWeapon": "強化上限アップ+100",
+      "effectShield": "強化上限アップ+100",
+      "effectRing": "特定ステータスブースト",
+      "cumulativeExp": 31
     },
     {
       "analysisLv": 6,
       "corruption": 50,
-      "effect": "特定ステータスブースト ×1.1"
+      "neededExp": 32,
+      "effectWeapon": "攻撃力ブースト×1.3",
+      "effectShield": "特定ステータスブースト×1.1",
+      "effectRing": "全能力ブースト",
+      "cumulativeExp": 63
     },
     {
       "analysisLv": 7,
       "corruption": 100,
-      "effect": "強化上限アップ +1000"
+      "neededExp": 40,
+      "effectWeapon": "強化上限アップ+1000",
+      "effectShield": "強化上限アップ+1000",
+      "effectRing": "固有スキル/孤高",
+      "cumulativeExp": 103
     },
     {
       "analysisLv": 8,
       "corruption": 150,
-      "effect": "強化ブースト ×2"
+      "neededExp": 48,
+      "effectWeapon": "強化ブースト×2",
+      "effectShield": "強化ブースト×2",
+      "effectRing": "特定ステータスブースト",
+      "cumulativeExp": 151
     },
     {
       "analysisLv": 9,
       "corruption": 200,
-      "effect": "セット装備：STRブースト ×1.5（特定装備と組み合わせ）/ 盾は守備力ブースト ×1.3"
+      "neededExp": 56,
+      "effectWeapon": "セット装備使用時ATKブースト×1.5",
+      "effectShield": "守備力ブースト×1.3",
+      "effectRing": "全能力ブースト",
+      "cumulativeExp": 207
     },
     {
       "analysisLv": 10,
       "corruption": 250,
-      "effect": "侵食度ブースト ×2（侵食度反映が×10→×20になる）"
+      "neededExp": 64,
+      "effectWeapon": "侵蝕度ブースト×2(×10→×20)",
+      "effectShield": "侵蝕度ブースト×2(×10→×20)",
+      "effectRing": "能力Lvブースト",
+      "cumulativeExp": 271
     },
     {
       "analysisLv": 11,
       "corruption": 300,
-      "effect": "強化上限アップ +2000"
+      "neededExp": 64,
+      "effectWeapon": "強化上限アップ+2000",
+      "effectShield": "強化上限アップ+2000",
+      "effectRing": "特定ステータスブースト",
+      "cumulativeExp": 335
     },
     {
       "analysisLv": 12,
       "corruption": 350,
-      "effect": "強化ブースト ×2"
+      "neededExp": 64,
+      "effectWeapon": "強化ブースト×2",
+      "effectShield": "強化ブースト×2",
+      "effectRing": "全能力ブースト",
+      "cumulativeExp": 399
     },
     {
       "analysisLv": 13,
       "corruption": 400,
-      "effect": "HPブースト ×1.3"
+      "neededExp": 64,
+      "effectWeapon": "セット装備ブースト上昇×1.5",
+      "effectShield": "HPブースト×1.3",
+      "effectRing": "固有スキル/孤高",
+      "cumulativeExp": 463
     },
     {
       "analysisLv": 14,
       "corruption": 450,
-      "effect": "強化上限アップ +3000"
+      "neededExp": 64,
+      "effectWeapon": "強化上限アップ+3000",
+      "effectShield": "強化上限アップ+3000",
+      "effectRing": "特定ステータスブースト",
+      "cumulativeExp": 527
     },
     {
       "analysisLv": 15,
       "corruption": 500,
-      "effect": "侵食度ブースト ×2"
+      "neededExp": 64,
+      "effectWeapon": "侵蝕度ブースト×2",
+      "effectShield": "侵蝕度ブースト×2",
+      "effectRing": "能力Lvブースト",
+      "cumulativeExp": 591
+    },
+    {
+      "analysisLv": 16,
+      "corruption": 600,
+      "neededExp": 128,
+      "effectWeapon": "強化上限アップ+4000",
+      "effectShield": "強化上限アップ+4000",
+      "effectRing": "HPブースト",
+      "cumulativeExp": 719
+    },
+    {
+      "analysisLv": 17,
+      "corruption": 800,
+      "neededExp": 128,
+      "effectWeapon": "強化上限アップ+5000",
+      "effectShield": "強化上限アップ+5000",
+      "effectRing": "全能力ブースト",
+      "cumulativeExp": 847
+    },
+    {
+      "analysisLv": 18,
+      "corruption": 1100,
+      "neededExp": 128,
+      "effectWeapon": "強化上限アップ+6000",
+      "effectShield": "強化上限アップ+6000",
+      "effectRing": "全能力ブースト",
+      "cumulativeExp": 975
+    },
+    {
+      "analysisLv": 19,
+      "corruption": 1500,
+      "neededExp": 128,
+      "effectWeapon": "強化上限アップ+9900",
+      "effectShield": "強化上限アップ+9900",
+      "effectRing": "全能力ブースト",
+      "cumulativeExp": 1103
+    },
+    {
+      "analysisLv": 20,
+      "corruption": 2000,
+      "neededExp": 128,
+      "effectWeapon": "強化上限アップ+19000",
+      "effectShield": "強化上限アップ+19000",
+      "effectRing": "能力Lvブースト",
+      "cumulativeExp": 1231
     }
   ],
   "permanentBoostOptions": [
@@ -1454,12 +4648,12 @@
     },
     {
       "key": "atk",
-      "label": "ATK",
+      "label": "ATK（STR）",
       "perPoint": 3
     },
     {
       "key": "def",
-      "label": "DEF",
+      "label": "DEF（VIT）",
       "perPoint": 3
     },
     {
@@ -1469,284 +4663,11 @@
     },
     {
       "key": "luk",
-      "label": "LUK（ドロップ運）",
+      "label": "LUK",
       "perPoint": 1
     }
   ],
-  "rareAbilityUnlockCost": 50,
-  "enemies": [
-    {
-      "dungeon": 1,
-      "name": "グラスファング",
-      "kind": "雑魚",
-      "atk": 8,
-      "def": 5,
-      "hp": 48,
-      "spd": 3
-    },
-    {
-      "dungeon": 1,
-      "name": "リトルスライム",
-      "kind": "雑魚",
-      "atk": 10,
-      "def": 6,
-      "hp": 62,
-      "spd": 3
-    },
-    {
-      "dungeon": 1,
-      "name": "草むらの王",
-      "kind": "ボス",
-      "atk": 28,
-      "def": 18,
-      "hp": 169,
-      "spd": 3
-    },
-    {
-      "dungeon": 2,
-      "name": "フェアリー",
-      "kind": "雑魚",
-      "atk": 18,
-      "def": 12,
-      "hp": 108,
-      "spd": 4
-    },
-    {
-      "dungeon": 2,
-      "name": "森狼",
-      "kind": "雑魚",
-      "atk": 23,
-      "def": 16,
-      "hp": 140,
-      "spd": 4
-    },
-    {
-      "dungeon": 2,
-      "name": "ストレイシープ",
-      "kind": "ボス",
-      "atk": 63,
-      "def": 42,
-      "hp": 380,
-      "spd": 4
-    },
-    {
-      "dungeon": 3,
-      "name": "コウモリ",
-      "kind": "雑魚",
-      "atk": 35,
-      "def": 25,
-      "hp": 210,
-      "spd": 5
-    },
-    {
-      "dungeon": 3,
-      "name": "ドラゴンベビー",
-      "kind": "雑魚",
-      "atk": 46,
-      "def": 32,
-      "hp": 273,
-      "spd": 5
-    },
-    {
-      "dungeon": 3,
-      "name": "洞穴の主",
-      "kind": "ボス",
-      "atk": 123,
-      "def": 88,
-      "hp": 739,
-      "spd": 5
-    },
-    {
-      "dungeon": 4,
-      "name": "デスマシーン1",
-      "kind": "雑魚",
-      "atk": 55,
-      "def": 38,
-      "hp": 330,
-      "spd": 6
-    },
-    {
-      "dungeon": 4,
-      "name": "亡霊",
-      "kind": "雑魚",
-      "atk": 72,
-      "def": 49,
-      "hp": 429,
-      "spd": 6
-    },
-    {
-      "dungeon": 4,
-      "name": "洋館の支配者",
-      "kind": "ボス",
-      "atk": 194,
-      "def": 134,
-      "hp": 1162,
-      "spd": 6
-    },
-    {
-      "dungeon": 5,
-      "name": "ゴーレム",
-      "kind": "雑魚",
-      "atk": 90,
-      "def": 60,
-      "hp": 540,
-      "spd": 7
-    },
-    {
-      "dungeon": 5,
-      "name": "エメラルドゴーレム",
-      "kind": "雑魚",
-      "atk": 117,
-      "def": 78,
-      "hp": 702,
-      "spd": 7
-    },
-    {
-      "dungeon": 5,
-      "name": "抜け道の番人",
-      "kind": "ボス",
-      "atk": 317,
-      "def": 211,
-      "hp": 1901,
-      "spd": 7
-    },
-    {
-      "dungeon": 6,
-      "name": "古戦士",
-      "kind": "雑魚",
-      "atk": 140,
-      "def": 95,
-      "hp": 840,
-      "spd": 8
-    },
-    {
-      "dungeon": 6,
-      "name": "パーフェクトキメラ",
-      "kind": "雑魚",
-      "atk": 182,
-      "def": 124,
-      "hp": 1092,
-      "spd": 8
-    },
-    {
-      "dungeon": 6,
-      "name": "古戦場の将軍",
-      "kind": "ボス",
-      "atk": 493,
-      "def": 334,
-      "hp": 2957,
-      "spd": 8
-    },
-    {
-      "dungeon": 7,
-      "name": "セイントドラゴン",
-      "kind": "雑魚",
-      "atk": 220,
-      "def": 150,
-      "hp": 1320,
-      "spd": 9
-    },
-    {
-      "dungeon": 7,
-      "name": "死に神",
-      "kind": "雑魚",
-      "atk": 286,
-      "def": 195,
-      "hp": 1716,
-      "spd": 9
-    },
-    {
-      "dungeon": 7,
-      "name": "巨塔の番人",
-      "kind": "ボス",
-      "atk": 774,
-      "def": 528,
-      "hp": 4646,
-      "spd": 9
-    },
-    {
-      "dungeon": 8,
-      "name": "異形の闇",
-      "kind": "雑魚",
-      "atk": 340,
-      "def": 230,
-      "hp": 2040,
-      "spd": 10
-    },
-    {
-      "dungeon": 8,
-      "name": "次元の番人",
-      "kind": "雑魚",
-      "atk": 442,
-      "def": 299,
-      "hp": 2652,
-      "spd": 10
-    },
-    {
-      "dungeon": 8,
-      "name": "扉の支配者",
-      "kind": "ボス",
-      "atk": 1197,
-      "def": 810,
-      "hp": 7181,
-      "spd": 10
-    },
-    {
-      "dungeon": 9,
-      "name": "裂け目の怪物",
-      "kind": "雑魚",
-      "atk": 520,
-      "def": 350,
-      "hp": 3120,
-      "spd": 11
-    },
-    {
-      "dungeon": 9,
-      "name": "時空の歪み",
-      "kind": "雑魚",
-      "atk": 676,
-      "def": 455,
-      "hp": 4056,
-      "spd": 11
-    },
-    {
-      "dungeon": 9,
-      "name": "次元の王",
-      "kind": "ボス",
-      "atk": 1830,
-      "def": 1232,
-      "hp": 10982,
-      "spd": 11
-    },
-    {
-      "dungeon": 10,
-      "name": "魔獣",
-      "kind": "雑魚",
-      "atk": 800,
-      "def": 500,
-      "hp": 4800,
-      "spd": 12
-    },
-    {
-      "dungeon": 10,
-      "name": "テバ",
-      "kind": "雑魚",
-      "atk": 1040,
-      "def": 650,
-      "hp": 6240,
-      "spd": 12
-    },
-    {
-      "dungeon": 10,
-      "name": "魔王",
-      "kind": "ボス",
-      "atk": 2816,
-      "def": 1760,
-      "hp": 16896,
-      "spd": 12
-    }
-  ],
-  "corruptionMultiplierAfterLv10": 2
+  "rareAbilityUnlockCost": 50
 }
 </script>
 <script>
@@ -1761,923 +4682,979 @@ function findEquipDef(category, id) {
   if (category === 'shield') return findShield(id);
   return findRing(id);
 }
-function categoryLabel(cat) { return cat === 'weapon' ? '武器' : cat === 'shield' ? '盾' : '指輪'; }
+function categoryLabel(cat) { return cat==='weapon'?'武器':cat==='shield'?'盾':'指輪'; }
 
-// ===================== ダメージ計算 =====================
-function calcDamage(atk, def) { return Math.max(1, Math.round(atk - def)); }
+// ===================== ダメージ計算（仕様書準拠） =====================
+function calcDamage(atk, def, forceKaishin=false) {
+  const provisional = Math.max(0, Math.round(atk - def));
+  const rand = Math.floor(Math.random() * 6);
+  let dmg = provisional + rand;
+  const isKaishin = forceKaishin || Math.random() < 0.05;
+  if (isKaishin) dmg *= 2;
+  return { dmg, isKaishin };
+}
 
 // ===================== レアリティ =====================
 function rarityOf(corruption) {
-  if (corruption >= 250) return { key: 'red', label: '赤', cls: 'rarity-red', expGain: 8 };
-  if (corruption >= 150) return { key: 'yellow', label: '黄', cls: 'rarity-yellow', expGain: 4 };
-  if (corruption >= 50) return { key: 'blue', label: '青', cls: 'rarity-blue', expGain: 2 };
-  return { key: 'white', label: '白', cls: 'rarity-white', expGain: 1 };
+  if (corruption >= 250) return { key:'red',   label:'赤', cls:'rarity-red',    expGain:8 };
+  if (corruption >= 150) return { key:'yellow', label:'黄', cls:'rarity-yellow', expGain:4 };
+  if (corruption >= 50)  return { key:'blue',   label:'青', cls:'rarity-blue',   expGain:2 };
+  return                        { key:'white',  label:'白', cls:'rarity-white',  expGain:1 };
 }
 
-// ===================== 侵食度ドロップ =====================
-// 瘴気度0（1周目）では侵食度付きアイテムは一切ドロップしない。
-// 瘴気度1以上で初めて侵食度がつくようになる。
+// ===================== 侵食度 =====================
 function rollCorruption(worldLevel) {
   if (worldLevel <= 0) return 0;
-  const r = Math.random();
   const bias = Math.min(0.6, worldLevel * 0.08);
-  const adjusted = Math.pow(r, 1 - bias);
-  return Math.round(adjusted * 300);
+  return Math.round(Math.pow(Math.random(), 1 - bias) * 300);
 }
 
-// ===================== 解析Lv・EXP =====================
-function expNeededForNextLv(currentLv) { return currentLv * 10; }
+// ===================== 解析EXP（仕様書: 1,2,4,8,16,32,40,48,56,64,64...） =====================
+function expNeededForLevel(lv) {
+  const t = [0,1,2,4,8,16,32,40,48,56,64];
+  return t[lv] ?? 64;
+}
 
 // ===================== 限界突破 =====================
-function getBreakthroughLines() { return GAME_DATA.breakthroughLines; }
-function activeEffectsFor(analysisLv, corruption) {
-  return getBreakthroughLines().filter(l => analysisLv >= l.analysisLv && corruption >= l.corruption);
+function activeEffectsFor(item) {
+  return GAME_DATA.breakthroughLines.filter(l =>
+    item.analysisLv >= l.analysisLv && item.corruption >= l.corruption
+  );
 }
-// 侵食度ブースト倍率（解析Lv10未満は×10、Lv10以上は×20）。本家の正確な仕様。
-function corruptionAtkBonus(item) {
-  if (item.category === 'ring') return 0;
-  const multiplier = item.analysisLv >= 10 ? 20 : 10;
-  return item.corruption * multiplier;
+function enhanceCapBonusFor(item) {
+  let bonus = 0;
+  activeEffectsFor(item).forEach(e => {
+    const key = item.category==='shield' ? e.effectShield : e.effectWeapon;
+    if (!key) return;
+    const m = key.match(/強化上限アップ\+(\d+)/);
+    if (m) bonus += parseInt(m[1]);
+  });
+  return bonus;
+}
+function corruptionBonus(item) {
+  if (item.category==='ring') return 0;
+  const hasBoost = item.analysisLv >= 10 && item.corruption >= 250;
+  return item.corruption * (hasBoost ? 20 : 10);
 }
 
-// ===================== ゲームステート =====================
+// ===================== 状態 =====================
 let uidCounter = 1;
-const state = {
-  worldLevel: 0, // 瘴気度。0=1周目（侵食度なし）。全ダンジョンクリアで+1される周回要素。
-  bp: 0,
-  permanentBoosts: { hp: 0, atk: 0, def: 0, spd: 0, luk: 0 },
-  rareAbilityUnlocked: { "一撃": false, "二撃": false, "先制": false },
-  materials: {},
-  inventory: [],
-  equipped: { weapon: null, shield: null, ring: null },
-  currentDungeon: null,
-  exploreState: null,
-  analysisSelection: { target: null, material: null },
-  clearedDungeons: {}, // dungeonId -> true（今周でクリア済み）
-};
+const SAVE_KEY = 'whipper_v4_save';
 
-function isDungeonUnlocked(dungeonId) {
-  const sortedIds = GAME_DATA.dungeons.map(d => d.id).sort((a, b) => a - b);
-  const idx = sortedIds.indexOf(dungeonId);
-  if (idx <= 0) return true;
-  const prevId = sortedIds[idx - 1];
-  return !!state.clearedDungeons[prevId];
+function defaultState() {
+  return {
+    worldLevel: 0,
+    bp: 0,
+    permanentBoosts: { hp:0, atk:0, def:0, spd:0, luk:0 },
+    rareAbilityUnlocked: {},
+    materials: {},
+    inventory: [],
+    equipped: { weapon:null, shield:null, ring:null },
+    clearedDungeons: {},
+    // ダンジョン探索ログ（1探索=1エントリ）
+    dungeonLogs: [],       // 過去10件
+  };
+}
+let state = defaultState();
+// 現在進行中の探索（セーブしない一時データ）
+let currentExplore = null;
+
+// ===================== セーブ / ロード =====================
+function saveGame() {
+  try {
+    localStorage.setItem(SAVE_KEY, JSON.stringify({ state, uidCounter }));
+  } catch(e) { console.warn('save fail', e); }
+}
+function loadGame() {
+  try {
+    const raw = localStorage.getItem(SAVE_KEY);
+    if (!raw) return false;
+    const d = JSON.parse(raw);
+    state = d.state;
+    uidCounter = d.uidCounter || 1;
+    return true;
+  } catch(e) { console.warn('load fail', e); return false; }
+}
+function resetGame() {
+  if (!confirm('セーブデータを削除してリセットしますか？')) return;
+  localStorage.removeItem(SAVE_KEY);
+  location.reload();
 }
 
+// ===================== ダンジョン解放 =====================
+function isDungeonUnlocked(dungeonId) {
+  const ids = GAME_DATA.dungeons.map(d=>d.id).sort((a,b)=>a-b);
+  const idx = ids.indexOf(dungeonId);
+  if (idx <= 0) return true;
+  return !!state.clearedDungeons[ids[idx-1]];
+}
 function allDungeonsCleared() {
   return GAME_DATA.dungeons.every(d => state.clearedDungeons[d.id]);
 }
 
-function addMaterial(id, count) { state.materials[id] = (state.materials[id] || 0) + count; }
+// ===================== 素材 =====================
+function addMaterial(id, count) { state.materials[id] = (state.materials[id]||0) + count; }
+
+// ===================== アイテム能力値（仕様書PDF表） =====================
+const ABILITY_BASE_VALUES = {
+  '耐久':       [5,10,15,25,40,65,105,170,275,445,500,750,1000,1500,2000,2500,3000,4000,5000,6000],
+  '腕力':       [5,10,15,25,40,65,105,170,275,445,500,750,1000,1500,2000,2500,3000,4000,5000,6000],
+  '頑丈':       [5,10,15,25,40,65,105,170,275,445,500,750,1000,1500,2000,2500,3000,4000,5000,6000],
+  '機敏':       [2,5,10,15,20,30,45,70,95,135,175,215,270,325,380,435,490,545,600,655],
+  '幸運':       [1,2,3,4,5,6,7,8],
+  '体力の鍛錬': [2,4,7,11,16,25,35,50,60,70,85,95,120,150,180,210,240,270,300,330],
+  '力の鍛錬':   [1,2,3,5,8,13,18,25,35,50,70,95,120,150,180,210,240,270,300,330],
+  '守りの鍛錬': [1,2,3,5,8,13,18,25,35,50,70,95,120,150,180,210,240,270,300,330],
+};
+function abilityValue(name, lv) {
+  const t = ABILITY_BASE_VALUES[name];
+  if (!t) return 0;
+  return t[Math.min(lv-1, t.length-1)] || 0;
+}
 
 function rollAbilities(corruption) {
   const slots = 3;
   const abilities = [];
-  const canRare = corruption >= 150; // 黄色以上のみレア能力対象
-  const usedRare = canRare && Math.random() < 0.12;
+  const canRare = corruption >= 150;
   for (let i = 0; i < slots; i++) {
-    if (usedRare && i === 0) {
-      const name = GAME_DATA.rareAbilities[Math.floor(Math.random() * GAME_DATA.rareAbilities.length)];
-      abilities.push({ name, lv: 1, rare: true });
+    if (i===0 && canRare && Math.random()<0.1) {
+      abilities.push({ name: GAME_DATA.rareAbilities[Math.floor(Math.random()*GAME_DATA.rareAbilities.length)], lv:1, rare:true });
     } else {
-      const name = GAME_DATA.abilityPool[Math.floor(Math.random() * GAME_DATA.abilityPool.length)];
-      abilities.push({ name, lv: 1 + Math.floor(Math.random() * 8) });
+      abilities.push({ name: GAME_DATA.abilityPool[Math.floor(Math.random()*GAME_DATA.abilityPool.length)], lv:1+Math.floor(Math.random()*8), rare:false });
     }
   }
   return abilities;
 }
 
 function createDroppedItem(category, defId, corruption) {
-  return {
-    uid: 'item' + (uidCounter++),
-    category,
-    defId,
-    enhanceLv: 0,
-    corruption,
-    abilities: rollAbilities(corruption),
-    analysisLv: 0,
-    analysisExp: 0,
-    bpAwardedAt: 0,
-    justEvolved: false,
-  };
+  return { uid:'item'+(uidCounter++), category, defId, enhanceLv:0, corruption,
+           abilities:rollAbilities(corruption), analysisLv:0, analysisExp:0, bpAwardedAt:0, justEvolved:false };
 }
 
-// ===================== 強化（武器・盾のみ） =====================
+// ===================== 強化 =====================
 function enhanceCapFor(item) {
   const def = findEquipDef(item.category, item.defId);
-  let cap = def.enhanceCap || 0;
-  const effects = activeEffectsFor(item.analysisLv, item.corruption);
-  effects.forEach(e => {
-    const m = e.effect.match(/強化上限アップ\s*\+(\d+)/);
-    if (m) cap += parseInt(m[1], 10);
-  });
-  return cap;
+  return (def?.enhanceCap||0) + enhanceCapBonusFor(item);
 }
-
 function enhanceItem(uid, materialId, count) {
-  const item = state.inventory.find(it => it.uid === uid);
-  if (!item || item.category === 'ring') return false;
-  const mat = GAME_DATA.enhanceMaterials.find(m => m.id === materialId);
-  const have = state.materials[materialId] || 0;
-  if (have < count || count <= 0) return false;
+  const item = state.inventory.find(it=>it.uid===uid);
+  if (!item || item.category==='ring') return false;
+  const mat = GAME_DATA.enhanceMaterials.find(m=>m.id===materialId);
+  const have = state.materials[materialId]||0;
+  if (!mat||have<count||count<=0) return false;
   const cap = enhanceCapFor(item);
-  const addAmount = mat.value * count;
-  const newLv = Math.min(cap, item.enhanceLv + addAmount);
-  if (newLv === item.enhanceLv) return false;
+  const newLv = Math.min(cap, item.enhanceLv + mat.value*count);
+  if (newLv===item.enhanceLv) return false;
   state.materials[materialId] -= count;
   item.enhanceLv = newLv;
-  checkEvolution(item);
+  const evolved = checkEvolution(item);
+  saveGame();
+  return { evolved };
+}
+function checkEvolution(item) {
+  const def = findEquipDef(item.category, item.defId);
+  if (!def?.evolvesTo) return false;
+  if (item.enhanceLv < enhanceCapFor(item)) return false;
+  const carry = item.enhanceLv - enhanceCapFor(item);
+  item.defId = def.evolvesTo;
+  item.enhanceLv = Math.max(0, carry);
+  item.analysisLv = 0; item.analysisExp = 0; item.bpAwardedAt = 0;
+  item.justEvolved = true;
   return true;
 }
 
-function checkEvolution(item) {
-  const def = findEquipDef(item.category, item.defId);
-  if (!def || !def.evolvesTo) return false;
-  const cap = enhanceCapFor(item);
-  if (item.enhanceLv >= cap) {
-    const newDef = findEquipDef(item.category, def.evolvesTo);
-    if (newDef) {
-      const carryOverLv = item.enhanceLv - cap; // 超過分は進化先に引き継ぐ（本家Ver2以降仕様）
-      item.defId = def.evolvesTo;
-      item.enhanceLv = Math.max(0, carryOverLv);
-      item.analysisLv = 0;
-      item.analysisExp = 0;
-      item.bpAwardedAt = 0;
-      item.justEvolved = true;
-      return true;
-    }
-  }
-  return false;
-}
-
-// ===================== 解析（exp・Lv・BP付与） =====================
-function gainAnalysisExp(item, expAmount) {
-  item.analysisExp += expAmount;
-  let leveledUp = false;
+// ===================== 解析（複数素材選択対応） =====================
+function gainAnalysisExp(item, amount) {
+  item.analysisExp += amount;
+  let leveled = false;
   while (true) {
-    const need = expNeededForNextLv(item.analysisLv + 1);
+    const need = expNeededForLevel(item.analysisLv+1);
     if (item.analysisExp >= need) {
       item.analysisExp -= need;
-      item.analysisLv += 1;
-      leveledUp = true;
-      if (item.analysisLv % 5 === 0 && item.analysisLv > item.bpAwardedAt) {
-        state.bp += 1;
+      item.analysisLv++;
+      leveled = true;
+      if (item.analysisLv%5===0 && item.analysisLv>item.bpAwardedAt) {
+        state.bp++;
         item.bpAwardedAt = item.analysisLv;
+        showToast(`解析Lv${item.analysisLv}達成！BP+1（合計${state.bp}BP）`);
       }
     } else break;
   }
-  return leveledUp;
+  return leveled;
 }
-
-// 解析素材として使えるかどうか：同じdefIdのみ、かつ装備中でないこと
-function canUseAsAnalysisMaterial(targetItem, candidateItem) {
-  if (candidateItem.uid === targetItem.uid) return false;
-  if (candidateItem.defId !== targetItem.defId) return false;
-  const isEquipped = Object.values(state.equipped).includes(candidateItem.uid);
-  if (isEquipped) return false;
+function canUseAsAnalysisMaterial(target, candidate) {
+  if (!target || !candidate) return false;
+  if (candidate.uid===target.uid) return false;
+  if (candidate.defId!==target.defId) return false;
+  if (Object.values(state.equipped).includes(candidate.uid)) return false;
+  return true;
+}
+// 複数素材をまとめて解析
+function analyzeWithMaterials(targetUid, materialUids) {
+  const target = state.inventory.find(it=>it.uid===targetUid);
+  if (!target || !materialUids.length) return false;
+  let totalExp = 0;
+  const validMats = [];
+  materialUids.forEach(muid => {
+    const mat = state.inventory.find(it=>it.uid===muid);
+    if (mat && canUseAsAnalysisMaterial(target, mat)) {
+      totalExp += rarityOf(mat.corruption).expGain;
+      validMats.push(muid);
+    }
+  });
+  if (!validMats.length) return false;
+  gainAnalysisExp(target, totalExp);
+  state.inventory = state.inventory.filter(it => !validMats.includes(it.uid));
+  Object.keys(state.equipped).forEach(k => {
+    if (validMats.includes(state.equipped[k])) state.equipped[k] = null;
+  });
+  saveGame();
   return true;
 }
 
-function analyzeWithMaterial(targetUid, materialUid) {
-  const target = state.inventory.find(it => it.uid === targetUid);
-  const mat = state.inventory.find(it => it.uid === materialUid);
-  if (!target || !mat) return false;
-  if (!canUseAsAnalysisMaterial(target, mat)) return false;
-  const r = rarityOf(mat.corruption);
-  gainAnalysisExp(target, r.expGain);
-  state.inventory = state.inventory.filter(it => it.uid !== mat.uid);
-  return true;
-}
-
-// ===================== 永続ブースト（BP） =====================
+// ===================== BP =====================
 function spendBPOnStat(key) {
-  if (state.bp <= 0) return false;
-  state.bp -= 1;
-  state.permanentBoosts[key] = (state.permanentBoosts[key] || 0) + 1;
-  return true;
+  if (state.bp<=0) return false;
+  state.bp--;
+  state.permanentBoosts[key] = (state.permanentBoosts[key]||0)+1;
+  saveGame(); return true;
 }
 function unlockRareAbility(name) {
   const cost = GAME_DATA.rareAbilityUnlockCost;
-  if (state.bp < cost || state.rareAbilityUnlocked[name]) return false;
+  if (state.bp<cost || state.rareAbilityUnlocked[name]) return false;
   state.bp -= cost;
   state.rareAbilityUnlocked[name] = true;
-  return true;
+  saveGame(); return true;
 }
-// リスペック：ステータス系・特殊能力固定化の両方をまとめて全額回収
 function respecAll() {
-  const totalSpentOnStats = Object.values(state.permanentBoosts).reduce((a, b) => a + b, 0);
-  const unlockedRareCount = Object.values(state.rareAbilityUnlocked).filter(Boolean).length;
-  const totalSpentOnRare = unlockedRareCount * GAME_DATA.rareAbilityUnlockCost;
-  const total = totalSpentOnStats + totalSpentOnRare;
-  if (total <= 0) return false;
-  state.bp += total;
-  Object.keys(state.permanentBoosts).forEach(k => state.permanentBoosts[k] = 0);
-  Object.keys(state.rareAbilityUnlocked).forEach(k => state.rareAbilityUnlocked[k] = false);
-  return true;
+  const ss = Object.values(state.permanentBoosts).reduce((a,b)=>a+b,0);
+  const rs = Object.values(state.rareAbilityUnlocked).filter(Boolean).length * GAME_DATA.rareAbilityUnlockCost;
+  if (ss+rs<=0) return false;
+  state.bp += ss+rs;
+  Object.keys(state.permanentBoosts).forEach(k=>state.permanentBoosts[k]=0);
+  Object.keys(state.rareAbilityUnlocked).forEach(k=>state.rareAbilityUnlocked[k]=false);
+  saveGame(); return true;
 }
 
-// ===================== プレイヤーステータス計算 =====================
-const ABILITY_EFFECT = {
-  "耐久": { stat: "hp", target: "base" },
-  "腕力": { stat: "str", target: "base" },
-  "頑丈": { stat: "vit", target: "base" },
-  "機敏": { stat: "spd", target: "base" },
-  "幸運": { stat: "luk", target: "base" },
-  "体力の鍛錬": { stat: "hp", target: "growth" },
-  "力の鍛錬": { stat: "str", target: "growth" },
-  "守りの鍛錬": { stat: "vit", target: "growth" },
-};
-const ABILITY_BASE_PER_LV = { hp: 20, str: 15, vit: 15, spd: 1, luk: 1 };
-const ABILITY_GROWTH_PER_LV = { hp: 2, str: 0.5, vit: 0.5, spd: 0.2, luk: 0 };
-
+// ===================== ステータス計算 =====================
 function getEquippedItem(cat) {
   const uid = state.equipped[cat];
-  return uid ? state.inventory.find(it => it.uid === uid) : null;
+  return uid ? state.inventory.find(it=>it.uid===uid) : null;
 }
-
 function computePlayerStats() {
-  const base = { ...GAME_DATA.baseStats };
-  const growth = { ...GAME_DATA.growthStats };
-  let weaponAtk = 0, shieldDef = 0;
-  let atkBoost = 1, defBoost = 1, hpBoost = 1;
-  let rareFlags = { 一撃: false, 二撃: false, 先制: false };
+  const bs = GAME_DATA.baseStats;
+  let hp1=bs.hp, str1=bs.str, vit1=bs.vit, spd1=bs.spd, luk1=bs.luk;
+  let hpup=GAME_DATA.growthStats.hp, strup=GAME_DATA.growthStats.str;
+  let vitup=GAME_DATA.growthStats.vit;
+  let weaponAtk=0, shieldDef=0, hpBoost=1, atkMult=1, defMult=1;
+  const rareFlags={};
 
+  const pb = state.permanentBoosts;
   GAME_DATA.permanentBoostOptions.forEach(o => {
-    const statKeyMap = { hp: 'hp', atk: 'str', def: 'vit', spd: 'spd', luk: 'luk' };
-    base[statKeyMap[o.key]] += state.permanentBoosts[o.key] * o.perPoint;
+    const m={hp:'hp',atk:'str',def:'vit',spd:'spd',luk:'luk'};
+    const s=m[o.key];
+    if(s==='hp') hp1+=pb[o.key]*o.perPoint;
+    else if(s==='str') str1+=pb[o.key]*o.perPoint;
+    else if(s==='vit') vit1+=pb[o.key]*o.perPoint;
+    else if(s==='spd') spd1+=pb[o.key]*o.perPoint;
+    else if(s==='luk') luk1+=pb[o.key]*o.perPoint;
   });
+  Object.keys(state.rareAbilityUnlocked).forEach(n=>{ if(state.rareAbilityUnlocked[n]) rareFlags[n]=true; });
 
-  Object.keys(state.rareAbilityUnlocked).forEach(name => {
-    if (state.rareAbilityUnlocked[name]) rareFlags[name] = true;
-  });
-
-  ['weapon', 'shield', 'ring'].forEach(cat => {
-    const item = getEquippedItem(cat);
-    if (!item) return;
-    const def = findEquipDef(cat, item.defId);
-    if (cat === 'weapon') weaponAtk = (def.atk || 0) + item.enhanceLv + corruptionAtkBonus(item);
-    if (cat === 'shield') shieldDef = (def.def || 0) + item.enhanceLv + corruptionAtkBonus(item);
-
-    item.abilities.forEach(ab => {
-      if (ab.rare) { rareFlags[ab.name] = true; return; }
-      const eff = ABILITY_EFFECT[ab.name];
-      if (!eff) return;
-      if (eff.target === 'base') base[eff.stat] += ABILITY_BASE_PER_LV[eff.stat] * ab.lv;
-      else growth[eff.stat] += ABILITY_GROWTH_PER_LV[eff.stat] * ab.lv;
-    });
-
-    const effects = activeEffectsFor(item.analysisLv, item.corruption);
-    effects.forEach(e => {
-      if (e.effect.includes('HPブースト')) {
-        const m = e.effect.match(/×([\d.]+)/); if (m) hpBoost *= parseFloat(m[1]);
+  ['weapon','shield','ring'].forEach(cat=>{
+    const item=getEquippedItem(cat); if(!item) return;
+    const def=findEquipDef(cat,item.defId); if(!def) return;
+    if(def.lv1){ hp1+=def.lv1.hp||0; str1+=def.lv1.str||0; vit1+=def.lv1.vit||0; spd1+=def.lv1.spd||0; }
+    if(def.lvup){ strup+=def.lvup.str||0; vitup+=def.lvup.vit||0; }
+    if(cat==='weapon') weaponAtk=(def.atk||0)+item.enhanceLv+corruptionBonus(item);
+    if(cat==='shield') shieldDef=(def.def||0)+item.enhanceLv+corruptionBonus(item);
+    item.abilities.forEach(ab=>{
+      if(ab.rare){rareFlags[ab.name]=true;return;}
+      switch(ab.name){
+        case '耐久': hp1+=abilityValue('耐久',ab.lv); break;
+        case '腕力': str1+=abilityValue('腕力',ab.lv); break;
+        case '頑丈': vit1+=abilityValue('頑丈',ab.lv); break;
+        case '機敏': spd1+=abilityValue('機敏',ab.lv); break;
+        case '幸運': luk1+=abilityValue('幸運',ab.lv); break;
+        case '体力の鍛錬': hpup+=abilityValue('体力の鍛錬',ab.lv); break;
+        case '力の鍛錬': strup+=abilityValue('力の鍛錬',ab.lv); break;
+        case '守りの鍛錬': vitup+=abilityValue('守りの鍛錬',ab.lv); break;
       }
     });
+    activeEffectsFor(item).forEach(e=>{
+      const eff=cat==='shield'?e.effectShield:e.effectWeapon; if(!eff) return;
+      if(eff.includes('HPブースト×1.3')) hpBoost=Math.max(hpBoost,1.3);
+      if(eff.includes('攻撃力ブースト×1.3')) atkMult=Math.max(atkMult,1.3);
+      if(eff.includes('守備力ブースト×1.3')) defMult=Math.max(defMult,1.3);
+    });
   });
-
-  const totalAtk = weaponAtk * atkBoost;
-  const totalDef = shieldDef * defBoost;
-  const totalHp = base.hp * hpBoost;
-
-  return { base, growth, weaponAtk, shieldDef, totalAtk, totalDef, totalHp, rareFlags };
+  return {hp1,str1,vit1,spd1,luk1,hpup,strup,vitup,weaponAtk,shieldDef,
+          totalAtk:Math.round(weaponAtk*atkMult+str1),
+          totalDef:Math.round(shieldDef*defMult+vit1),
+          totalHp:Math.round(hp1*hpBoost), rareFlags};
 }
+function computeRating(s){ return Math.round(s.totalAtk*2+s.totalDef*2+s.totalHp*0.5); }
 
-function computeRating(stats) {
-  return Math.round(stats.totalAtk * 2 + stats.totalDef * 2 + stats.totalHp * 0.5);
-}
-
-// ===================== 危険度ラベル =====================
-function dangerLabelForDungeon(dungeonId) {
-  const stats = computePlayerStats();
-  const playerPower = stats.totalAtk + stats.totalDef + stats.totalHp * 0.3;
-  const d = GAME_DATA.dungeons.find(x => x.id === dungeonId);
-  const bossPower = d.enemyAtkBase * 2.2 * 1.6 + d.enemyDefBase * 2.2 * 1.6 + (d.enemyAtkBase * 2.2 * 1.6 * 6) * 0.3;
-  const ratio = playerPower / bossPower;
-  if (ratio >= 2.0) return { label: '安全', cls: 'danger-safe' };
-  if (ratio >= 1.2) return { label: '注意', cls: 'danger-caution' };
-  if (ratio >= 0.7) return { label: '危険', cls: 'danger-danger' };
-  return { label: '自殺行為', cls: 'danger-suicide' };
-}
-
-// ===================== レンダリング: ダンジョン一覧 =====================
-function renderDungeonList() {
-  const el = document.getElementById('dungeonList');
-  el.innerHTML = '';
-
-  // 瘴気度表示
-  let worldLevelHtml = `<div class="row" style="margin-bottom:10px;">
-    <span>瘴気濃度（周回）: <b style="color:var(--gold)">${state.worldLevel}</b></span>
-    ${allDungeonsCleared() ? `<button class="small gold" id="btnAdvanceWorldLevel">瘴気濃度を上げて再挑戦</button>` : '<span class="muted">全制覇すると上げられます</span>'}
-  </div>`;
-  el.insertAdjacentHTML('beforebegin', '');
-  const wrapper = document.createElement('div');
-  wrapper.innerHTML = worldLevelHtml;
-  el.parentElement.insertBefore(wrapper, el);
-  const existingWrapper = document.getElementById('worldLevelWrapper');
-  if (existingWrapper) existingWrapper.remove();
-  wrapper.id = 'worldLevelWrapper';
-  const advanceBtn = document.getElementById('btnAdvanceWorldLevel');
-  if (advanceBtn) {
-    advanceBtn.onclick = () => {
-      state.worldLevel += 1;
-      state.clearedDungeons = {};
-      renderDungeonList();
-      alert(`瘴気濃度が${state.worldLevel}になった！侵食度の高いアイテムが出やすくなる。`);
-    };
-  }
-
-  // 解放済みダンジョンのみ表示（未解放はそもそも表示しない）
-  const sortedDungeons = GAME_DATA.dungeons.slice().sort((a, b) => a.id - b.id);
-  sortedDungeons.forEach(d => {
-    if (!isDungeonUnlocked(d.id)) return; // 未解放は表示しない
-    const cleared = !!state.clearedDungeons[d.id];
-    const danger = dangerLabelForDungeon(d.id);
-    const div = document.createElement('div');
-    div.className = 'dungeon-item';
-    div.innerHTML = `
-      <div>
-        <div style="font-weight:600;">${d.id}. ${d.name} ${cleared ? '✓' : ''}</div>
-        <div class="muted">全${d.floors}階</div>
-      </div>
-      <span class="danger-label ${danger.cls}">${danger.label}</span>
-    `;
-    div.onclick = () => startExplore(d.id);
-    el.appendChild(div);
-  });
+// ===================== 危険度 =====================
+function dangerLabel(dungeonId) {
+  const s=computePlayerStats();
+  const pp=s.totalAtk+s.totalDef+s.totalHp*0.3;
+  const bosses=GAME_DATA.monsters.filter(m=>m.dungeon===dungeonId&&m.kind==='ボス');
+  if(!bosses.length) return {label:'？',cls:'danger-caution'};
+  const wm=1+state.worldLevel*0.5;
+  const b=bosses[0];
+  const bp2=b.atk*wm+b.def*wm+b.hp*wm*0.3;
+  const r=pp/bp2;
+  if(r>=2.0) return {label:'安全',cls:'danger-safe'};
+  if(r>=1.2) return {label:'注意',cls:'danger-caution'};
+  if(r>=0.7) return {label:'危険',cls:'danger-danger'};
+  return {label:'自殺行為',cls:'danger-suicide'};
 }
 
 // ===================== 探索ロジック =====================
+// currentExplore: 現在進行中の探索セッション
+// { dungeonId, dungeonName, floors, floorIndex, battles:[], drops:[], finished, dead, cleared, retreated, startTime }
 function startExplore(dungeonId) {
-  state.currentDungeon = dungeonId;
-  state.exploreState = { floorIndex: 1, log: [], finished: false };
+  const d = GAME_DATA.dungeons.find(x=>x.id===dungeonId);
+  currentExplore = {
+    dungeonId, dungeonName:d.name, floors:d.floors,
+    floorIndex:1, battles:[], drops:[], allDrops:[],
+    finished:false, dead:false, cleared:false, retreated:false,
+    startTime: new Date().toISOString()
+  };
   document.getElementById('explorePanel').classList.remove('hidden');
-  document.getElementById('exploreDungeonName').textContent =
-    GAME_DATA.dungeons.find(d => d.id === dungeonId).name;
+  document.getElementById('exploreDungeonName').textContent = d.name;
+  document.getElementById('currentExploreLog').innerHTML = '';
   updateExploreUI();
 }
 
 function getEnemyForFloor(dungeonId, floorIndex, totalFloors) {
-  const pool = GAME_DATA.enemies.filter(e => e.dungeon === dungeonId);
-  const isBossFloor = floorIndex >= totalFloors;
-  const candidates = pool.filter(e => isBossFloor ? e.kind === 'ボス' : e.kind === '雑魚');
-  return candidates[Math.floor(Math.random() * candidates.length)] || pool[0];
-}
-
-let globalLog = [];
-function pushGlobalLog(entry) {
-  globalLog.unshift(entry);
-  if (globalLog.length > 10) globalLog.length = 10;
-}
-
-function enemyStatMultiplier() {
-  // 瘴気濃度による敵強化（緩やかな線形）
-  return 1 + state.worldLevel * 0.6;
+  const pool = GAME_DATA.monsters.filter(m=>m.dungeon===dungeonId);
+  const isBoss = floorIndex>=totalFloors;
+  const cands = pool.filter(m=>isBoss?m.kind==='ボス':m.kind==='雑魚');
+  return cands.length ? cands[Math.floor(Math.random()*cands.length)] : pool[0];
 }
 
 function runOneTurn() {
-  const ex = state.exploreState;
-  if (!ex || ex.finished) return;
-  const dungeonId = state.currentDungeon;
-  const dungeonDef = GAME_DATA.dungeons.find(d => d.id === dungeonId);
-  const enemyDef = getEnemyForFloor(dungeonId, ex.floorIndex, dungeonDef.floors);
-  const wlMult = enemyStatMultiplier();
+  if (!currentExplore || currentExplore.finished) return;
+  const ex = currentExplore;
+  const dungeonId = ex.dungeonId;
+  const enemyDef = getEnemyForFloor(dungeonId, ex.floorIndex, ex.floors);
+  const wm = 1+state.worldLevel*0.5;
   const enemy = {
-    name: enemyDef.name,
-    hp: Math.round(enemyDef.hp * wlMult),
-    atk: Math.round(enemyDef.atk * wlMult),
-    def: Math.round(enemyDef.def * wlMult),
-    spd: enemyDef.spd,
+    name:enemyDef.name,
+    hp:Math.round(enemyDef.hp*wm),
+    atk:Math.round(enemyDef.atk*wm),
+    def:Math.round(enemyDef.def*wm),
+    spd:enemyDef.spd
   };
 
-  const stats = computePlayerStats();
-  const playerAtk = stats.totalAtk;
-  const playerDef = stats.totalDef;
-  const playerHp = Math.round(stats.totalHp);
-  const playerSpd = stats.base.spd;
-
-  const turnLog = { time: new Date(), enemyName: enemy.name, dungeonName: dungeonDef.name, floor: ex.floorIndex, actions: [], result: null, drops: [] };
+  const ps = computePlayerStats();
   let curEnemyHp = enemy.hp;
-  let curPlayerHp = playerHp;
-  const playerFirst = stats.rareFlags['先制'] || playerSpd >= enemy.spd;
+  let curPlayerHp = ps.totalHp;
+  const playerFirst = ps.rareFlags['先制'] || ps.spd1 >= enemy.spd;
+  const actions = [];
 
-  function playerAttack() {
-    let dmg = calcDamage(playerAtk, enemy.def);
-    if (stats.rareFlags['一撃']) dmg *= 2;
+  function pAtk() {
+    const fc = !!ps.rareFlags['一撃'];
+    const {dmg,isKaishin} = calcDamage(ps.totalAtk, enemy.def, fc);
     curEnemyHp -= dmg;
-    turnLog.actions.push({ side: 'player', dmg, crit: stats.rareFlags['一撃'], targetHpLeft: Math.max(0, curEnemyHp) });
-    if (stats.rareFlags['二撃'] && curEnemyHp > 0) {
-      let dmg2 = calcDamage(playerAtk, enemy.def);
-      if (stats.rareFlags['一撃']) dmg2 *= 2;
-      curEnemyHp -= dmg2;
-      turnLog.actions.push({ side: 'player', dmg: dmg2, crit: stats.rareFlags['一撃'], targetHpLeft: Math.max(0, curEnemyHp), second: true });
+    actions.push({side:'player',dmg,isKaishin,hpLeft:Math.max(0,curEnemyHp)});
+    if (ps.rareFlags['二撃']) {
+      const {dmg:d2,isKaishin:ik2} = calcDamage(ps.totalAtk, enemy.def, fc);
+      curEnemyHp -= d2;
+      actions.push({side:'player',dmg:d2,isKaishin:ik2,second:true,hpLeft:Math.max(0,curEnemyHp)});
     }
   }
-  function enemyAttack() {
-    const dmg = calcDamage(enemy.atk, playerDef);
+  function eAtk() {
+    const {dmg,isKaishin} = calcDamage(enemy.atk, ps.totalDef);
     curPlayerHp -= dmg;
-    turnLog.actions.push({ side: 'enemy', dmg, targetHpLeft: Math.max(0, curPlayerHp) });
+    actions.push({side:'enemy',dmg,isKaishin,hpLeft:Math.max(0,curPlayerHp)});
   }
 
-  let rounds = 0;
-  while (curEnemyHp > 0 && curPlayerHp > 0 && rounds < 50) {
-    if (playerFirst) { playerAttack(); if (curEnemyHp <= 0) break; enemyAttack(); }
-    else { enemyAttack(); if (curPlayerHp <= 0) break; playerAttack(); }
+  let rounds=0;
+  while (curEnemyHp>0 && curPlayerHp>0 && rounds<200) {
+    if(playerFirst){pAtk();if(curEnemyHp<=0)break;eAtk();}
+    else{eAtk();if(curPlayerHp<=0)break;pAtk();}
     rounds++;
   }
 
-  if (curPlayerHp <= 0) {
-    turnLog.result = 'dead';
-    ex.finished = true;
+  const battle = { floor:ex.floorIndex, enemyName:enemy.name, actions, drops:[], result:null };
+
+  if (curPlayerHp<=0) {
+    battle.result = 'dead';
     ex.dead = true;
+    ex.finished = true;
   } else {
-    turnLog.result = 'win';
-    rollDrop(dungeonId, turnLog);
+    battle.result = 'win';
+    // ドロップ
+    const cands=[enemyDef.drop1,enemyDef.drop2].filter(Boolean);
+    if(cands.length && Math.random()<0.6) {
+      const name=cands[Math.floor(Math.random()*cands.length)];
+      const w=GAME_DATA.weapons.find(x=>x.name===name);
+      const s=GAME_DATA.shields.find(x=>x.name===name);
+      const r=GAME_DATA.rings.find(x=>x.name===name);
+      if(w||s||r){
+        const cat=w?'weapon':s?'shield':'ring';
+        const def=w||s||r;
+        const corr=rollCorruption(state.worldLevel);
+        const item=createDroppedItem(cat,def.id,corr);
+        state.inventory.push(item);
+        const drop={name,category:cat,corruption:corr};
+        battle.drops.push(drop);
+        ex.allDrops.push(drop);
+      }
+    }
+    if(Math.random()<0.25){
+      const mat=GAME_DATA.enhanceMaterials[Math.floor(Math.random()*3)];
+      const cnt=1+Math.floor(Math.random()*2);
+      addMaterial(mat.id,cnt);
+      const drop={name:mat.name+' ×'+cnt,category:'material'};
+      battle.drops.push(drop);
+      ex.allDrops.push(drop);
+    }
+
     ex.floorIndex++;
-    if (ex.floorIndex > dungeonDef.floors) {
-      ex.finished = true;
-      ex.dungeonCleared = true;
-      state.clearedDungeons[dungeonId] = true;
+    if(ex.floorIndex>ex.floors){
+      ex.finished=true;
+      ex.cleared=true;
+      state.clearedDungeons[dungeonId]=true;
+      saveGame();
+      if(allDungeonsCleared()) showToast('全ダンジョン制覇！瘴気濃度を上げられます。');
     }
   }
 
-  ex.log.unshift(turnLog);
-  pushGlobalLog(turnLog);
+  ex.battles.push(battle);
   updateExploreUI();
-}
+  appendBattleToCurrentLog(battle);
 
-function rollDrop(dungeonId, turnLog) {
-  const roll = Math.random();
-  if (roll < 0.3) {
-    const pool = GAME_DATA.weapons.filter(w => w.dungeon === dungeonId);
-    if (pool.length) {
-      const def = pool[Math.floor(Math.random() * pool.length)];
-      const corruption = rollCorruption(state.worldLevel);
-      state.inventory.push(createDroppedItem('weapon', def.id, corruption));
-      turnLog.drops.push({ name: def.name, category: 'weapon', corruption });
-    }
-  } else if (roll < 0.55) {
-    const pool = GAME_DATA.shields.filter(s => s.dungeon === dungeonId);
-    if (pool.length) {
-      const def = pool[Math.floor(Math.random() * pool.length)];
-      const corruption = rollCorruption(state.worldLevel);
-      state.inventory.push(createDroppedItem('shield', def.id, corruption));
-      turnLog.drops.push({ name: def.name, category: 'shield', corruption });
-    }
-  } else if (roll < 0.75) {
-    const pool = GAME_DATA.rings.filter(r => r.dungeon === dungeonId);
-    if (pool.length) {
-      const def = pool[Math.floor(Math.random() * pool.length)];
-      const corruption = rollCorruption(state.worldLevel);
-      state.inventory.push(createDroppedItem('ring', def.id, corruption));
-      turnLog.drops.push({ name: def.name, category: 'ring', corruption });
-    }
-  } else {
-    const mat = GAME_DATA.enhanceMaterials[Math.floor(Math.random() * 3)];
-    const count = 1 + Math.floor(Math.random() * 3);
-    addMaterial(mat.id, count);
-    turnLog.drops.push({ name: mat.name + ' ×' + count, category: 'material' });
+  if(ex.finished) {
+    finalizeExploreLog(ex);
+    saveGame();
+    if(ex.cleared) renderDungeonList();
   }
 }
 
 function retreatExplore() {
-  if (!state.exploreState) return;
-  state.exploreState.finished = true;
-  state.exploreState.retreated = true;
+  if(!currentExplore||currentExplore.finished) return;
+  currentExplore.finished=true;
+  currentExplore.retreated=true;
+  finalizeExploreLog(currentExplore);
+  saveGame();
   updateExploreUI();
 }
 
+// 探索終了時にグローバルログに1件追加（探索丸ごとが1エントリ）
+function finalizeExploreLog(ex) {
+  const entry = {
+    dungeonId: ex.dungeonId,
+    dungeonName: ex.dungeonName,
+    startTime: ex.startTime,
+    endTime: new Date().toISOString(),
+    floorsReached: ex.floorIndex - (ex.cleared?1:0),
+    totalFloors: ex.floors,
+    battles: ex.battles,
+    allDrops: ex.allDrops,
+    result: ex.dead?'dead':ex.cleared?'cleared':ex.retreated?'retreated':'incomplete',
+  };
+  state.dungeonLogs.unshift(entry);
+  if(state.dungeonLogs.length>10) state.dungeonLogs.length=10;
+}
+
 function updateExploreUI() {
-  const ex = state.exploreState;
-  if (!ex) return;
-  const dungeonDef = GAME_DATA.dungeons.find(d => d.id === state.currentDungeon);
-  const progress = Math.min(100, (ex.floorIndex / dungeonDef.floors) * 100);
-  document.getElementById('exploreProgress').style.width = progress + '%';
-  document.getElementById('exploreFloor').textContent = `${Math.min(ex.floorIndex, dungeonDef.floors)}/${dungeonDef.floors}階`;
+  const ex = currentExplore; if(!ex) return;
+  const pct = Math.min(100,(ex.floorIndex/ex.floors)*100);
+  document.getElementById('exploreProgress').style.width=pct+'%';
+  document.getElementById('exploreFloor').textContent=`${Math.min(ex.floorIndex,ex.floors)}/${ex.floors}階`;
 
-  let statusText = `${ex.floorIndex}階を探索中`;
-  if (ex.dead) statusText = '全滅...探索中の成果をすべて失った';
-  else if (ex.retreated) statusText = '途中帰還した（ここまでの成果を持って帰還）';
-  else if (ex.dungeonCleared) statusText = '最深部のボスを撃破！次のダンジョンが解放された';
-  else if (ex.finished) statusText = '最深部に到達！帰還した';
-  document.getElementById('exploreStatus').textContent = statusText;
+  let txt=`${ex.floorIndex}階を探索中`;
+  if(ex.dead) txt='全滅…この探索で得たアイテムをすべて失った';
+  else if(ex.retreated) txt='途中帰還した';
+  else if(ex.cleared) txt='ボスを撃破！次のダンジョンが解放された';
+  else if(ex.finished) txt='最深部に到達！';
+  document.getElementById('exploreStatus').textContent=txt;
 
-  document.getElementById('btnNextStep').disabled = ex.finished;
-  document.getElementById('btnRetreat').disabled = ex.finished;
-  if (ex.dungeonCleared) renderDungeonList();
-
+  document.getElementById('btnNextStep').disabled=ex.finished;
+  document.getElementById('btnRetreat').disabled=ex.finished;
   renderTopBar();
 }
 
-function renderLogList() {
-  const el = document.getElementById('logList');
-  el.innerHTML = '';
-  if (globalLog.length === 0) { el.innerHTML = '<p class="muted">まだ記録がありません。</p>'; return; }
-  globalLog.forEach((entry) => {
-    const div = document.createElement('div');
-    div.className = 'log-entry';
-    const timeStr = entry.time.toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' });
-    let summary = entry.result === 'dead' ? `${entry.enemyName}にやられた` : `${entry.enemyName}を倒した`;
-    div.innerHTML = `<span class="t">${timeStr}</span>${entry.dungeonName} ${entry.floor}階 ${summary}`;
-    div.onclick = () => showLogDetail(entry);
+// ダンジョン画面の「現在の探索ログ」（戦闘ごとに追記）
+function appendBattleToCurrentLog(battle) {
+  const el=document.getElementById('currentExploreLog'); if(!el) return;
+  const div=document.createElement('div');
+  div.className='log-entry';
+  const dropSummary=battle.drops.filter(d=>d.category!=='material').map(d=>{
+    const r=rarityOf(d.corruption);
+    return `<span class="${r.cls}">★${d.name}</span>`;
+  }).join(' ');
+  const icon = battle.result==='dead'?'💀':battle.floor>=currentExplore?.floors?'👑':'⚔';
+  div.innerHTML=`<span class="t">${icon} ${battle.floor}F</span> ${battle.enemyName}を${ battle.result==='dead'?'<span style="color:var(--danger)">倒せなかった</span>':'倒した'} ${dropSummary}`;
+  div.onclick=()=>showBattleDetail(battle);
+  el.appendChild(div);
+}
+
+// ===================== Toast =====================
+function showToast(msg) {
+  let t=document.getElementById('toast');
+  if(!t){t=document.createElement('div');t.id='toast';t.style='position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:#7c6df0;color:#fff;padding:8px 16px;border-radius:20px;z-index:100;font-size:13px;pointer-events:none;transition:opacity .4s;';document.body.appendChild(t);}
+  t.textContent=msg; t.style.opacity='1';
+  clearTimeout(t._timer); t._timer=setTimeout(()=>{t.style.opacity='0';},2500);
+}
+
+// ===================== DUNGEON画面 =====================
+function renderDungeonList() {
+  document.getElementById('worldLevelWrapper')?.remove();
+  const parent=document.getElementById('dungeonList').parentElement;
+  const wrap=document.createElement('div');
+  wrap.id='worldLevelWrapper'; wrap.style='margin-bottom:10px;';
+  const cleared=allDungeonsCleared();
+  wrap.innerHTML=`<div class="row">
+    <span style="font-size:13px;">瘴気濃度：<b style="color:var(--gold)">${state.worldLevel}</b></span>
+    ${cleared?`<button class="small gold" id="btnUpWL">瘴気濃度を上げる</button>`:`<span class="muted">全制覇で上昇可</span>`}
+    <button class="small secondary" id="btnReset">リセット</button>
+  </div>`;
+  parent.insertBefore(wrap,document.getElementById('dungeonList'));
+  document.getElementById('btnReset')?.addEventListener('click',resetGame);
+  document.getElementById('btnUpWL')?.addEventListener('click',()=>{
+    state.worldLevel++; state.clearedDungeons={}; saveGame(); renderDungeonList();
+    showToast(`瘴気濃度が${state.worldLevel}になった！侵食度付きアイテムが出る`);
+  });
+
+  const el=document.getElementById('dungeonList');
+  el.innerHTML='';
+  GAME_DATA.dungeons.slice().sort((a,b)=>a.id-b.id).forEach(d=>{
+    if(!isDungeonUnlocked(d.id)) return;  // 未解放は非表示
+    const dl=dangerLabel(d.id);
+    const isCleared=!!state.clearedDungeons[d.id];
+    const div=document.createElement('div');
+    div.className='dungeon-item';
+    div.innerHTML=`<div>
+      <div style="font-weight:600;">${d.id}. ${d.name}${isCleared?' ✓':''}</div>
+      <div class="muted">全${d.floors}階</div>
+    </div>
+    <span class="danger-label ${dl.cls}">${dl.label}</span>`;
+    div.onclick=()=>startExplore(d.id);
     el.appendChild(div);
   });
 }
 
-function showLogDetail(entry) {
-  const modal = document.getElementById('modalRoot');
-  let actionsHtml = entry.actions.map(a => {
-    if (a.side === 'player') {
-      const tag = a.crit ? '会心の一撃！' : (a.second ? '二撃目！' : '');
-      return `<div class="log-entry">あなたの攻撃${tag ? '（' + tag + '）' : ''}：${entry.enemyName}に${a.dmg}のダメージ（残り${a.targetHpLeft}）</div>`;
-    }
-    return `<div class="log-entry">${entry.enemyName}の反撃：あなたに${a.dmg}のダメージ（残り${a.targetHpLeft}）</div>`;
-  }).join('');
-  let dropsHtml = entry.drops.length
-    ? entry.drops.map(d => {
-        if (d.category === 'material') return `<div class="log-entry">${d.name}を入手</div>`;
-        const r = rarityOf(d.corruption);
-        return `<div class="log-entry">${categoryLabel(d.category)}「${d.name}」を入手 <span class="${r.cls}">[${r.label}]</span> 侵食度${d.corruption}</div>`;
-      }).join('')
-    : '<div class="muted" style="padding:4px 8px;">ドロップなし</div>';
-  let resultHtml = entry.result === 'dead'
-    ? `<div class="log-entry" style="color:var(--danger);">全滅した…</div>`
-    : `<div class="log-entry">${entry.enemyName}を倒した</div>`;
+// ===================== LOG画面（探索単位、過去10件） =====================
+function renderLogList() {
+  const el=document.getElementById('logList');
+  el.innerHTML='';
+  const logs=state.dungeonLogs||[];
+  if(!logs.length){el.innerHTML='<p class="muted">まだ記録がありません。</p>';return;}
+  logs.forEach(entry=>{
+    const div=document.createElement('div');
+    div.className='log-entry';
+    const t=entry.startTime?new Date(entry.startTime).toLocaleTimeString('ja-JP',{hour:'2-digit',minute:'2-digit'}):'--:--';
+    const icon=entry.result==='cleared'?'👑':entry.result==='dead'?'💀':'🏃';
+    const resultTxt=entry.result==='cleared'?`制覇（${entry.totalFloors}階）`:entry.result==='dead'?`全滅（${entry.floorsReached}/${entry.totalFloors}階）`:`撤退（${entry.floorsReached}/${entry.totalFloors}階）`;
+    div.innerHTML=`<span class="t">${t}</span>${icon} ${entry.dungeonName} ${resultTxt}`;
+    div.onclick=()=>showExploreLogDetail(entry);
+    el.appendChild(div);
+  });
+}
 
-  modal.innerHTML = `
-    <div class="modal-overlay" id="logModalOverlay">
-      <div class="modal centered">
-        <div class="modal-header"><h3 style="margin:0;">${entry.dungeonName} ${entry.floor}階の記録</h3><span class="close-x" id="closeLogModal">✕</span></div>
-        ${actionsHtml}
-        ${resultHtml}
-        ${dropsHtml}
-      </div>
+// 探索ログ詳細（全戦闘を表示）
+function showExploreLogDetail(entry) {
+  const modal=document.getElementById('modalRoot');
+  const battlesHtml=(entry.battles||[]).map(b=>{
+    const icon=b.result==='dead'?'💀':b.floor>=entry.totalFloors?'👑':'⚔';
+    const drops=b.drops.filter(d=>d.category!=='material').map(d=>{
+      const r=rarityOf(d.corruption); return `<span class="${r.cls}">★${d.name}[${r.label}]</span>`;
+    }).join(' ');
+    return `<div class="log-entry" data-battle-idx="${entry.battles.indexOf(b)}">${icon} ${b.floor}F ${b.enemyName}を${b.result==='dead'?'<span style="color:var(--danger)">倒せなかった</span>':'倒した'} ${drops}</div>`;
+  }).join('');
+  modal.innerHTML=`<div class="modal-overlay" id="exploreLogO">
+    <div class="modal">
+      <div class="modal-header"><h3 style="margin:0">${entry.dungeonName} 探索記録</h3><span class="close-x" id="closeEL">✕</span></div>
+      <div class="muted" style="margin-bottom:8px;">${entry.result==='cleared'?'👑制覇':entry.result==='dead'?'💀全滅':'🏃撤退'} ${entry.floorsReached}/${entry.totalFloors}階</div>
+      ${battlesHtml}
     </div>
-  `;
-  document.getElementById('closeLogModal').onclick = () => { modal.innerHTML = ''; };
-  document.getElementById('logModalOverlay').onclick = (e) => { if (e.target.id === 'logModalOverlay') modal.innerHTML = ''; };
+  </div>`;
+  document.getElementById('closeEL').onclick=()=>modal.innerHTML='';
+  document.getElementById('exploreLogO').onclick=e=>{if(e.target.id==='exploreLogO')modal.innerHTML='';};
+  // 各戦闘をタップで個別詳細
+  modal.querySelectorAll('[data-battle-idx]').forEach(el=>{
+    el.onclick=e=>{
+      e.stopPropagation();
+      showBattleDetail(entry.battles[parseInt(el.dataset.battleIdx)]);
+    };
+  });
+}
+
+// 個別戦闘詳細
+function showBattleDetail(battle) {
+  const modal=document.getElementById('modalRoot');
+  const actHtml=(battle.actions||[]).map(a=>{
+    if(a.side==='player'){
+      const tag=a.isKaishin?'会心の一撃！':a.second?'二撃目':'';
+      return `<div class="log-entry">あなたの攻撃${tag?`（${tag}）`:''}：${battle.enemyName}に${a.dmg}ダメージ（残り${a.hpLeft}）</div>`;
+    }
+    return `<div class="log-entry">${a.isKaishin?'痛恨の一撃！':''}${battle.enemyName}の攻撃：あなたに${a.dmg}ダメージ（残り${a.hpLeft}）</div>`;
+  }).join('');
+  const dropHtml=(battle.drops||[]).map(d=>{
+    if(d.category==='material') return `<div class="log-entry">🔧${d.name}を入手</div>`;
+    const r=rarityOf(d.corruption);
+    return `<div class="log-entry">★${categoryLabel(d.category)}「<span class="${r.cls}">${d.name}</span>」入手 [${r.label}] 侵食度${d.corruption}</div>`;
+  }).join('')||'<div class="muted" style="padding:4px 8px">ドロップなし</div>';
+  const resHtml=battle.result==='dead'
+    ?`<div class="log-entry" style="color:var(--danger)">全滅した…</div>`
+    :`<div class="log-entry">${battle.enemyName}を倒した</div>`;
+
+  modal.innerHTML=`<div class="modal-overlay" id="battleO">
+    <div class="modal centered">
+      <div class="modal-header"><h3 style="margin:0">${battle.floor}階 vs ${battle.enemyName}</h3><span class="close-x" id="closeBattle">✕</span></div>
+      ${actHtml}${resHtml}${dropHtml}
+    </div>
+  </div>`;
+  document.getElementById('closeBattle').onclick=()=>modal.innerHTML='';
+  document.getElementById('battleO').onclick=e=>{if(e.target.id==='battleO')modal.innerHTML='';};
 }
 
 // ===================== ITEM画面 =====================
-let currentItemFilter = 'all';
-document.querySelectorAll('#itemCategoryTabs button').forEach(btn => {
-  btn.onclick = () => {
-    document.querySelectorAll('#itemCategoryTabs button').forEach(b => b.classList.remove('active'));
+let currentItemFilter='weapon';
+document.querySelectorAll('#itemCategoryTabs button').forEach(btn=>{
+  btn.onclick=()=>{
+    document.querySelectorAll('#itemCategoryTabs button').forEach(b=>b.classList.remove('active'));
     btn.classList.add('active');
-    currentItemFilter = btn.dataset.cat;
+    currentItemFilter=btn.dataset.cat;
     renderItemList();
   };
 });
+document.getElementById('btnOpenAnalysis').onclick=openAnalysisModal;
 
 function itemDisplayName(item) {
-  const def = findEquipDef(item.category, item.defId);
-  return item.analysisLv >= 1 ? def.name : '？？？（未解析）';
+  return findEquipDef(item.category,item.defId)?.name||'???';
 }
 
-function renderItemCard(item, opts) {
-  opts = opts || {};
-  const def = findEquipDef(item.category, item.defId);
-  const isEquipped = state.equipped[item.category] === item.uid;
-  const r = rarityOf(item.corruption);
-  const div = document.createElement('div');
-  div.className = 'item-card' + (isEquipped ? ' equipped' : '') + (item.justEvolved ? ' flash-evolve' : '') + (opts.selected ? ' selected' : '');
-  item.justEvolved = false;
-
-  const knownName = item.analysisLv >= 1;
-  const knownBase = item.analysisLv >= 3;
-  const knownDungeon = item.analysisLv >= 2;
-
-  const statLine = !knownBase ? '' :
-    item.category === 'weapon' ? `ATK:${def.atk + item.enhanceLv + corruptionAtkBonus(item)}` :
-    item.category === 'shield' ? `DEF:${def.def + item.enhanceLv + corruptionAtkBonus(item)}` : '';
-  const enhanceLine = (item.category !== 'ring' && knownBase)
-    ? `<div class="muted">強化 +${item.enhanceLv} / ${enhanceCapFor(item)}</div>` : '';
-  const dungeonLine = knownDungeon
-    ? `<div class="muted">入手: ${GAME_DATA.dungeons.find(d => d.id === def.dungeon)?.name || '?'}</div>` : '';
-  const abilitiesHtml = item.abilities.map(a =>
-    `<span class="ability-tag${a.rare ? ' rare' : ''}">${a.name}${a.rare ? '' : ' Lv' + a.lv}</span>`).join('');
-
-  div.innerHTML = `
-    <div class="row">
-      <span class="item-name ${knownName ? r.cls : ''}">${isEquipped ? '【E】' : ''}${itemDisplayName(item)} ${statLine ? '(' + statLine + ')' : ''}</span>
-      ${opts.showEquipButton !== false ? `<button class="small ${isEquipped ? 'secondary' : ''}" data-equip="${item.uid}" data-cat="${item.category}">${isEquipped ? '解除' : '装備'}</button>` : ''}
-    </div>
-    <div class="muted">解析Lv${item.analysisLv}${state.worldLevel > 0 ? ` <span class="corrupt-badge">侵食度${item.corruption}</span>` : ''}</div>
-    ${dungeonLine}
-    ${enhanceLine}
-    <div>${abilitiesHtml}</div>
-  `;
+function renderItemCard(item) {
+  const def=findEquipDef(item.category,item.defId); if(!def) return null;
+  const isEquipped=state.equipped[item.category]===item.uid;
+  const r=rarityOf(item.corruption);
+  const div=document.createElement('div');
+  div.className='item-card'+(isEquipped?' equipped':'')+(item.justEvolved?' flash-evolve':'');
+  item.justEvolved=false;
+  const alv=item.analysisLv;
+  const statLine=(alv>=2&&item.category!=='ring')
+    ?(item.category==='weapon'?`ATK:${def.atk+item.enhanceLv+corruptionBonus(item)}`:`DEF:${def.def+item.enhanceLv+corruptionBonus(item)}`):'';
+  const capLine=alv>=1&&item.category!=='ring'
+    ?`<div class="muted">強化 +${item.enhanceLv}/${enhanceCapFor(item)}</div>`:'';
+  const evoLine=alv>=3&&def.evolvesTo
+    ?`<div class="muted">進化先: ${findEquipDef(item.category,def.evolvesTo)?.name||'?'}</div>`:'';
+  const abHtml=item.abilities.map(ab=>
+    `<span class="ability-tag${ab.rare?' rare':''}">${ab.name}${ab.rare?'':' Lv'+ab.lv}</span>`
+  ).join('');
+  const need=expNeededForLevel(alv+1);
+  const epct=Math.min(100,(item.analysisExp/need)*100);
+  div.innerHTML=`<div class="row">
+    <span class="item-name ${state.worldLevel>0?r.cls:''}">${isEquipped?'【E】':''}${itemDisplayName(item)}${statLine?` (${statLine})`:''}</span>
+    <button class="small ${isEquipped?'secondary':''}" data-equip="${item.uid}" data-cat="${item.category}">${isEquipped?'解除':'装備'}</button>
+  </div>
+  <div class="muted">解析Lv${alv}${state.worldLevel>0?` <span class="corrupt-badge">侵食度${item.corruption}</span>`:''} <span style="color:var(--text-dim);font-size:11px;">${item.analysisExp}/${need}EXP</span></div>
+  <div style="height:3px;background:var(--panel2);border-radius:3px;overflow:hidden;margin:2px 0 4px;"><div style="height:100%;width:${epct}%;background:var(--accent);"></div></div>
+  ${capLine}${evoLine}<div>${abHtml}</div>`;
   return div;
 }
 
 function renderItemList() {
-  const el = document.getElementById('itemList');
-  el.innerHTML = '';
-  let items = state.inventory.slice().sort((a, b) => b.corruption - a.corruption);
-  if (currentItemFilter !== 'all') items = items.filter(it => it.category === currentItemFilter);
-  if (items.length === 0) {
-    el.innerHTML = '<p class="muted">まだ装備がありません。ダンジョンで集めましょう。</p>';
-    return;
-  }
-  items.forEach(item => {
-    const card = renderItemCard(item);
-    card.onclick = (e) => {
-      if (e.target.dataset.equip) return;
+  const el=document.getElementById('itemList');
+  el.innerHTML='';
+  const items=state.inventory.filter(it=>it.category===currentItemFilter).sort((a,b)=>b.corruption-a.corruption);
+  if(!items.length){el.innerHTML='<p class="muted">まだ装備がありません。</p>';return;}
+  items.forEach(item=>{
+    const card=renderItemCard(item); if(!card) return;
+    card.onclick=e=>{
+      if(e.target.dataset.equip) return;
       openItemDetail(item.uid);
     };
+    card.querySelectorAll('[data-equip]').forEach(btn=>{
+      btn.onclick=e=>{
+        e.stopPropagation();
+        const cat=btn.dataset.cat; const uid=btn.dataset.equip;
+        state.equipped[cat]=state.equipped[cat]===uid?null:uid;
+        saveGame(); renderItemList(); renderStatusScreen(); renderDungeonList(); renderTopBar();
+      };
+    });
     el.appendChild(card);
   });
-  el.querySelectorAll('[data-equip]').forEach(btn => {
-    btn.onclick = (e) => {
-      e.stopPropagation();
-      const cat = btn.dataset.cat;
-      const uid = btn.dataset.equip;
-      state.equipped[cat] = state.equipped[cat] === uid ? null : uid;
-      renderItemList();
-      renderStatusScreen();
-      renderDungeonList();
-      renderTopBar();
-    };
-  });
-}
-
-function openItemDetail(uid) {
-  const item = state.inventory.find(it => it.uid === uid);
-  const modal = document.getElementById('modalRoot');
-  const knownGrowth = item.analysisLv >= 4;
-  const growthLine = knownGrowth && item.category !== 'ring'
-    ? `<p class="muted">レベルアップ時の上昇量が解析済み</p>` : '';
-  modal.innerHTML = `
-    <div class="modal-overlay" id="detailOverlay">
-      <div class="modal centered">
-        <div class="modal-header"><h3 style="margin:0;">${itemDisplayName(item)}</h3><span class="close-x" id="closeDetail">✕</span></div>
-        <div class="exp-bar-bg" style="margin-bottom:6px;">
-          <div class="exp-bar-fill" style="width:${Math.min(100, item.analysisExp / expNeededForNextLv(item.analysisLv + 1) * 100)}%;"></div>
-        </div>
-        <p class="muted">解析Lv${item.analysisLv}（次まで ${item.analysisExp}/${expNeededForNextLv(item.analysisLv + 1)} exp）</p>
-        ${growthLine}
-        ${item.category !== 'ring' ? `<button class="small full" id="btnGoEnhance">強化する</button>` : '<p class="muted">指輪は強化できません</p>'}
-      </div>
-    </div>
-  `;
-  document.getElementById('closeDetail').onclick = () => { modal.innerHTML = ''; };
-  document.getElementById('detailOverlay').onclick = (e) => { if (e.target.id === 'detailOverlay') modal.innerHTML = ''; };
-  const enhanceBtn = document.getElementById('btnGoEnhance');
-  if (enhanceBtn) enhanceBtn.onclick = () => { modal.innerHTML = ''; openEnhanceModal(uid); };
 }
 
 function renderMaterialGrid() {
-  const el = document.getElementById('materialGrid');
-  el.innerHTML = '';
-  let any = false;
-  GAME_DATA.enhanceMaterials.forEach(m => {
-    const count = state.materials[m.id] || 0;
-    if (count <= 0) return;
-    any = true;
-    const div = document.createElement('div');
-    div.className = 'mat-card';
-    div.innerHTML = `<div>${m.name}</div><div class="cnt">×${count}</div><div class="muted">+${m.value}</div>`;
+  const el=document.getElementById('materialGrid');
+  el.innerHTML='';
+  let any=false;
+  GAME_DATA.enhanceMaterials.forEach(m=>{
+    const cnt=state.materials[m.id]||0; if(!cnt) return;
+    any=true;
+    const div=document.createElement('div');
+    div.className='mat-card';
+    div.innerHTML=`<div>${m.name}</div><div class="cnt">×${cnt}</div><div class="muted">+${m.value}</div>`;
     el.appendChild(div);
   });
-  if (!any) el.innerHTML = '<p class="muted">強化素材がありません。ダンジョンで集めましょう。</p>';
+  if(!any) el.innerHTML='<p class="muted">強化素材がありません。</p>';
 }
 
-// ===================== 強化モーダル（プルダウン式、個数指定） =====================
-function openEnhanceModal(uid) {
-  const item = state.inventory.find(it => it.uid === uid);
-  if (item.category === 'ring') { alert('指輪は強化できません'); return; }
-  const def = findEquipDef(item.category, item.defId);
-  const cap = enhanceCapFor(item);
-  const pct = Math.min(100, (item.enhanceLv / cap) * 100);
-  const modal = document.getElementById('modalRoot');
-
-  const matOptions = GAME_DATA.enhanceMaterials.map(m => {
-    const have = state.materials[m.id] || 0;
-    return `<option value="${m.id}" ${have <= 0 ? 'disabled' : ''}>${m.name}（+${m.value}） 所持${have}個</option>`;
-  }).join('');
-
-  modal.innerHTML = `
-    <div class="modal-overlay" id="enhanceOverlay">
-      <div class="modal centered">
-        <div class="modal-header"><h3 style="margin:0;">${def.name}を強化</h3><span class="close-x" id="closeEnhance">✕</span></div>
-        <div class="enhance-bar-bg" style="margin-bottom:10px;">
-          <div class="enhance-bar-fill" style="width:${pct}%;"></div>
-          <div class="enhance-bar-text">+${item.enhanceLv} / ${cap}</div>
-        </div>
-        <p class="muted">強化素材と個数を選んでください</p>
-        <div class="row" style="gap:6px; margin-bottom:10px;">
-          <select id="enhanceMatSelect" style="flex:2;">${matOptions}</select>
-          <input type="number" id="enhanceCountInput" value="1" min="1" style="flex:1;">
-        </div>
-        <button class="full gold" id="btnDoEnhance">強化する</button>
-        ${def.evolvesTo ? `<p class="muted" style="margin-top:8px;">上限まで強化すると進化する可能性があります</p>` : ''}
-      </div>
+function openItemDetail(uid) {
+  const item=state.inventory.find(it=>it.uid===uid);
+  const def=findEquipDef(item.category,item.defId);
+  const modal=document.getElementById('modalRoot');
+  modal.innerHTML=`<div class="modal-overlay" id="detailO">
+    <div class="modal centered">
+      <div class="modal-header"><h3 style="margin:0">${def?.name}</h3><span class="close-x" id="closeDetail">✕</span></div>
+      <div class="exp-bar-bg" style="margin-bottom:6px;"><div class="exp-bar-fill" style="width:${Math.min(100,item.analysisExp/expNeededForLevel(item.analysisLv+1)*100)}%;"></div></div>
+      <p class="muted">解析Lv${item.analysisLv}（次まで ${item.analysisExp}/${expNeededForLevel(item.analysisLv+1)} EXP）</p>
+      ${item.category!=='ring'?`<button class="small full" id="btnOpenEnh">強化する</button>`:'<p class="muted">指輪は強化できません</p>'}
     </div>
-  `;
-  document.getElementById('closeEnhance').onclick = () => { modal.innerHTML = ''; };
-  document.getElementById('enhanceOverlay').onclick = (e) => { if (e.target.id === 'enhanceOverlay') modal.innerHTML = ''; };
-  document.getElementById('btnDoEnhance').onclick = () => {
-    const matId = document.getElementById('enhanceMatSelect').value;
-    const count = parseInt(document.getElementById('enhanceCountInput').value, 10) || 1;
-    const ok = enhanceItem(uid, matId, count);
-    if (ok) {
-      modal.innerHTML = '';
+  </div>`;
+  document.getElementById('closeDetail').onclick=()=>modal.innerHTML='';
+  document.getElementById('detailO').onclick=e=>{if(e.target.id==='detailO')modal.innerHTML='';};
+  document.getElementById('btnOpenEnh')?.addEventListener('click',()=>{modal.innerHTML='';openEnhanceModal(uid);});
+}
+
+// ===================== 強化モーダル =====================
+function openEnhanceModal(uid) {
+  const item=state.inventory.find(it=>it.uid===uid);
+  const def=findEquipDef(item.category,item.defId);
+  const cap=enhanceCapFor(item);
+  const pct=Math.min(100,(item.enhanceLv/Math.max(1,cap))*100);
+  const modal=document.getElementById('modalRoot');
+  const opts=GAME_DATA.enhanceMaterials.map(m=>{
+    const have=state.materials[m.id]||0;
+    return `<option value="${m.id}" ${have<=0?'disabled':''}>${m.name}（+${m.value}） 所持${have}個</option>`;
+  }).join('');
+  modal.innerHTML=`<div class="modal-overlay" id="enhO">
+    <div class="modal centered">
+      <div class="modal-header"><h3 style="margin:0">${def?.name}を強化</h3><span class="close-x" id="closeEnh">✕</span></div>
+      <div class="enhance-bar-bg" style="margin-bottom:10px;"><div class="enhance-bar-fill" style="width:${pct}%;"></div><div class="enhance-bar-text">+${item.enhanceLv} / ${cap}</div></div>
+      <div class="row" style="gap:6px;margin-bottom:10px;">
+        <select id="enhMatSel" style="flex:2;">${opts}</select>
+        <input type="number" id="enhCnt" value="1" min="1" style="flex:1;background:var(--panel2);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:6px;font-size:13px;">
+      </div>
+      <button class="full gold" id="btnDoEnh">強化する</button>
+      ${def?.evolvesTo?'<p class="muted" style="margin-top:8px;">上限まで強化すると進化する可能性があります</p>':''}
+    </div>
+  </div>`;
+  document.getElementById('closeEnh').onclick=()=>modal.innerHTML='';
+  document.getElementById('enhO').onclick=e=>{if(e.target.id==='enhO')modal.innerHTML='';};
+  document.getElementById('btnDoEnh').onclick=()=>{
+    const matId=document.getElementById('enhMatSel').value;
+    const cnt=parseInt(document.getElementById('enhCnt').value)||1;
+    const result=enhanceItem(uid,matId,cnt);
+    if(result){
+      modal.innerHTML='';
       renderItemList(); renderMaterialGrid(); renderStatusScreen();
-    } else {
-      alert('強化できません（素材不足、または上限到達）');
-    }
+      if(item.justEvolved) showToast(`${findEquipDef(item.category,item.defId)?.name}に進化した！`);
+    } else alert('強化できません（素材不足または上限到達）');
   };
 }
 
-// ===================== 解析モーダル（同じ装備のみ、装備中は除外） =====================
-document.getElementById('btnOpenAnalysis').onclick = openAnalysisModal;
-
+// ===================== 解析モーダル（複数素材選択・見やすいUI） =====================
+let analysisSel = { target: null, materials: new Set() };
 function openAnalysisModal() {
-  state.analysisSelection = { target: null, material: null };
+  analysisSel = { target: null, materials: new Set() };
   renderAnalysisModal();
 }
-
 function renderAnalysisModal() {
-  const modal = document.getElementById('modalRoot');
-  const sel = state.analysisSelection;
-  const items = state.inventory.slice().sort((a, b) => b.corruption - a.corruption);
+  const modal=document.getElementById('modalRoot');
+  const allItems=state.inventory.slice().sort((a,b)=>b.corruption-a.corruption);
+  const target=analysisSel.target?state.inventory.find(it=>it.uid===analysisSel.target):null;
 
-  function targetListHtml() {
-    return items.map(it => {
-      const r = rarityOf(it.corruption);
-      const isSel = sel.target === it.uid;
-      return `<div class="item-card ${isSel ? 'selected' : ''}" data-mode="target" data-uid="${it.uid}">
-        <span class="item-name ${it.analysisLv >= 1 ? r.cls : ''}">${itemDisplayName(it)}</span>
-        <div class="muted">解析Lv${it.analysisLv}${state.worldLevel > 0 ? ` <span class="corrupt-badge">侵食度${it.corruption} [${r.label}]</span>` : ''}</div>
-      </div>`;
-    }).join('') || '<p class="muted">装備がありません</p>';
-  }
-
-  function materialListHtml(targetItem) {
-    const candidates = items.filter(it => canUseAsAnalysisMaterial(targetItem, it));
-    if (candidates.length === 0) return '<p class="muted">素材にできる同じ装備がありません（装備中のものは使えません）</p>';
-    return candidates.map(it => {
-      const r = rarityOf(it.corruption);
-      const isSel = sel.material === it.uid;
-      return `<div class="item-card ${isSel ? 'selected' : ''}" data-mode="material" data-uid="${it.uid}">
-        <span class="item-name ${it.analysisLv >= 1 ? r.cls : ''}">${itemDisplayName(it)}</span>
-        <div class="muted">解析Lv${it.analysisLv} <span class="corrupt-badge">侵食度${it.corruption} [${r.label}] exp+${r.expGain}</span></div>
+  // ① 解析対象選択（装備カテゴリ別・見やすく）
+  function targetSection() {
+    const byCategory = { weapon:[], shield:[], ring:[] };
+    allItems.forEach(it=>byCategory[it.category].push(it));
+    return ['weapon','shield','ring'].map(cat=>{
+      if(!byCategory[cat].length) return '';
+      return `<div style="margin-bottom:8px;">
+        <div class="muted" style="font-size:11px;margin-bottom:4px;">${categoryLabel(cat)}</div>
+        ${byCategory[cat].map(it=>{
+          const def=findEquipDef(it.category,it.defId);
+          const r=rarityOf(it.corruption);
+          const isSel=analysisSel.target===it.uid;
+          return `<div class="item-card ${isSel?'selected':''}" data-mode="target" data-uid="${it.uid}" style="margin-bottom:4px;padding:8px 10px;">
+            <div class="row">
+              <span class="item-name ${state.worldLevel>0?r.cls:''}">${def?.name||'?'}</span>
+              <span class="muted">解析Lv${it.analysisLv} | ${it.analysisExp}/${expNeededForLevel(it.analysisLv+1)}EXP</span>
+            </div>
+          </div>`;
+        }).join('')}
       </div>`;
     }).join('');
   }
 
-  const targetItem = sel.target ? state.inventory.find(it => it.uid === sel.target) : null;
-  const matItem = sel.material ? state.inventory.find(it => it.uid === sel.material) : null;
-
-  modal.innerHTML = `
-    <div class="modal-overlay" id="analysisOverlay">
-      <div class="modal">
-        <div class="modal-header"><h3 style="margin:0;">解析</h3><span class="close-x" id="closeAnalysis">✕</span></div>
-        <p class="muted">①解析したい装備を選ぶ → ②同じ装備を素材に選ぶ（消費されます。装備中のものは使えません）</p>
-        <h4 style="margin:10px 0 6px;">① 解析する装備${targetItem ? '：選択中 → ' + itemDisplayName(targetItem) : ''}</h4>
-        <div id="targetList">${targetListHtml()}</div>
-        ${sel.target ? `
-          <h4 style="margin:14px 0 6px;">② 素材にする同じ装備${matItem ? '：選択中 → exp+' + rarityOf(matItem.corruption).expGain : ''}</h4>
-          <div id="materialList">${materialListHtml(targetItem)}</div>
-          <button class="full gold" id="btnDoAnalyze" style="margin-top:10px;" ${matItem ? '' : 'disabled'}>解析する</button>
-        ` : ''}
-      </div>
-    </div>
-  `;
-  document.getElementById('closeAnalysis').onclick = () => { modal.innerHTML = ''; };
-  document.getElementById('analysisOverlay').onclick = (e) => { if (e.target.id === 'analysisOverlay') modal.innerHTML = ''; };
-  modal.querySelectorAll('[data-mode="target"]').forEach(card => {
-    card.onclick = () => { sel.target = card.dataset.uid; sel.material = null; renderAnalysisModal(); };
-  });
-  modal.querySelectorAll('[data-mode="material"]').forEach(card => {
-    card.onclick = () => { sel.material = card.dataset.uid; renderAnalysisModal(); };
-  });
-  const btn = document.getElementById('btnDoAnalyze');
-  if (btn) {
-    btn.onclick = () => {
-      const leveledUp = analyzeWithMaterial(sel.target, sel.material);
-      if (leveledUp !== false) {
-        modal.innerHTML = '';
-        renderItemList(); renderMaterialGrid(); renderStatusScreen(); renderTopBar();
-        alert('解析した！');
-      }
-    };
+  // ② 素材選択（同じ装備のみ・複数選択可）
+  function materialSection() {
+    if(!target) return '';
+    const cands=allItems.filter(it=>canUseAsAnalysisMaterial(target,it));
+    if(!cands.length) return '<p class="muted">素材にできる同じ装備がありません（装備中は使用不可）</p>';
+    const totalExp=[...analysisSel.materials].reduce((sum,uid)=>{
+      const mat=state.inventory.find(it=>it.uid===uid);
+      return sum+(mat?rarityOf(mat.corruption).expGain:0);
+    },0);
+    return `<div style="margin-bottom:6px;" class="muted">選択中：${analysisSel.materials.size}個（合計EXP+${totalExp}）</div>
+    ${cands.map(it=>{
+      const def=findEquipDef(it.category,it.defId);
+      const r=rarityOf(it.corruption);
+      const isSel=analysisSel.materials.has(it.uid);
+      return `<div class="item-card ${isSel?'selected':''}" data-mode="material" data-uid="${it.uid}" style="margin-bottom:4px;padding:8px 10px;">
+        <div class="row">
+          <span class="${r.cls}">${def?.name||'?'} <span class="corrupt-badge">[${r.label}] +${r.expGain}EXP</span></span>
+          <span class="muted">侵食度${it.corruption}</span>
+        </div>
+      </div>`;
+    }).join('')}`;
   }
+
+  const mats=[...analysisSel.materials];
+  const totalExpPreview=mats.reduce((sum,uid)=>{
+    const mat=state.inventory.find(it=>it.uid===uid);
+    return sum+(mat?rarityOf(mat.corruption).expGain:0);
+  },0);
+
+  modal.innerHTML=`<div class="modal-overlay" id="analysisO">
+    <div class="modal">
+      <div class="modal-header"><h3 style="margin:0">解析</h3><span class="close-x" id="closeAna">✕</span></div>
+      <div style="display:flex;gap:0;flex-direction:column;height:calc(80vh - 100px);overflow:hidden;">
+        <!-- 上半分：解析対象 -->
+        <div style="flex:1;overflow-y:auto;border-bottom:1px solid var(--border);padding-bottom:8px;">
+          <h4 style="margin:0 0 6px;font-size:13px;position:sticky;top:0;background:var(--panel);padding:6px 0;">① 解析する装備${target?`：<span style="color:var(--gold)">${itemDisplayName(target)}</span>`:'（タップして選択）'}</h4>
+          ${targetSection()}
+        </div>
+        <!-- 下半分：素材 -->
+        <div style="flex:1;overflow-y:auto;padding-top:8px;">
+          <h4 style="margin:0 0 6px;font-size:13px;position:sticky;top:0;background:var(--panel);padding:6px 0;">② 素材にする装備（複数選択可・装備中は不可）</h4>
+          ${materialSection()}
+        </div>
+      </div>
+      <button class="full gold" id="btnDoAna" style="margin-top:8px;" ${target&&analysisSel.materials.size>0?'':'disabled'}>解析する（EXP+${totalExpPreview}）</button>
+    </div>
+  </div>`;
+
+  document.getElementById('closeAna').onclick=()=>modal.innerHTML='';
+  document.getElementById('analysisO').onclick=e=>{if(e.target.id==='analysisO')modal.innerHTML='';};
+  modal.querySelectorAll('[data-mode="target"]').forEach(card=>{
+    card.onclick=()=>{
+      analysisSel.target=card.dataset.uid;
+      analysisSel.materials=new Set();
+      renderAnalysisModal();
+    };
+  });
+  modal.querySelectorAll('[data-mode="material"]').forEach(card=>{
+    card.onclick=()=>{
+      const uid=card.dataset.uid;
+      if(analysisSel.materials.has(uid)) analysisSel.materials.delete(uid);
+      else analysisSel.materials.add(uid);
+      renderAnalysisModal();
+    };
+  });
+  document.getElementById('btnDoAna')?.addEventListener('click',()=>{
+    if(analyzeWithMaterials(analysisSel.target,[...analysisSel.materials])){
+      modal.innerHTML='';
+      renderItemList(); renderMaterialGrid(); renderStatusScreen(); renderTopBar();
+      showToast('解析した！');
+    }
+  });
 }
 
 // ===================== STATUS画面 =====================
 function renderStatusScreen() {
-  const stats = computePlayerStats();
-  const table = document.getElementById('statusTable');
-  const rows = [
-    ['HP', Math.round(stats.totalHp), stats.growth.hp],
-    ['ATK(武器込み)', Math.round(stats.totalAtk), stats.growth.str],
-    ['DEF(盾込み)', Math.round(stats.totalDef), stats.growth.vit],
-    ['SPD', stats.base.spd, stats.growth.spd],
-    ['LUK(ドロップ補正)', stats.base.luk, stats.growth.luk],
-  ];
-  table.innerHTML = `
-    <tr><th>項目</th><th>現在値</th><th>LvUP</th></tr>
-    ${rows.map(r => `<tr><td>${r[0]}</td><td>${r[1]}</td><td>+${r[2].toFixed(1)}</td></tr>`).join('')}
-  `;
-  const activeRare = Object.keys(stats.rareFlags).filter(k => stats.rareFlags[k]);
-  if (activeRare.length) {
-    table.innerHTML += `<tr><td colspan="3" class="muted">特殊：${activeRare.join(' / ')}</td></tr>`;
-  }
+  const s=computePlayerStats();
+  const table=document.getElementById('statusTable');
+  table.innerHTML=`<tr><th>ステータス</th><th>Lv1値</th><th>LvUP</th></tr>
+    <tr><td>HP</td><td>${s.hp1}</td><td>+${s.hpup}</td></tr>
+    <tr><td>ATK（武器込）</td><td>${s.totalAtk}</td><td>+${s.strup}</td></tr>
+    <tr><td>DEF（盾込）</td><td>${s.totalDef}</td><td>+${s.vitup}</td></tr>
+    <tr><td>SPD</td><td>${s.spd1}</td><td>+1</td></tr>
+    <tr><td>LUK</td><td>${s.luk1}</td><td>+0</td></tr>`;
+  const ar=Object.keys(s.rareFlags).filter(k=>s.rareFlags[k]);
+  if(ar.length) table.innerHTML+=`<tr><td colspan="3" class="muted">特殊：${ar.join(' / ')}</td></tr>`;
 
-  const eqEl = document.getElementById('equippedList');
-  eqEl.innerHTML = ['weapon', 'shield', 'ring'].map(cat => {
-    const item = getEquippedItem(cat);
-    if (!item) return `<div class="muted">${categoryLabel(cat)}: 未装備</div>`;
-    const def = findEquipDef(cat, item.defId);
-    const r = rarityOf(item.corruption);
-    return `<div>${categoryLabel(cat)}: <span class="item-name ${r.cls}">${itemDisplayName(item)}</span> <span class="muted">+${item.enhanceLv}</span></div>`;
+  document.getElementById('equippedList').innerHTML=['weapon','shield','ring'].map(cat=>{
+    const item=getEquippedItem(cat); if(!item) return `<div class="muted">${categoryLabel(cat)}: 未装備</div>`;
+    const def=findEquipDef(cat,item.defId);
+    return `<div>${categoryLabel(cat)}: <b>${def?.name}</b> +${item.enhanceLv}</div>`;
   }).join('');
 
   renderPermanentBoostList();
-  renderRareAbilityUnlockList();
-  document.getElementById('topRating').textContent = computeRating(stats).toLocaleString();
+  document.getElementById('topRating').textContent=computeRating(s).toLocaleString();
 }
 
 function renderPermanentBoostList() {
-  document.getElementById('bpAvailable').textContent = state.bp;
-  const el = document.getElementById('permanentBoostList');
-  el.innerHTML = GAME_DATA.permanentBoostOptions.map(o => `
+  document.getElementById('bpAvailable').textContent=state.bp;
+  const el=document.getElementById('permanentBoostList');
+  el.innerHTML=GAME_DATA.permanentBoostOptions.map(o=>`
     <div class="row" style="margin-bottom:6px;">
-      <span>${o.label}（現在+${state.permanentBoosts[o.key]} / 1BPごとに+${o.perPoint}）</span>
-      <button class="small gold" data-spend="${o.key}" ${state.bp <= 0 ? 'disabled' : ''}>BPを使う</button>
-    </div>
-  `).join('');
-  el.querySelectorAll('[data-spend]').forEach(btn => {
-    btn.onclick = () => { spendBPOnStat(btn.dataset.spend); renderStatusScreen(); };
+      <span>${o.label}（現在+${(state.permanentBoosts[o.key]||0)*o.perPoint} / 1BPごと+${o.perPoint}）</span>
+      <button class="small gold" data-spend="${o.key}" ${state.bp<=0?'disabled':''}>BP消費</button>
+    </div>`).join('');
+  el.querySelectorAll('[data-spend]').forEach(btn=>{
+    btn.onclick=()=>{spendBPOnStat(btn.dataset.spend);renderStatusScreen();};
   });
-}
 
-function renderRareAbilityUnlockList() {
-  const cost = GAME_DATA.rareAbilityUnlockCost;
-  const totalSpentOnStats = Object.values(state.permanentBoosts).reduce((a, b) => a + b, 0);
-  const unlockedRareCount = Object.values(state.rareAbilityUnlocked).filter(Boolean).length;
-  const canRespec = totalSpentOnStats > 0 || unlockedRareCount > 0;
-  const el = document.getElementById('rareAbilityUnlockList');
-  el.innerHTML = `<p class="muted">特殊能力の永久固定化（${cost}BP）：装備に依存せず常時発動します</p>` +
-    GAME_DATA.rareAbilities.map(name => `
-      <div class="row" style="margin-bottom:6px;">
-        <span>${name} ${state.rareAbilityUnlocked[name] ? '<span class="ability-tag rare">固定化済み</span>' : ''}</span>
-        <button class="small gold" data-unlock="${name}" ${state.bp < cost || state.rareAbilityUnlocked[name] ? 'disabled' : ''}>${state.rareAbilityUnlocked[name] ? '固定化済み' : `固定化(${cost}BP)`}</button>
-      </div>
-    `).join('') + `
-      <button class="small secondary full" id="btnRespecAll" ${canRespec ? '' : 'disabled'} style="margin-top:6px;">
-        すべて振り直し（ステータス+特殊能力 合計${totalSpentOnStats + unlockedRareCount * cost}BP回収）
-      </button>
-    `;
-  el.querySelectorAll('[data-unlock]').forEach(btn => {
-    btn.onclick = () => { unlockRareAbility(btn.dataset.unlock); renderStatusScreen(); };
+  const rareEl=document.getElementById('rareAbilityUnlockList');
+  const cost=GAME_DATA.rareAbilityUnlockCost;
+  const ss=Object.values(state.permanentBoosts).reduce((a,b)=>a+b,0);
+  const rs=Object.values(state.rareAbilityUnlocked).filter(Boolean).length*cost;
+  rareEl.innerHTML=`<p class="muted">特殊能力の永久固定化（${cost}BP）</p>`+
+    GAME_DATA.rareAbilities.slice(0,8).map(name=>{
+      const done=!!state.rareAbilityUnlocked[name];
+      return `<div class="row" style="margin-bottom:6px;">
+        <span>${name} ${done?'<span class="ability-tag rare">固定化済み</span>':''}</span>
+        <button class="small gold" data-unlock="${name}" ${done||state.bp<cost?'disabled':''}>${done?'済み':`${cost}BP`}</button>
+      </div>`;
+    }).join('')+
+    `<button class="small secondary full" id="btnRespecAll" ${ss+rs>0?'':'disabled'} style="margin-top:8px;">すべて振り直し（${ss+rs}BP回収）</button>`;
+  rareEl.querySelectorAll('[data-unlock]').forEach(btn=>{
+    btn.onclick=()=>{unlockRareAbility(btn.dataset.unlock);renderStatusScreen();};
   });
-  const respecBtn = document.getElementById('btnRespecAll');
-  if (respecBtn) {
-    respecBtn.onclick = () => {
-      if (confirm('ステータス・特殊能力に振ったBPをすべて回収して振り直しますか？')) {
-        respecAll();
-        renderStatusScreen();
-      }
-    };
-  }
+  document.getElementById('btnRespecAll')?.addEventListener('click',()=>{
+    if(confirm('ステータスと特殊能力に振ったBPをすべて回収しますか？')){respecAll();renderStatusScreen();}
+  });
 }
 
 // ===================== トップバー =====================
 function renderTopBar() {
-  document.getElementById('topBP').textContent = state.bp;
+  document.getElementById('topBP').textContent=state.bp;
+  const s=computePlayerStats();
+  document.getElementById('topRating').textContent=computeRating(s).toLocaleString();
 }
 
 // ===================== タブ切り替え =====================
-document.querySelectorAll('.tab-btn').forEach(btn => {
-  btn.onclick = () => {
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+document.querySelectorAll('.tab-btn').forEach(btn=>{
+  btn.onclick=()=>{
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
     btn.classList.add('active');
-    document.querySelectorAll('.screen').forEach(s => s.classList.add('hidden'));
-    document.getElementById('screen-' + btn.dataset.screen).classList.remove('hidden');
-    if (btn.dataset.screen === 'item') { renderItemList(); renderMaterialGrid(); }
-    if (btn.dataset.screen === 'status') renderStatusScreen();
-    if (btn.dataset.screen === 'log') renderLogList();
-    if (btn.dataset.screen === 'dungeon') renderDungeonList();
+    document.querySelectorAll('.screen').forEach(s=>s.classList.add('hidden'));
+    document.getElementById('screen-'+btn.dataset.screen).classList.remove('hidden');
+    if(btn.dataset.screen==='dungeon') renderDungeonList();
+    if(btn.dataset.screen==='log') renderLogList();
+    if(btn.dataset.screen==='item'){renderItemList();renderMaterialGrid();}
+    if(btn.dataset.screen==='status') renderStatusScreen();
   };
 });
 
-document.getElementById('btnNextStep').onclick = runOneTurn;
-document.getElementById('btnRetreat').onclick = retreatExplore;
+document.getElementById('btnNextStep').onclick=runOneTurn;
+document.getElementById('btnRetreat').onclick=retreatExplore;
 
 // ===================== 初期化 =====================
 function init() {
-  const startWeapon = createDroppedItem('weapon', 'w_000', 0); // 木の棒
-  const startShield = createDroppedItem('shield', 's_000', 0); // なべのふた
-  const startRing = createDroppedItem('ring', 'r_000', 0);     // 銅の指輪
-  [startWeapon, startShield, startRing].forEach(it => { it.abilities = []; it.analysisLv = 1; });
-  state.inventory.push(startWeapon, startShield, startRing);
-  state.equipped.weapon = startWeapon.uid;
-  state.equipped.shield = startShield.uid;
-  state.equipped.ring = startRing.uid;
-
-  addMaterial('m_katakunaru', 10);
-  addMaterial('m_katakunaru_x', 3);
-
+  const loaded=loadGame();
+  if(!loaded){
+    const sw=createDroppedItem('weapon','w_001',0);
+    const ss=createDroppedItem('shield','s_001',0);
+    const sr=createDroppedItem('ring','r_001',0);
+    [sw,ss,sr].forEach(it=>{it.abilities=[];});
+    state.inventory.push(sw,ss,sr);
+    state.equipped.weapon=sw.uid;
+    state.equipped.shield=ss.uid;
+    state.equipped.ring=sr.uid;
+    addMaterial('m_katakunaru',10);
+    addMaterial('m_katakunaru_x',3);
+    saveGame();
+  }
   renderDungeonList();
   renderTopBar();
 }
