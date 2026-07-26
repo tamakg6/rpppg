@@ -201,7 +201,3652 @@ input[type=number]{width:80px;}
 <div id="modalRoot"></div>
 <div id="toast"></div>
 
-<script id="game-data" type="application/json">__GAME_DATA__</script>
+<script id="game-data" type="application/json">
+  {
+  "baseStats": {
+    "hp": 30,
+    "str": 10,
+    "vit": 10,
+    "spd": 1,
+    "luk": 1
+  },
+  "growthStats": {
+    "hp": 10,
+    "str": 1,
+    "vit": 1,
+    "spd": 1,
+    "luk": 0
+  },
+  "dungeons": [
+    {
+      "id": 1,
+      "name": "はじめの草むら",
+      "floors": 10
+    },
+    {
+      "id": 2,
+      "name": "迷いの森",
+      "floors": 12
+    },
+    {
+      "id": 3,
+      "name": "深い洞穴",
+      "floors": 14
+    },
+    {
+      "id": 4,
+      "name": "黄昏の洋館",
+      "floors": 16
+    },
+    {
+      "id": 5,
+      "name": "秘密の抜け道",
+      "floors": 18
+    },
+    {
+      "id": 6,
+      "name": "濃霧の古戦場",
+      "floors": 20
+    },
+    {
+      "id": 7,
+      "name": "正義の巨塔",
+      "floors": 24
+    },
+    {
+      "id": 8,
+      "name": "異世界への扉",
+      "floors": 24
+    },
+    {
+      "id": 9,
+      "name": "次元の裂け目",
+      "floors": 28
+    },
+    {
+      "id": 10,
+      "name": "終わりの魔城",
+      "floors": 20
+    }
+  ],
+  "weapons": [
+    {
+      "id": "w_001",
+      "name": "木の棒",
+      "atk": 5,
+      "enhanceCap": 10,
+      "lv1": {
+        "hp": 0,
+        "str": 0,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 0
+      },
+      "type": "打撃",
+      "evolvesTo": "w_002",
+      "dungeon": 1
+    },
+    {
+      "id": "w_002",
+      "name": "こん棒",
+      "atk": 15,
+      "enhanceCap": 15,
+      "lv1": {
+        "hp": 0,
+        "str": 0,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 0
+      },
+      "type": "打撃",
+      "evolvesTo": "w_024",
+      "dungeon": 1
+    },
+    {
+      "id": "w_024",
+      "name": "木の剣",
+      "atk": 30,
+      "enhanceCap": 55,
+      "lv1": {
+        "hp": 0,
+        "str": 0,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 1,
+        "vit": 0
+      },
+      "type": "打撃",
+      "evolvesTo": "w_025",
+      "dungeon": 2
+    },
+    {
+      "id": "w_025",
+      "name": "霊木の剣",
+      "atk": 120,
+      "enhanceCap": 70,
+      "lv1": {
+        "hp": 10,
+        "str": 10,
+        "vit": 0,
+        "spd": 5
+      },
+      "lvup": {
+        "str": 4,
+        "vit": 0
+      },
+      "type": "斬撃",
+      "evolvesTo": "w_026",
+      "dungeon": 3
+    },
+    {
+      "id": "w_026",
+      "name": "ユグドラシル",
+      "atk": 260,
+      "enhanceCap": 210,
+      "lv1": {
+        "hp": 10,
+        "str": 10,
+        "vit": 10,
+        "spd": 10
+      },
+      "lvup": {
+        "str": 7,
+        "vit": 4
+      },
+      "type": "斬撃",
+      "evolvesTo": null,
+      "dungeon": 4
+    },
+    {
+      "id": "w_003",
+      "name": "ショートソード",
+      "atk": 20,
+      "enhanceCap": 15,
+      "lv1": {
+        "hp": 0,
+        "str": 3,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 0
+      },
+      "type": "斬撃",
+      "evolvesTo": "w_004",
+      "dungeon": 1
+    },
+    {
+      "id": "w_004",
+      "name": "ロングソード",
+      "atk": 30,
+      "enhanceCap": 20,
+      "lv1": {
+        "hp": 0,
+        "str": 5,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 1,
+        "vit": 0
+      },
+      "type": "斬撃",
+      "evolvesTo": "w_027",
+      "dungeon": 2
+    },
+    {
+      "id": "w_027",
+      "name": "グレイトソード",
+      "atk": 55,
+      "enhanceCap": 50,
+      "lv1": {
+        "hp": 0,
+        "str": 5,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 2,
+        "vit": 0
+      },
+      "type": "打撃",
+      "evolvesTo": "w_039",
+      "dungeon": 3
+    },
+    {
+      "id": "w_039",
+      "name": "ドラゴンキラー",
+      "atk": 140,
+      "enhanceCap": 50,
+      "lv1": {
+        "hp": 30,
+        "str": 4,
+        "vit": 4,
+        "spd": 4
+      },
+      "lvup": {
+        "str": 5,
+        "vit": 4
+      },
+      "type": "打撃",
+      "evolvesTo": "w_049",
+      "dungeon": 4
+    },
+    {
+      "id": "w_049",
+      "name": "タワー",
+      "atk": 256,
+      "enhanceCap": 256,
+      "lv1": {
+        "hp": 10,
+        "str": 10,
+        "vit": 0,
+        "spd": 5
+      },
+      "lvup": {
+        "str": 6,
+        "vit": 6
+      },
+      "type": "打撃",
+      "evolvesTo": null,
+      "dungeon": 5
+    },
+    {
+      "id": "w_005",
+      "name": "ワスプナイフ",
+      "atk": 40,
+      "enhanceCap": 10,
+      "lv1": {
+        "hp": 0,
+        "str": 0,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 1,
+        "vit": 0
+      },
+      "type": "刺突",
+      "evolvesTo": null,
+      "dungeon": 1
+    },
+    {
+      "id": "w_006",
+      "name": "スタンナックル",
+      "atk": 60,
+      "enhanceCap": 15,
+      "lv1": {
+        "hp": 0,
+        "str": 0,
+        "vit": 0,
+        "spd": 1
+      },
+      "lvup": {
+        "str": 1,
+        "vit": 0
+      },
+      "type": "打撃",
+      "evolvesTo": null,
+      "dungeon": 2
+    },
+    {
+      "id": "w_007",
+      "name": "バトルサイス",
+      "atk": 55,
+      "enhanceCap": 20,
+      "lv1": {
+        "hp": 0,
+        "str": 5,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 2,
+        "vit": 0
+      },
+      "type": "斬撃",
+      "evolvesTo": null,
+      "dungeon": 2
+    },
+    {
+      "id": "w_008",
+      "name": "鉄塊",
+      "atk": 50,
+      "enhanceCap": 30,
+      "lv1": {
+        "hp": 10,
+        "str": 5,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 2,
+        "vit": 0
+      },
+      "type": "打撃",
+      "evolvesTo": "w_022",
+      "dungeon": 2
+    },
+    {
+      "id": "w_022",
+      "name": "大鉄塊",
+      "atk": 60,
+      "enhanceCap": 50,
+      "lv1": {
+        "hp": 10,
+        "str": 5,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 3,
+        "vit": 0
+      },
+      "type": "打撃",
+      "evolvesTo": "w_023",
+      "dungeon": 3
+    },
+    {
+      "id": "w_023",
+      "name": "極大鉄塊",
+      "atk": 170,
+      "enhanceCap": 120,
+      "lv1": {
+        "hp": 20,
+        "str": 5,
+        "vit": 5,
+        "spd": 5
+      },
+      "lvup": {
+        "str": 4,
+        "vit": 2
+      },
+      "type": "打撃",
+      "evolvesTo": null,
+      "dungeon": 4
+    },
+    {
+      "id": "w_009",
+      "name": "装飾刀",
+      "atk": 65,
+      "enhanceCap": 3,
+      "lv1": {
+        "hp": 0,
+        "str": 0,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 0
+      },
+      "type": "打撃",
+      "evolvesTo": null,
+      "dungeon": 3
+    },
+    {
+      "id": "w_010",
+      "name": "サラマンダー",
+      "atk": 55,
+      "enhanceCap": 20,
+      "lv1": {
+        "hp": 5,
+        "str": 0,
+        "vit": 10,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 2,
+        "vit": 0
+      },
+      "type": "刺突",
+      "evolvesTo": "w_018",
+      "dungeon": 3
+    },
+    {
+      "id": "w_018",
+      "name": "ウンディーネ",
+      "atk": 57,
+      "enhanceCap": 25,
+      "lv1": {
+        "hp": 5,
+        "str": 0,
+        "vit": 10,
+        "spd": 4
+      },
+      "lvup": {
+        "str": 5,
+        "vit": 4
+      },
+      "type": "刺突",
+      "evolvesTo": "w_019",
+      "dungeon": 3
+    },
+    {
+      "id": "w_019",
+      "name": "シルフ",
+      "atk": 58,
+      "enhanceCap": 30,
+      "lv1": {
+        "hp": 5,
+        "str": 0,
+        "vit": 10,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 2,
+        "vit": 0
+      },
+      "type": "刺突",
+      "evolvesTo": "w_020",
+      "dungeon": 4
+    },
+    {
+      "id": "w_020",
+      "name": "ノーム",
+      "atk": 59,
+      "enhanceCap": 35,
+      "lv1": {
+        "hp": 5,
+        "str": 0,
+        "vit": 10,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 2,
+        "vit": 0
+      },
+      "type": "刺突",
+      "evolvesTo": "w_021",
+      "dungeon": 4
+    },
+    {
+      "id": "w_021",
+      "name": "エレメンタリー",
+      "atk": 190,
+      "enhanceCap": 300,
+      "lv1": {
+        "hp": 10,
+        "str": 10,
+        "vit": 10,
+        "spd": 5
+      },
+      "lvup": {
+        "str": 4,
+        "vit": 5
+      },
+      "type": "刺突",
+      "evolvesTo": null,
+      "dungeon": 5
+    },
+    {
+      "id": "w_011",
+      "name": "タツマキ",
+      "atk": 40,
+      "enhanceCap": 30,
+      "lv1": {
+        "hp": 0,
+        "str": 5,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 2,
+        "vit": 1
+      },
+      "type": "斬撃",
+      "evolvesTo": "w_014",
+      "dungeon": 2
+    },
+    {
+      "id": "w_014",
+      "name": "オオタツマキ",
+      "atk": 90,
+      "enhanceCap": 70,
+      "lv1": {
+        "hp": 0,
+        "str": 10,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 3,
+        "vit": 1
+      },
+      "type": "斬撃",
+      "evolvesTo": null,
+      "dungeon": 3
+    },
+    {
+      "id": "w_012",
+      "name": "ピンポイント",
+      "atk": 70,
+      "enhanceCap": 70,
+      "lv1": {
+        "hp": 0,
+        "str": 15,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 2,
+        "vit": 0
+      },
+      "type": "打撃",
+      "evolvesTo": null,
+      "dungeon": 2
+    },
+    {
+      "id": "w_013",
+      "name": "フェアリーソード",
+      "atk": 35,
+      "enhanceCap": 60,
+      "lv1": {
+        "hp": 0,
+        "str": 0,
+        "vit": 0,
+        "spd": 5
+      },
+      "lvup": {
+        "str": 2,
+        "vit": 1
+      },
+      "type": "斬撃",
+      "evolvesTo": null,
+      "dungeon": 2
+    },
+    {
+      "id": "w_015",
+      "name": "エメラルドソード",
+      "atk": 65,
+      "enhanceCap": 20,
+      "lv1": {
+        "hp": 20,
+        "str": 0,
+        "vit": 0,
+        "spd": 5
+      },
+      "lvup": {
+        "str": 2,
+        "vit": 2
+      },
+      "type": "斬撃",
+      "evolvesTo": null,
+      "dungeon": 3
+    },
+    {
+      "id": "w_016",
+      "name": "ファントムサイス",
+      "atk": 200,
+      "enhanceCap": 30,
+      "lv1": {
+        "hp": 0,
+        "str": 0,
+        "vit": 10,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 3,
+        "vit": 0
+      },
+      "type": "斬撃",
+      "evolvesTo": null,
+      "dungeon": 4
+    },
+    {
+      "id": "w_017",
+      "name": "幻影剣",
+      "atk": 70,
+      "enhanceCap": 40,
+      "lv1": {
+        "hp": 0,
+        "str": 7,
+        "vit": 6,
+        "spd": 5
+      },
+      "lvup": {
+        "str": 3,
+        "vit": 0
+      },
+      "type": "斬撃",
+      "evolvesTo": "w_028",
+      "dungeon": 4
+    },
+    {
+      "id": "w_028",
+      "name": "夢想剣",
+      "atk": 180,
+      "enhanceCap": 100,
+      "lv1": {
+        "hp": 8,
+        "str": 8,
+        "vit": 0,
+        "spd": 5
+      },
+      "lvup": {
+        "str": 3,
+        "vit": 0
+      },
+      "type": "斬撃",
+      "evolvesTo": null,
+      "dungeon": 5
+    },
+    {
+      "id": "w_029",
+      "name": "キリサメ",
+      "atk": 80,
+      "enhanceCap": 44,
+      "lv1": {
+        "hp": 0,
+        "str": 0,
+        "vit": 4,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 4,
+        "vit": 3
+      },
+      "type": "斬撃",
+      "evolvesTo": "w_030",
+      "dungeon": 4
+    },
+    {
+      "id": "w_030",
+      "name": "クロキリサメ",
+      "atk": 85,
+      "enhanceCap": 66,
+      "lv1": {
+        "hp": 10,
+        "str": 5,
+        "vit": 4,
+        "spd": 5
+      },
+      "lvup": {
+        "str": 4,
+        "vit": 3
+      },
+      "type": "斬撃",
+      "evolvesTo": "w_034",
+      "dungeon": 4
+    },
+    {
+      "id": "w_034",
+      "name": "アカキリサメ",
+      "atk": 199,
+      "enhanceCap": 200,
+      "lv1": {
+        "hp": 10,
+        "str": 7,
+        "vit": 7,
+        "spd": 8
+      },
+      "lvup": {
+        "str": 6,
+        "vit": 3
+      },
+      "type": "斬撃",
+      "evolvesTo": null,
+      "dungeon": 5
+    },
+    {
+      "id": "w_031",
+      "name": "ピースメーカー",
+      "atk": 55,
+      "enhanceCap": 7,
+      "lv1": {
+        "hp": 10,
+        "str": 10,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 0
+      },
+      "type": "投射",
+      "evolvesTo": "w_032",
+      "dungeon": 4
+    },
+    {
+      "id": "w_032",
+      "name": "デイドリーム",
+      "atk": 100,
+      "enhanceCap": 20,
+      "lv1": {
+        "hp": 30,
+        "str": 0,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 0
+      },
+      "type": "投射",
+      "evolvesTo": "w_033",
+      "dungeon": 4
+    },
+    {
+      "id": "w_033",
+      "name": "カリオストロ",
+      "atk": 120,
+      "enhanceCap": 70,
+      "lv1": {
+        "hp": 30,
+        "str": 0,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 1,
+        "vit": 3
+      },
+      "type": "投射",
+      "evolvesTo": "w_050",
+      "dungeon": 5
+    },
+    {
+      "id": "w_050",
+      "name": "グラナダ",
+      "atk": 200,
+      "enhanceCap": 170,
+      "lv1": {
+        "hp": 40,
+        "str": 5,
+        "vit": 10,
+        "spd": 5
+      },
+      "lvup": {
+        "str": 5,
+        "vit": 4
+      },
+      "type": "投射",
+      "evolvesTo": "w_064",
+      "dungeon": 5
+    },
+    {
+      "id": "w_064",
+      "name": "パンゲア",
+      "atk": 570,
+      "enhanceCap": 99,
+      "lv1": {
+        "hp": 60,
+        "str": 0,
+        "vit": 0,
+        "spd": 15
+      },
+      "lvup": {
+        "str": 10,
+        "vit": 6
+      },
+      "type": "投射",
+      "evolvesTo": null,
+      "dungeon": 6
+    },
+    {
+      "id": "w_035",
+      "name": "くない",
+      "atk": 60,
+      "enhanceCap": 10,
+      "lv1": {
+        "hp": 9,
+        "str": 7,
+        "vit": 1,
+        "spd": 2
+      },
+      "lvup": {
+        "str": 2,
+        "vit": 1
+      },
+      "type": "投射",
+      "evolvesTo": "w_036",
+      "dungeon": 4
+    },
+    {
+      "id": "w_036",
+      "name": "十字手裏剣",
+      "atk": 100,
+      "enhanceCap": 20,
+      "lv1": {
+        "hp": 0,
+        "str": 5,
+        "vit": 2,
+        "spd": 3
+      },
+      "lvup": {
+        "str": 3,
+        "vit": 2
+      },
+      "type": "投射",
+      "evolvesTo": "w_037",
+      "dungeon": 4
+    },
+    {
+      "id": "w_037",
+      "name": "風車",
+      "atk": 180,
+      "enhanceCap": 40,
+      "lv1": {
+        "hp": 5,
+        "str": 6,
+        "vit": 3,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 5,
+        "vit": 3
+      },
+      "type": "投射",
+      "evolvesTo": "w_038",
+      "dungeon": 5
+    },
+    {
+      "id": "w_038",
+      "name": "火車",
+      "atk": 210,
+      "enhanceCap": 390,
+      "lv1": {
+        "hp": 20,
+        "str": 4,
+        "vit": 5,
+        "spd": 5
+      },
+      "lvup": {
+        "str": 5,
+        "vit": 4
+      },
+      "type": "投射",
+      "evolvesTo": null,
+      "dungeon": 5
+    },
+    {
+      "id": "w_040",
+      "name": "ハンドアクス",
+      "atk": 54,
+      "enhanceCap": 15,
+      "lv1": {
+        "hp": 7,
+        "str": 5,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 2,
+        "vit": 1
+      },
+      "type": "打撃",
+      "evolvesTo": "w_041",
+      "dungeon": 4
+    },
+    {
+      "id": "w_041",
+      "name": "クレセント",
+      "atk": 100,
+      "enhanceCap": 40,
+      "lv1": {
+        "hp": 8,
+        "str": 5,
+        "vit": 2,
+        "spd": 5
+      },
+      "lvup": {
+        "str": 4,
+        "vit": 1
+      },
+      "type": "斬撃",
+      "evolvesTo": "w_042",
+      "dungeon": 4
+    },
+    {
+      "id": "w_042",
+      "name": "ボルケイノ",
+      "atk": 250,
+      "enhanceCap": 100,
+      "lv1": {
+        "hp": 10,
+        "str": 6,
+        "vit": 4,
+        "spd": 5
+      },
+      "lvup": {
+        "str": 5,
+        "vit": 4
+      },
+      "type": "斬撃",
+      "evolvesTo": "w_054",
+      "dungeon": 5
+    },
+    {
+      "id": "w_054",
+      "name": "イラプション",
+      "atk": 420,
+      "enhanceCap": 100,
+      "lv1": {
+        "hp": 10,
+        "str": 30,
+        "vit": 20,
+        "spd": 5
+      },
+      "lvup": {
+        "str": 9,
+        "vit": 3
+      },
+      "type": "斬撃",
+      "evolvesTo": null,
+      "dungeon": 5
+    },
+    {
+      "id": "w_043",
+      "name": "サンダーウィップ",
+      "atk": 200,
+      "enhanceCap": 220,
+      "lv1": {
+        "hp": 10,
+        "str": 10,
+        "vit": 10,
+        "spd": 5
+      },
+      "lvup": {
+        "str": 4,
+        "vit": 1
+      },
+      "type": "打撃",
+      "evolvesTo": null,
+      "dungeon": 5
+    },
+    {
+      "id": "w_044",
+      "name": "サーペント",
+      "atk": 200,
+      "enhanceCap": 35,
+      "lv1": {
+        "hp": 20,
+        "str": 5,
+        "vit": 5,
+        "spd": 5
+      },
+      "lvup": {
+        "str": 4,
+        "vit": 3
+      },
+      "type": "打撃",
+      "evolvesTo": "w_045",
+      "dungeon": 5
+    },
+    {
+      "id": "w_045",
+      "name": "クラーケン",
+      "atk": 250,
+      "enhanceCap": 160,
+      "lv1": {
+        "hp": 10,
+        "str": 13,
+        "vit": 10,
+        "spd": 5
+      },
+      "lvup": {
+        "str": 6,
+        "vit": 4
+      },
+      "type": "打撃",
+      "evolvesTo": "w_060",
+      "dungeon": 5
+    },
+    {
+      "id": "w_060",
+      "name": "ホワイトスネイク",
+      "atk": 350,
+      "enhanceCap": 177,
+      "lv1": {
+        "hp": 40,
+        "str": 7,
+        "vit": 7,
+        "spd": 7
+      },
+      "lvup": {
+        "str": 7,
+        "vit": 7
+      },
+      "type": "打撃",
+      "evolvesTo": null,
+      "dungeon": 6
+    },
+    {
+      "id": "w_046",
+      "name": "アルカード",
+      "atk": 160,
+      "enhanceCap": 30,
+      "lv1": {
+        "hp": 10,
+        "str": 10,
+        "vit": 12,
+        "spd": 7
+      },
+      "lvup": {
+        "str": 5,
+        "vit": 4
+      },
+      "type": "打撃",
+      "evolvesTo": "w_047",
+      "dungeon": 5
+    },
+    {
+      "id": "w_047",
+      "name": "プログレス",
+      "atk": 60,
+      "enhanceCap": 500,
+      "lv1": {
+        "hp": 20,
+        "str": 10,
+        "vit": 10,
+        "spd": 10
+      },
+      "lvup": {
+        "str": 10,
+        "vit": 7
+      },
+      "type": "打撃",
+      "evolvesTo": null,
+      "dungeon": 6
+    },
+    {
+      "id": "w_048",
+      "name": "死に神の鎌",
+      "atk": 800,
+      "enhanceCap": 200,
+      "lv1": {
+        "hp": 4,
+        "str": 4,
+        "vit": 4,
+        "spd": 5
+      },
+      "lvup": {
+        "str": 7,
+        "vit": 3
+      },
+      "type": "斬撃",
+      "evolvesTo": null,
+      "dungeon": 7
+    },
+    {
+      "id": "w_051",
+      "name": "ルビーナックル",
+      "atk": 300,
+      "enhanceCap": 50,
+      "lv1": {
+        "hp": 0,
+        "str": 0,
+        "vit": 10,
+        "spd": 10
+      },
+      "lvup": {
+        "str": 4,
+        "vit": 3
+      },
+      "type": "打撃",
+      "evolvesTo": "w_052",
+      "dungeon": 5
+    },
+    {
+      "id": "w_052",
+      "name": "ダイヤナックル",
+      "atk": 356,
+      "enhanceCap": 100,
+      "lv1": {
+        "hp": 10,
+        "str": 20,
+        "vit": 10,
+        "spd": 10
+      },
+      "lvup": {
+        "str": 6,
+        "vit": 5
+      },
+      "type": "打撃",
+      "evolvesTo": "w_053",
+      "dungeon": 5
+    },
+    {
+      "id": "w_053",
+      "name": "ムーンナックル",
+      "atk": 600,
+      "enhanceCap": 400,
+      "lv1": {
+        "hp": 15,
+        "str": 30,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 8,
+        "vit": 8
+      },
+      "type": "打撃",
+      "evolvesTo": null,
+      "dungeon": 6
+    },
+    {
+      "id": "w_055",
+      "name": "ダンシング",
+      "atk": 350,
+      "enhanceCap": 300,
+      "lv1": {
+        "hp": 100,
+        "str": 0,
+        "vit": 0,
+        "spd": 10
+      },
+      "lvup": {
+        "str": 5,
+        "vit": 0
+      },
+      "type": "斬撃",
+      "evolvesTo": null,
+      "dungeon": 5
+    },
+    {
+      "id": "w_056",
+      "name": "錆びた包丁",
+      "atk": 10,
+      "enhanceCap": 50,
+      "lv1": {
+        "hp": 5,
+        "str": 5,
+        "vit": 0,
+        "spd": 5
+      },
+      "lvup": {
+        "str": 5,
+        "vit": 5
+      },
+      "type": "刺突",
+      "evolvesTo": "w_057",
+      "dungeon": 5
+    },
+    {
+      "id": "w_057",
+      "name": "柳刃",
+      "atk": 500,
+      "enhanceCap": 100,
+      "lv1": {
+        "hp": 10,
+        "str": 20,
+        "vit": 0,
+        "spd": 5
+      },
+      "lvup": {
+        "str": 12,
+        "vit": 6
+      },
+      "type": "刺突",
+      "evolvesTo": "w_058",
+      "dungeon": 5
+    },
+    {
+      "id": "w_058",
+      "name": "薄刃",
+      "atk": 400,
+      "enhanceCap": 100,
+      "lv1": {
+        "hp": 70,
+        "str": 5,
+        "vit": 20,
+        "spd": 15
+      },
+      "lvup": {
+        "str": 5,
+        "vit": 10
+      },
+      "type": "刺突",
+      "evolvesTo": "w_059",
+      "dungeon": 6
+    },
+    {
+      "id": "w_059",
+      "name": "三徳",
+      "atk": 480,
+      "enhanceCap": 300,
+      "lv1": {
+        "hp": 20,
+        "str": 10,
+        "vit": 10,
+        "spd": 10
+      },
+      "lvup": {
+        "str": 10,
+        "vit": 8
+      },
+      "type": "刺突",
+      "evolvesTo": null,
+      "dungeon": 6
+    },
+    {
+      "id": "w_061",
+      "name": "ツラヌキ",
+      "atk": 600,
+      "enhanceCap": 40,
+      "lv1": {
+        "hp": 0,
+        "str": 10,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 14,
+        "vit": 0
+      },
+      "type": "刺突",
+      "evolvesTo": null,
+      "dungeon": 6
+    },
+    {
+      "id": "w_062",
+      "name": "グラディウス",
+      "atk": 560,
+      "enhanceCap": 240,
+      "lv1": {
+        "hp": 10,
+        "str": 8,
+        "vit": 5,
+        "spd": 12
+      },
+      "lvup": {
+        "str": 9,
+        "vit": 11
+      },
+      "type": "斬撃",
+      "evolvesTo": null,
+      "dungeon": 7
+    },
+    {
+      "id": "w_063",
+      "name": "グランドスラム",
+      "atk": 899,
+      "enhanceCap": 1,
+      "lv1": {
+        "hp": 0,
+        "str": 0,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 0
+      },
+      "type": "打撃",
+      "evolvesTo": null,
+      "dungeon": 7
+    },
+    {
+      "id": "w_065",
+      "name": "パルスナイフ",
+      "atk": 350,
+      "enhanceCap": 128,
+      "lv1": {
+        "hp": 0,
+        "str": 100,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 15,
+        "vit": 12
+      },
+      "type": "刺突",
+      "evolvesTo": "w_066",
+      "dungeon": 7
+    },
+    {
+      "id": "w_066",
+      "name": "インパルス",
+      "atk": 770,
+      "enhanceCap": 128,
+      "lv1": {
+        "hp": 60,
+        "str": 120,
+        "vit": 30,
+        "spd": 10
+      },
+      "lvup": {
+        "str": 15,
+        "vit": 13
+      },
+      "type": "刺突",
+      "evolvesTo": null,
+      "dungeon": 8
+    },
+    {
+      "id": "w_067",
+      "name": "木のブーメラン",
+      "atk": 10,
+      "enhanceCap": 60,
+      "lv1": {
+        "hp": 10,
+        "str": 0,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 3,
+        "vit": 1
+      },
+      "type": "投射",
+      "evolvesTo": "w_068",
+      "dungeon": 3
+    },
+    {
+      "id": "w_068",
+      "name": "クラシック",
+      "atk": 100,
+      "enhanceCap": 200,
+      "lv1": {
+        "hp": 0,
+        "str": 12,
+        "vit": 12,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 10,
+        "vit": 5
+      },
+      "type": "投射",
+      "evolvesTo": "w_069",
+      "dungeon": 5
+    },
+    {
+      "id": "w_069",
+      "name": "ベーシック",
+      "atk": 445,
+      "enhanceCap": 754,
+      "lv1": {
+        "hp": 20,
+        "str": 15,
+        "vit": 15,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 0
+      },
+      "type": "投射",
+      "evolvesTo": null,
+      "dungeon": 6
+    },
+    {
+      "id": "w_070",
+      "name": "クラスターボム",
+      "atk": 600,
+      "enhanceCap": 100,
+      "lv1": {
+        "hp": 100,
+        "str": 0,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 0
+      },
+      "type": "投射",
+      "evolvesTo": "w_071",
+      "dungeon": 7
+    },
+    {
+      "id": "w_071",
+      "name": "ビッグバン",
+      "atk": 333,
+      "enhanceCap": 1555,
+      "lv1": {
+        "hp": 300,
+        "str": 0,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 0
+      },
+      "type": "投射",
+      "evolvesTo": null,
+      "dungeon": 8
+    },
+    {
+      "id": "w_072",
+      "name": "妖刀時雨",
+      "atk": 1,
+      "enhanceCap": 1200,
+      "lv1": {
+        "hp": 200,
+        "str": 666,
+        "vit": 40,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 17,
+        "vit": 0
+      },
+      "type": "斬撃",
+      "evolvesTo": null,
+      "dungeon": 7
+    },
+    {
+      "id": "w_076",
+      "name": "ポータルソード",
+      "atk": 800,
+      "enhanceCap": 180,
+      "lv1": {
+        "hp": 0,
+        "str": 0,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 12,
+        "vit": 20
+      },
+      "type": "刺突",
+      "evolvesTo": null,
+      "dungeon": 8
+    },
+    {
+      "id": "w_077",
+      "name": "ドロイドハンマー",
+      "atk": 1100,
+      "enhanceCap": 220,
+      "lv1": {
+        "hp": 300,
+        "str": 0,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 0
+      },
+      "type": "打撃",
+      "evolvesTo": null,
+      "dungeon": 8
+    },
+    {
+      "id": "w_078",
+      "name": "イカヅチ",
+      "atk": 770,
+      "enhanceCap": 350,
+      "lv1": {
+        "hp": 120,
+        "str": 130,
+        "vit": 80,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 11,
+        "vit": 13
+      },
+      "type": "刺突",
+      "evolvesTo": null,
+      "dungeon": 8
+    },
+    {
+      "id": "w_079",
+      "name": "ゴッドハンド",
+      "atk": 900,
+      "enhanceCap": 200,
+      "lv1": {
+        "hp": 120,
+        "str": 0,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 20,
+        "vit": 10
+      },
+      "type": "打撃",
+      "evolvesTo": null,
+      "dungeon": 9
+    },
+    {
+      "id": "w_080",
+      "name": "蒼の剣",
+      "atk": 500,
+      "enhanceCap": 300,
+      "lv1": {
+        "hp": 0,
+        "str": 0,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 35,
+        "vit": 8
+      },
+      "type": "斬撃",
+      "evolvesTo": null,
+      "dungeon": 7
+    },
+    {
+      "id": "w_081",
+      "name": "神竜刀",
+      "atk": 600,
+      "enhanceCap": 10,
+      "lv1": {
+        "hp": 300,
+        "str": 400,
+        "vit": 120,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 19,
+        "vit": 8
+      },
+      "type": "斬撃",
+      "evolvesTo": null,
+      "dungeon": 9
+    },
+    {
+      "id": "w_082",
+      "name": "回帰の槍",
+      "atk": 10,
+      "enhanceCap": 410,
+      "lv1": {
+        "hp": 200,
+        "str": 1000,
+        "vit": 100,
+        "spd": 50
+      },
+      "lvup": {
+        "str": 16,
+        "vit": 4
+      },
+      "type": "刺突",
+      "evolvesTo": null,
+      "dungeon": 9
+    },
+    {
+      "id": "w_083",
+      "name": "スターゲイザー",
+      "atk": 800,
+      "enhanceCap": 600,
+      "lv1": {
+        "hp": 300,
+        "str": 150,
+        "vit": 120,
+        "spd": 20
+      },
+      "lvup": {
+        "str": 24,
+        "vit": 24
+      },
+      "type": "斬撃",
+      "evolvesTo": null,
+      "dungeon": 9
+    },
+    {
+      "id": "w_084",
+      "name": "ゾディアックス",
+      "atk": 1400,
+      "enhanceCap": 10,
+      "lv1": {
+        "hp": 100,
+        "str": 0,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 30,
+        "vit": 10
+      },
+      "type": "斬撃",
+      "evolvesTo": null,
+      "dungeon": 9
+    },
+    {
+      "id": "w_085",
+      "name": "ジャックナイフ",
+      "atk": 450,
+      "enhanceCap": 130,
+      "lv1": {
+        "hp": 0,
+        "str": 250,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 20,
+        "vit": 0
+      },
+      "type": "刺突",
+      "evolvesTo": null,
+      "dungeon": 9
+    },
+    {
+      "id": "w_086",
+      "name": "正義の槌",
+      "atk": 650,
+      "enhanceCap": 200,
+      "lv1": {
+        "hp": 0,
+        "str": 0,
+        "vit": 100,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 10,
+        "vit": 12
+      },
+      "type": "打撃",
+      "evolvesTo": null,
+      "dungeon": 7
+    },
+    {
+      "id": "w_087",
+      "name": "マジカル",
+      "atk": 300,
+      "enhanceCap": 100,
+      "lv1": {
+        "hp": 0,
+        "str": 0,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 40,
+        "vit": 0
+      },
+      "type": "投射",
+      "evolvesTo": null,
+      "dungeon": 9
+    },
+    {
+      "id": "w_088",
+      "name": "てっけん",
+      "atk": 999,
+      "enhanceCap": 401,
+      "lv1": {
+        "hp": 0,
+        "str": 100,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 5,
+        "vit": 0
+      },
+      "type": "打撃",
+      "evolvesTo": null,
+      "dungeon": 9
+    },
+    {
+      "id": "w_089",
+      "name": "悪霊の剣",
+      "atk": 9999,
+      "enhanceCap": 500,
+      "lv1": {
+        "hp": 0,
+        "str": 0,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": -999,
+        "vit": 0
+      },
+      "type": "斬撃",
+      "evolvesTo": null,
+      "dungeon": 10
+    },
+    {
+      "id": "w_090",
+      "name": "ニューラルエッジ",
+      "atk": 1024,
+      "enhanceCap": 512,
+      "lv1": {
+        "hp": 0,
+        "str": 200,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 40,
+        "vit": 0
+      },
+      "type": "斬撃",
+      "evolvesTo": null,
+      "dungeon": 10
+    }
+  ],
+  "shields": [
+    {
+      "id": "s_001",
+      "name": "なべのふた",
+      "def": 3,
+      "enhanceCap": 10,
+      "lv1": {
+        "hp": 0,
+        "str": 0,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 0
+      },
+      "evolvesTo": "s_002",
+      "dungeon": 1
+    },
+    {
+      "id": "s_002",
+      "name": "高いなべのふた",
+      "def": 10,
+      "enhanceCap": 10,
+      "lv1": {
+        "hp": 0,
+        "str": 0,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 0
+      },
+      "evolvesTo": null,
+      "dungeon": 1
+    },
+    {
+      "id": "s_003",
+      "name": "木の盾",
+      "def": 15,
+      "enhanceCap": 35,
+      "lv1": {
+        "hp": 0,
+        "str": 0,
+        "vit": 5,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 0
+      },
+      "evolvesTo": "s_023",
+      "dungeon": 1
+    },
+    {
+      "id": "s_023",
+      "name": "堅木の盾",
+      "def": 40,
+      "enhanceCap": 40,
+      "lv1": {
+        "hp": 20,
+        "str": 0,
+        "vit": 0,
+        "spd": 8
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 1
+      },
+      "evolvesTo": null,
+      "dungeon": 2
+    },
+    {
+      "id": "s_004",
+      "name": "鉄の盾",
+      "def": 25,
+      "enhanceCap": 20,
+      "lv1": {
+        "hp": 0,
+        "str": 0,
+        "vit": 8,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 0
+      },
+      "evolvesTo": "s_006",
+      "dungeon": 1
+    },
+    {
+      "id": "s_006",
+      "name": "鉄の大盾",
+      "def": 30,
+      "enhanceCap": 35,
+      "lv1": {
+        "hp": 0,
+        "str": 0,
+        "vit": 10,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 1
+      },
+      "evolvesTo": "s_013",
+      "dungeon": 2
+    },
+    {
+      "id": "s_013",
+      "name": "タワーシールド",
+      "def": 80,
+      "enhanceCap": 30,
+      "lv1": {
+        "hp": 40,
+        "str": 0,
+        "vit": 5,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 1
+      },
+      "evolvesTo": null,
+      "dungeon": 4
+    },
+    {
+      "id": "s_005",
+      "name": "チタンシールド",
+      "def": 30,
+      "enhanceCap": 30,
+      "lv1": {
+        "hp": 0,
+        "str": 0,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 1
+      },
+      "evolvesTo": null,
+      "dungeon": 2
+    },
+    {
+      "id": "s_007",
+      "name": "マジックシールド",
+      "def": 40,
+      "enhanceCap": 30,
+      "lv1": {
+        "hp": 0,
+        "str": 0,
+        "vit": 5,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 2
+      },
+      "evolvesTo": "s_011",
+      "dungeon": 3
+    },
+    {
+      "id": "s_011",
+      "name": "クリアシールド",
+      "def": 40,
+      "enhanceCap": 10,
+      "lv1": {
+        "hp": 30,
+        "str": 0,
+        "vit": 5,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 1
+      },
+      "evolvesTo": "s_012",
+      "dungeon": 4
+    },
+    {
+      "id": "s_012",
+      "name": "プリズムシールド",
+      "def": 70,
+      "enhanceCap": 50,
+      "lv1": {
+        "hp": 50,
+        "str": 0,
+        "vit": 5,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 2
+      },
+      "evolvesTo": null,
+      "dungeon": 5
+    },
+    {
+      "id": "s_008",
+      "name": "電導バリア",
+      "def": 35,
+      "enhanceCap": 60,
+      "lv1": {
+        "hp": 0,
+        "str": 5,
+        "vit": 5,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 1,
+        "vit": 2
+      },
+      "evolvesTo": "s_020",
+      "dungeon": 3
+    },
+    {
+      "id": "s_020",
+      "name": "超電導バリア",
+      "def": 100,
+      "enhanceCap": 120,
+      "lv1": {
+        "hp": 10,
+        "str": 15,
+        "vit": 10,
+        "spd": 5
+      },
+      "lvup": {
+        "str": 2,
+        "vit": 5
+      },
+      "evolvesTo": null,
+      "dungeon": 6
+    },
+    {
+      "id": "s_009",
+      "name": "エメラルドシールド",
+      "def": 50,
+      "enhanceCap": 20,
+      "lv1": {
+        "hp": 10,
+        "str": 0,
+        "vit": 0,
+        "spd": 5
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 3
+      },
+      "evolvesTo": null,
+      "dungeon": 3
+    },
+    {
+      "id": "s_010",
+      "name": "合成獣の翼",
+      "def": 40,
+      "enhanceCap": 55,
+      "lv1": {
+        "hp": 10,
+        "str": 0,
+        "vit": 5,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 2
+      },
+      "evolvesTo": "s_022",
+      "dungeon": 3
+    },
+    {
+      "id": "s_022",
+      "name": "合成獣の堅翼",
+      "def": 120,
+      "enhanceCap": 130,
+      "lv1": {
+        "hp": 20,
+        "str": 10,
+        "vit": 5,
+        "spd": 2
+      },
+      "lvup": {
+        "str": 1,
+        "vit": 2
+      },
+      "evolvesTo": null,
+      "dungeon": 6
+    },
+    {
+      "id": "s_014",
+      "name": "死に神のマスク",
+      "def": 700,
+      "enhanceCap": 200,
+      "lv1": {
+        "hp": 4,
+        "str": 4,
+        "vit": 4,
+        "spd": 6
+      },
+      "lvup": {
+        "str": 2,
+        "vit": 6
+      },
+      "evolvesTo": null,
+      "dungeon": 7
+    },
+    {
+      "id": "s_015",
+      "name": "龍の鱗",
+      "def": 90,
+      "enhanceCap": 30,
+      "lv1": {
+        "hp": 40,
+        "str": 10,
+        "vit": 5,
+        "spd": 3
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 3
+      },
+      "evolvesTo": "s_016",
+      "dungeon": 6
+    },
+    {
+      "id": "s_016",
+      "name": "龍の翼",
+      "def": 300,
+      "enhanceCap": 35,
+      "lv1": {
+        "hp": 50,
+        "str": 10,
+        "vit": 6,
+        "spd": 5
+      },
+      "lvup": {
+        "str": 1,
+        "vit": 3
+      },
+      "evolvesTo": "s_017",
+      "dungeon": 7
+    },
+    {
+      "id": "s_017",
+      "name": "龍の頭",
+      "def": 400,
+      "enhanceCap": 130,
+      "lv1": {
+        "hp": 50,
+        "str": 15,
+        "vit": 6,
+        "spd": 5
+      },
+      "lvup": {
+        "str": 2,
+        "vit": 4
+      },
+      "evolvesTo": null,
+      "dungeon": 8
+    },
+    {
+      "id": "s_018",
+      "name": "小太刀",
+      "def": 30,
+      "enhanceCap": 30,
+      "lv1": {
+        "hp": 10,
+        "str": 30,
+        "vit": 5,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 3,
+        "vit": 1
+      },
+      "evolvesTo": "s_019",
+      "dungeon": 4
+    },
+    {
+      "id": "s_019",
+      "name": "小獅子",
+      "def": 50,
+      "enhanceCap": 30,
+      "lv1": {
+        "hp": 30,
+        "str": 30,
+        "vit": 5,
+        "spd": 5
+      },
+      "lvup": {
+        "str": 5,
+        "vit": 2
+      },
+      "evolvesTo": "s_024",
+      "dungeon": 5
+    },
+    {
+      "id": "s_024",
+      "name": "小龍剣",
+      "def": 60,
+      "enhanceCap": 50,
+      "lv1": {
+        "hp": 30,
+        "str": 15,
+        "vit": 10,
+        "spd": 3
+      },
+      "lvup": {
+        "str": 6,
+        "vit": 2
+      },
+      "evolvesTo": "s_025",
+      "dungeon": 6
+    },
+    {
+      "id": "s_025",
+      "name": "昇龍剣",
+      "def": 0,
+      "enhanceCap": 100,
+      "lv1": {
+        "hp": 0,
+        "str": 50,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 14,
+        "vit": 0
+      },
+      "evolvesTo": "s_026",
+      "dungeon": 7
+    },
+    {
+      "id": "s_026",
+      "name": "波動剣",
+      "def": 0,
+      "enhanceCap": 300,
+      "lv1": {
+        "hp": 20,
+        "str": 32,
+        "vit": 12,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 14,
+        "vit": 0
+      },
+      "evolvesTo": null,
+      "dungeon": 8
+    },
+    {
+      "id": "s_021",
+      "name": "スライムシールド",
+      "def": 128,
+      "enhanceCap": 140,
+      "lv1": {
+        "hp": 50,
+        "str": 0,
+        "vit": 10,
+        "spd": 7
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 5
+      },
+      "evolvesTo": "s_032",
+      "dungeon": 4
+    },
+    {
+      "id": "s_032",
+      "name": "スラフィールド",
+      "def": 260,
+      "enhanceCap": 140,
+      "lv1": {
+        "hp": 120,
+        "str": 0,
+        "vit": 20,
+        "spd": 8
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 6
+      },
+      "evolvesTo": null,
+      "dungeon": 6
+    },
+    {
+      "id": "s_027",
+      "name": "エナジーシールド",
+      "def": 0,
+      "enhanceCap": 600,
+      "lv1": {
+        "hp": 0,
+        "str": 0,
+        "vit": 150,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 7
+      },
+      "evolvesTo": null,
+      "dungeon": 8
+    },
+    {
+      "id": "s_028",
+      "name": "メタル化",
+      "def": 220,
+      "enhanceCap": 200,
+      "lv1": {
+        "hp": 200,
+        "str": 60,
+        "vit": 150,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 0
+      },
+      "evolvesTo": null,
+      "dungeon": 5
+    },
+    {
+      "id": "s_029",
+      "name": "ブラックホール",
+      "def": 230,
+      "enhanceCap": 120,
+      "lv1": {
+        "hp": 20,
+        "str": 0,
+        "vit": 30,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 6,
+        "vit": 6
+      },
+      "evolvesTo": "s_030",
+      "dungeon": 5
+    },
+    {
+      "id": "s_030",
+      "name": "ホワイトホール",
+      "def": 300,
+      "enhanceCap": 550,
+      "lv1": {
+        "hp": 20,
+        "str": 0,
+        "vit": 30,
+        "spd": 5
+      },
+      "lvup": {
+        "str": 6,
+        "vit": 7
+      },
+      "evolvesTo": null,
+      "dungeon": 6
+    },
+    {
+      "id": "s_031",
+      "name": "フライパン",
+      "def": 90,
+      "enhanceCap": 410,
+      "lv1": {
+        "hp": 500,
+        "str": 0,
+        "vit": 0,
+        "spd": 25
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 0
+      },
+      "evolvesTo": null,
+      "dungeon": 6
+    },
+    {
+      "id": "s_033",
+      "name": "ミストシールド",
+      "def": 270,
+      "enhanceCap": 280,
+      "lv1": {
+        "hp": 80,
+        "str": 0,
+        "vit": 0,
+        "spd": 5
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 5
+      },
+      "evolvesTo": "s_041",
+      "dungeon": 6
+    },
+    {
+      "id": "s_041",
+      "name": "クラウドシールド",
+      "def": 490,
+      "enhanceCap": 600,
+      "lv1": {
+        "hp": 0,
+        "str": 0,
+        "vit": 0,
+        "spd": 15
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 9
+      },
+      "evolvesTo": null,
+      "dungeon": 9
+    },
+    {
+      "id": "s_034",
+      "name": "ダイボウギョ",
+      "def": 600,
+      "enhanceCap": 100,
+      "lv1": {
+        "hp": 100,
+        "str": 0,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 10
+      },
+      "evolvesTo": null,
+      "dungeon": 7
+    },
+    {
+      "id": "s_035",
+      "name": "防弾盾",
+      "def": 300,
+      "enhanceCap": 150,
+      "lv1": {
+        "hp": 0,
+        "str": 5,
+        "vit": 60,
+        "spd": 4
+      },
+      "lvup": {
+        "str": 2,
+        "vit": 7
+      },
+      "evolvesTo": "s_036",
+      "dungeon": 6
+    },
+    {
+      "id": "s_036",
+      "name": "ライオット",
+      "def": 410,
+      "enhanceCap": 500,
+      "lv1": {
+        "hp": 50,
+        "str": 6,
+        "vit": 60,
+        "spd": 5
+      },
+      "lvup": {
+        "str": 3,
+        "vit": 8
+      },
+      "evolvesTo": null,
+      "dungeon": 7
+    },
+    {
+      "id": "s_037",
+      "name": "マグナム",
+      "def": 0,
+      "enhanceCap": 90,
+      "lv1": {
+        "hp": 0,
+        "str": 200,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 7,
+        "vit": 0
+      },
+      "evolvesTo": "s_038",
+      "dungeon": 5
+    },
+    {
+      "id": "s_038",
+      "name": "Vマグナム",
+      "def": 0,
+      "enhanceCap": 130,
+      "lv1": {
+        "hp": 0,
+        "str": 300,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 8,
+        "vit": 0
+      },
+      "evolvesTo": "s_039",
+      "dungeon": 6
+    },
+    {
+      "id": "s_039",
+      "name": "Cマグナム",
+      "def": 0,
+      "enhanceCap": 600,
+      "lv1": {
+        "hp": 0,
+        "str": 400,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 9,
+        "vit": 0
+      },
+      "evolvesTo": null,
+      "dungeon": 7
+    },
+    {
+      "id": "s_040",
+      "name": "オーロラシールド",
+      "def": 440,
+      "enhanceCap": 500,
+      "lv1": {
+        "hp": 60,
+        "str": 0,
+        "vit": 70,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 10
+      },
+      "evolvesTo": null,
+      "dungeon": 8
+    },
+    {
+      "id": "s_042",
+      "name": "暴風壁",
+      "def": 600,
+      "enhanceCap": 600,
+      "lv1": {
+        "hp": 300,
+        "str": 100,
+        "vit": 200,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 15
+      },
+      "evolvesTo": null,
+      "dungeon": 8
+    },
+    {
+      "id": "s_043",
+      "name": "落書き",
+      "def": 1,
+      "enhanceCap": 600,
+      "lv1": {
+        "hp": 0,
+        "str": 0,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 0
+      },
+      "evolvesTo": "s_044",
+      "dungeon": 7
+    },
+    {
+      "id": "s_044",
+      "name": "白紙の盾",
+      "def": 700,
+      "enhanceCap": 1000,
+      "lv1": {
+        "hp": 0,
+        "str": 0,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 20
+      },
+      "evolvesTo": null,
+      "dungeon": 8
+    },
+    {
+      "id": "s_045",
+      "name": "ゴーレムシールド",
+      "def": 1200,
+      "enhanceCap": 300,
+      "lv1": {
+        "hp": 250,
+        "str": 0,
+        "vit": 100,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 25
+      },
+      "evolvesTo": null,
+      "dungeon": 8
+    },
+    {
+      "id": "s_046",
+      "name": "千手の護り",
+      "def": 1500,
+      "enhanceCap": 10,
+      "lv1": {
+        "hp": 0,
+        "str": 0,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 50
+      },
+      "evolvesTo": null,
+      "dungeon": 10
+    },
+    {
+      "id": "s_047",
+      "name": "粘着糸の盾",
+      "def": 300,
+      "enhanceCap": 350,
+      "lv1": {
+        "hp": 150,
+        "str": 0,
+        "vit": 10,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 8
+      },
+      "evolvesTo": null,
+      "dungeon": 9
+    },
+    {
+      "id": "s_048",
+      "name": "キングシールド",
+      "def": 360,
+      "enhanceCap": 400,
+      "lv1": {
+        "hp": 120,
+        "str": 0,
+        "vit": 50,
+        "spd": 12
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 6
+      },
+      "evolvesTo": null,
+      "dungeon": 9
+    },
+    {
+      "id": "s_049",
+      "name": "戦士の大盾",
+      "def": 390,
+      "enhanceCap": 550,
+      "lv1": {
+        "hp": 200,
+        "str": 0,
+        "vit": 200,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 4
+      },
+      "evolvesTo": null,
+      "dungeon": 7
+    },
+    {
+      "id": "s_050",
+      "name": "ゴブリンの手",
+      "def": 200,
+      "enhanceCap": 420,
+      "lv1": {
+        "hp": 120,
+        "str": 50,
+        "vit": 60,
+        "spd": 10
+      },
+      "lvup": {
+        "str": 5,
+        "vit": 6
+      },
+      "evolvesTo": null,
+      "dungeon": 8
+    },
+    {
+      "id": "s_051",
+      "name": "ゴーストシールド",
+      "def": 200,
+      "enhanceCap": 600,
+      "lv1": {
+        "hp": 0,
+        "str": 0,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 12
+      },
+      "evolvesTo": null,
+      "dungeon": 8
+    },
+    {
+      "id": "s_052",
+      "name": "黒刀息吹",
+      "def": 0,
+      "enhanceCap": 800,
+      "lv1": {
+        "hp": 0,
+        "str": 200,
+        "vit": 0,
+        "spd": 0
+      },
+      "lvup": {
+        "str": 35,
+        "vit": 0
+      },
+      "evolvesTo": null,
+      "dungeon": 7
+    },
+    {
+      "id": "s_053",
+      "name": "イージス",
+      "def": 0,
+      "enhanceCap": 2000,
+      "lv1": {
+        "hp": 1000,
+        "str": 0,
+        "vit": 0,
+        "spd": 100
+      },
+      "lvup": {
+        "str": 0,
+        "vit": 0
+      },
+      "evolvesTo": null,
+      "dungeon": 10
+    }
+  ],
+  "rings": [
+    {
+      "id": "r_001",
+      "name": "銅の指輪",
+      "lv1": {
+        "hp": 0,
+        "str": 0,
+        "vit": 5,
+        "spd": 0,
+        "luk": 0
+      },
+      "dungeon": 1
+    },
+    {
+      "id": "r_002",
+      "name": "銀の指輪",
+      "lv1": {
+        "hp": 0,
+        "str": 5,
+        "vit": 0,
+        "spd": 0,
+        "luk": 0
+      },
+      "dungeon": 1
+    },
+    {
+      "id": "r_003",
+      "name": "金の指輪",
+      "lv1": {
+        "hp": 5,
+        "str": 0,
+        "vit": 0,
+        "spd": 0,
+        "luk": 0
+      },
+      "dungeon": 1
+    },
+    {
+      "id": "r_004",
+      "name": "プラチナリング",
+      "lv1": {
+        "hp": 5,
+        "str": 0,
+        "vit": 20,
+        "spd": 0,
+        "luk": 0
+      },
+      "dungeon": 2
+    },
+    {
+      "id": "r_005",
+      "name": "フェアリーリング",
+      "lv1": {
+        "hp": 10,
+        "str": 0,
+        "vit": 10,
+        "spd": 0,
+        "luk": 0
+      },
+      "dungeon": 2
+    },
+    {
+      "id": "r_006",
+      "name": "サモンリング",
+      "lv1": {
+        "hp": 10,
+        "str": 5,
+        "vit": 0,
+        "spd": 0,
+        "luk": 0
+      },
+      "dungeon": 2
+    },
+    {
+      "id": "r_007",
+      "name": "竜の涙",
+      "lv1": {
+        "hp": 10,
+        "str": 10,
+        "vit": 10,
+        "spd": 0,
+        "luk": 0
+      },
+      "dungeon": 3
+    },
+    {
+      "id": "r_008",
+      "name": "プチ召喚陣",
+      "lv1": {
+        "hp": 10,
+        "str": 20,
+        "vit": 0,
+        "spd": 0,
+        "luk": 0
+      },
+      "dungeon": 3
+    },
+    {
+      "id": "r_009",
+      "name": "グレーズド",
+      "lv1": {
+        "hp": 15,
+        "str": 5,
+        "vit": 50,
+        "spd": 0,
+        "luk": 0
+      },
+      "dungeon": 4
+    },
+    {
+      "id": "r_010",
+      "name": "猛毒の環",
+      "lv1": {
+        "hp": 5,
+        "str": 30,
+        "vit": 10,
+        "spd": 0,
+        "luk": 0
+      },
+      "dungeon": 3
+    },
+    {
+      "id": "r_011",
+      "name": "モルヒネリング",
+      "lv1": {
+        "hp": 10,
+        "str": 0,
+        "vit": 100,
+        "spd": 0,
+        "luk": 0
+      },
+      "dungeon": 4
+    },
+    {
+      "id": "r_012",
+      "name": "パンドラリング",
+      "lv1": {
+        "hp": 0,
+        "str": 30,
+        "vit": 60,
+        "spd": 0,
+        "luk": 0
+      },
+      "dungeon": 4
+    },
+    {
+      "id": "r_013",
+      "name": "ラピッドラビット",
+      "lv1": {
+        "hp": 20,
+        "str": 0,
+        "vit": 30,
+        "spd": 0,
+        "luk": 0
+      },
+      "dungeon": 5
+    },
+    {
+      "id": "r_014",
+      "name": "力の指輪",
+      "lv1": {
+        "hp": 0,
+        "str": 100,
+        "vit": 0,
+        "spd": 0,
+        "luk": 0
+      },
+      "dungeon": 5
+    },
+    {
+      "id": "r_015",
+      "name": "オキュラスリング",
+      "lv1": {
+        "hp": 50,
+        "str": 60,
+        "vit": 0,
+        "spd": 0,
+        "luk": 0
+      },
+      "dungeon": 5
+    },
+    {
+      "id": "r_016",
+      "name": "メビウスリング",
+      "lv1": {
+        "hp": 20,
+        "str": 20,
+        "vit": 50,
+        "spd": 0,
+        "luk": 2
+      },
+      "dungeon": 6
+    },
+    {
+      "id": "r_017",
+      "name": "サーチリング",
+      "lv1": {
+        "hp": 0,
+        "str": 30,
+        "vit": 0,
+        "spd": 2,
+        "luk": 0
+      },
+      "dungeon": 6
+    },
+    {
+      "id": "r_018",
+      "name": "終点",
+      "lv1": {
+        "hp": 60,
+        "str": 50,
+        "vit": 100,
+        "spd": 0,
+        "luk": 0
+      },
+      "dungeon": 7
+    },
+    {
+      "id": "r_019",
+      "name": "覇王の証",
+      "lv1": {
+        "hp": 0,
+        "str": 0,
+        "vit": 120,
+        "spd": 3,
+        "luk": 3
+      },
+      "dungeon": 10
+    },
+    {
+      "id": "r_020",
+      "name": "オブシダンリング",
+      "lv1": {
+        "hp": 100,
+        "str": 100,
+        "vit": 100,
+        "spd": 2,
+        "luk": 2
+      },
+      "dungeon": 8
+    },
+    {
+      "id": "r_021",
+      "name": "マリッジリング",
+      "lv1": {
+        "hp": 10,
+        "str": 10,
+        "vit": 50,
+        "spd": 1,
+        "luk": 1
+      },
+      "dungeon": 6
+    },
+    {
+      "id": "r_022",
+      "name": "第三の目",
+      "lv1": {
+        "hp": 20,
+        "str": 20,
+        "vit": 50,
+        "spd": 0,
+        "luk": 0
+      },
+      "dungeon": 5
+    },
+    {
+      "id": "r_023",
+      "name": "ブラックボックス",
+      "lv1": {
+        "hp": 0,
+        "str": 0,
+        "vit": 0,
+        "spd": 10,
+        "luk": 10
+      },
+      "dungeon": 10
+    },
+    {
+      "id": "r_024",
+      "name": "狐火",
+      "lv1": {
+        "hp": 0,
+        "str": 0,
+        "vit": 0,
+        "spd": 40,
+        "luk": 0
+      },
+      "dungeon": 9
+    }
+  ],
+  "monsters": [
+    {
+      "dungeon": 1,
+      "name": "スライム",
+      "kind": "雑魚",
+      "hp": 10,
+      "atk": 20,
+      "def": 10,
+      "spd": 1,
+      "exp": 2,
+      "drop1": "木の棒",
+      "drop2": "なべのふた"
+    },
+    {
+      "dungeon": 1,
+      "name": "ゴブリン",
+      "kind": "雑魚",
+      "hp": 20,
+      "atk": 10,
+      "def": 10,
+      "spd": 1,
+      "exp": 3,
+      "drop1": "こん棒",
+      "drop2": null
+    },
+    {
+      "dungeon": 1,
+      "name": "ホーネット",
+      "kind": "雑魚",
+      "hp": 25,
+      "atk": 10,
+      "def": 20,
+      "spd": 2,
+      "exp": 6,
+      "drop1": "高いなべのふた",
+      "drop2": null
+    },
+    {
+      "dungeon": 1,
+      "name": "草むらの王",
+      "kind": "ボス",
+      "hp": 80,
+      "atk": 35,
+      "def": 25,
+      "spd": 3,
+      "exp": 20,
+      "drop1": "ショートソード",
+      "drop2": "鉄の盾"
+    },
+    {
+      "dungeon": 2,
+      "name": "キラービー",
+      "kind": "雑魚",
+      "hp": 30,
+      "atk": 20,
+      "def": 20,
+      "spd": 4,
+      "exp": 8,
+      "drop1": "木の盾",
+      "drop2": "金の指輪"
+    },
+    {
+      "dungeon": 2,
+      "name": "おおむかで",
+      "kind": "雑魚",
+      "hp": 40,
+      "atk": 20,
+      "def": 20,
+      "spd": 5,
+      "exp": 7,
+      "drop1": "銀の指輪",
+      "drop2": null
+    },
+    {
+      "dungeon": 2,
+      "name": "盗賊",
+      "kind": "雑魚",
+      "hp": 40,
+      "atk": 30,
+      "def": 20,
+      "spd": 7,
+      "exp": 10,
+      "drop1": "ショートソード",
+      "drop2": "プラチナリング"
+    },
+    {
+      "dungeon": 2,
+      "name": "森の魔女",
+      "kind": "ボス",
+      "hp": 180,
+      "atk": 55,
+      "def": 40,
+      "spd": 8,
+      "exp": 35,
+      "drop1": "フェアリーソード",
+      "drop2": "チタンシールド"
+    },
+    {
+      "dungeon": 3,
+      "name": "大コウモリ",
+      "kind": "雑魚",
+      "hp": 40,
+      "atk": 40,
+      "def": 30,
+      "spd": 5,
+      "exp": 12,
+      "drop1": "銅の指輪",
+      "drop2": null
+    },
+    {
+      "dungeon": 3,
+      "name": "アルビノスライム",
+      "kind": "雑魚",
+      "hp": 40,
+      "atk": 40,
+      "def": 30,
+      "spd": 2,
+      "exp": 15,
+      "drop1": "なべのふた",
+      "drop2": "鉄の盾"
+    },
+    {
+      "dungeon": 3,
+      "name": "ドラゴンベビー",
+      "kind": "雑魚",
+      "hp": 60,
+      "atk": 70,
+      "def": 60,
+      "spd": 10,
+      "exp": 25,
+      "drop1": "プラチナリング",
+      "drop2": null
+    },
+    {
+      "dungeon": 3,
+      "name": "洞穴の主",
+      "kind": "ボス",
+      "hp": 400,
+      "atk": 90,
+      "def": 70,
+      "spd": 10,
+      "exp": 60,
+      "drop1": "鉄塊",
+      "drop2": "電導バリア"
+    },
+    {
+      "dungeon": 4,
+      "name": "デスマシーン",
+      "kind": "雑魚",
+      "hp": 60,
+      "atk": 60,
+      "def": 40,
+      "spd": 10,
+      "exp": 20,
+      "drop1": "鉄の盾",
+      "drop2": "チタンシールド"
+    },
+    {
+      "dungeon": 4,
+      "name": "デスマシーン2",
+      "kind": "雑魚",
+      "hp": 60,
+      "atk": 70,
+      "def": 40,
+      "spd": 15,
+      "exp": 24,
+      "drop1": "スタンナックル",
+      "drop2": "鉄塊"
+    },
+    {
+      "dungeon": 4,
+      "name": "ゴーストナイト",
+      "kind": "雑魚",
+      "hp": 100,
+      "atk": 80,
+      "def": 50,
+      "spd": 1,
+      "exp": 1,
+      "drop1": "幻影剣",
+      "drop2": null
+    },
+    {
+      "dungeon": 4,
+      "name": "洋館の支配者",
+      "kind": "ボス",
+      "hp": 700,
+      "atk": 130,
+      "def": 100,
+      "spd": 12,
+      "exp": 80,
+      "drop1": "幻影剣",
+      "drop2": "スライムシールド"
+    },
+    {
+      "dungeon": 5,
+      "name": "クレイゴーレム",
+      "kind": "雑魚",
+      "hp": 130,
+      "atk": 110,
+      "def": 90,
+      "spd": 10,
+      "exp": 32,
+      "drop1": "サラマンダー",
+      "drop2": "サモンリング"
+    },
+    {
+      "dungeon": 5,
+      "name": "エメラルドゴーレム",
+      "kind": "雑魚",
+      "hp": 200,
+      "atk": 180,
+      "def": 100,
+      "spd": 30,
+      "exp": 40,
+      "drop1": "エメラルドソード",
+      "drop2": "エメラルドシールド"
+    },
+    {
+      "dungeon": 5,
+      "name": "フェアリーハンター",
+      "kind": "雑魚",
+      "hp": 55,
+      "atk": 40,
+      "def": 40,
+      "spd": 3,
+      "exp": 10,
+      "drop1": "装飾刀",
+      "drop2": "タツマキ"
+    },
+    {
+      "dungeon": 5,
+      "name": "抜け道の番人",
+      "kind": "ボス",
+      "hp": 1200,
+      "atk": 200,
+      "def": 150,
+      "spd": 20,
+      "exp": 120,
+      "drop1": "ピンポイント",
+      "drop2": "ミストシールド"
+    },
+    {
+      "dungeon": 6,
+      "name": "デスマシーン3",
+      "kind": "雑魚",
+      "hp": 80,
+      "atk": 80,
+      "def": 70,
+      "spd": 15,
+      "exp": 26,
+      "drop1": "鉄の大盾",
+      "drop2": "電導バリア"
+    },
+    {
+      "dungeon": 6,
+      "name": "パーフェクトキメラ",
+      "kind": "雑魚",
+      "hp": 300,
+      "atk": 450,
+      "def": 270,
+      "spd": 35,
+      "exp": 34,
+      "drop1": "合成獣の堅翼",
+      "drop2": null
+    },
+    {
+      "dungeon": 6,
+      "name": "ミストドラゴン",
+      "kind": "雑魚",
+      "hp": 150,
+      "atk": 130,
+      "def": 70,
+      "spd": 3,
+      "exp": 7,
+      "drop1": "キリサメ",
+      "drop2": "竜の涙"
+    },
+    {
+      "dungeon": 6,
+      "name": "古戦場の将軍",
+      "kind": "ボス",
+      "hp": 2500,
+      "atk": 380,
+      "def": 280,
+      "spd": 30,
+      "exp": 200,
+      "drop1": "ボルケイノ",
+      "drop2": "ライオット"
+    },
+    {
+      "dungeon": 7,
+      "name": "ルビーゴーレム",
+      "kind": "雑魚",
+      "hp": 400,
+      "atk": 560,
+      "def": 400,
+      "spd": 24,
+      "exp": 34,
+      "drop1": "ルビーナックル",
+      "drop2": null
+    },
+    {
+      "dungeon": 7,
+      "name": "セイントドラゴン",
+      "kind": "雑魚",
+      "hp": 340,
+      "atk": 540,
+      "def": 350,
+      "spd": 43,
+      "exp": 50,
+      "drop1": "龍の鱗",
+      "drop2": "竜の涙"
+    },
+    {
+      "dungeon": 7,
+      "name": "死に神",
+      "kind": "雑魚",
+      "hp": 470,
+      "atk": 670,
+      "def": 550,
+      "spd": 42,
+      "exp": 500,
+      "drop1": "死に神の鎌",
+      "drop2": "死に神のマスク"
+    },
+    {
+      "dungeon": 7,
+      "name": "巨塔の守護者",
+      "kind": "ボス",
+      "hp": 5000,
+      "atk": 700,
+      "def": 500,
+      "spd": 50,
+      "exp": 500,
+      "drop1": "グラディウス",
+      "drop2": "暴風壁"
+    },
+    {
+      "dungeon": 8,
+      "name": "ダイヤゴーレム",
+      "kind": "雑魚",
+      "hp": 420,
+      "atk": 600,
+      "def": 450,
+      "spd": 50,
+      "exp": 40,
+      "drop1": "ダイヤナックル",
+      "drop2": null
+    },
+    {
+      "dungeon": 8,
+      "name": "ホワイトスネイク",
+      "kind": "雑魚",
+      "hp": 650,
+      "atk": 700,
+      "def": 560,
+      "spd": 60,
+      "exp": 50,
+      "drop1": "ホワイトスネイク",
+      "drop2": null
+    },
+    {
+      "dungeon": 8,
+      "name": "メデューサ",
+      "kind": "雑魚",
+      "hp": 270,
+      "atk": 250,
+      "def": 190,
+      "spd": 42,
+      "exp": 33,
+      "drop1": "サーペント",
+      "drop2": null
+    },
+    {
+      "dungeon": 8,
+      "name": "扉の守護者",
+      "kind": "ボス",
+      "hp": 8000,
+      "atk": 900,
+      "def": 700,
+      "spd": 65,
+      "exp": 800,
+      "drop1": "インパルス",
+      "drop2": "クラウドシールド"
+    },
+    {
+      "dungeon": 9,
+      "name": "グラディウス(敵)",
+      "kind": "雑魚",
+      "hp": 680,
+      "atk": 750,
+      "def": 590,
+      "spd": 62,
+      "exp": 52,
+      "drop1": "グラディウス",
+      "drop2": null
+    },
+    {
+      "dungeon": 9,
+      "name": "エンペラードラゴン",
+      "kind": "雑魚",
+      "hp": 3000,
+      "atk": 1500,
+      "def": 720,
+      "spd": 77,
+      "exp": 85,
+      "drop1": "妖刀時雨",
+      "drop2": null
+    },
+    {
+      "dungeon": 9,
+      "name": "雷神",
+      "kind": "雑魚",
+      "hp": 4000,
+      "atk": 2400,
+      "def": 500,
+      "spd": 130,
+      "exp": 89,
+      "drop1": "イカヅチ",
+      "drop2": null
+    },
+    {
+      "dungeon": 9,
+      "name": "次元の王",
+      "kind": "ボス",
+      "hp": 12000,
+      "atk": 1800,
+      "def": 1200,
+      "spd": 80,
+      "exp": 1200,
+      "drop1": "スターゲイザー",
+      "drop2": "粘着糸の盾"
+    },
+    {
+      "dungeon": 10,
+      "name": "ラストスライム",
+      "kind": "雑魚",
+      "hp": 1500,
+      "atk": 800,
+      "def": 600,
+      "spd": 60,
+      "exp": 48,
+      "drop1": "スラフィールド",
+      "drop2": null
+    },
+    {
+      "dungeon": 10,
+      "name": "スピリット",
+      "kind": "雑魚",
+      "hp": 1000,
+      "atk": 1200,
+      "def": 500,
+      "spd": 70,
+      "exp": 58,
+      "drop1": "悪霊の剣",
+      "drop2": null
+    },
+    {
+      "dungeon": 10,
+      "name": "テバ",
+      "kind": "雑魚",
+      "hp": 27000,
+      "atk": 12500,
+      "def": 6500,
+      "spd": 100,
+      "exp": 500,
+      "drop1": "ニューラルエッジ",
+      "drop2": null
+    },
+    {
+      "dungeon": 10,
+      "name": "魔王",
+      "kind": "ボス",
+      "hp": 20000,
+      "atk": 2100,
+      "def": 900,
+      "spd": 80,
+      "exp": 1000,
+      "drop1": "覇王の証",
+      "drop2": null
+    }
+  ],
+  "enhanceMaterials": [
+    {
+      "id": "m_katakunaru",
+      "name": "カタクナール",
+      "value": 1
+    },
+    {
+      "id": "m_katakunaru_x",
+      "name": "カタクナールX",
+      "value": 3
+    },
+    {
+      "id": "m_katakunaru_z",
+      "name": "カタクナールZ",
+      "value": 5
+    },
+    {
+      "id": "m_katakunaru_g",
+      "name": "カタクナールG",
+      "value": 10
+    },
+    {
+      "id": "m_katakunaru_xg",
+      "name": "カタクナールXG",
+      "value": 30
+    },
+    {
+      "id": "m_katakunaru_zg",
+      "name": "カタクナールZG",
+      "value": 50
+    }
+  ],
+  "abilityPool": [
+    "耐久",
+    "腕力",
+    "頑丈",
+    "機敏",
+    "幸運",
+    "体力の鍛錬",
+    "力の鍛錬",
+    "守りの鍛錬"
+  ],
+  "rareAbilities": [
+    "先制",
+    "毒",
+    "猛毒",
+    "不屈",
+    "一撃",
+    "二撃",
+    "三途",
+    "四葉",
+    "五光",
+    "六感",
+    "七福",
+    "宝物狩り",
+    "水源探知"
+  ],
+  "breakthroughLines": [
+    {
+      "analysisLv": 1,
+      "corruption": 0,
+      "neededExp": 1,
+      "effectWeapon": "強化上限確認",
+      "effectShield": "強化上限確認"
+    },
+    {
+      "analysisLv": 2,
+      "corruption": 0,
+      "neededExp": 2,
+      "effectWeapon": "Lv1能力上昇値確認",
+      "effectShield": "Lv1能力上昇値確認"
+    },
+    {
+      "analysisLv": 3,
+      "corruption": 0,
+      "neededExp": 4,
+      "effectWeapon": "進化先確認",
+      "effectShield": "進化先確認"
+    },
+    {
+      "analysisLv": 4,
+      "corruption": 0,
+      "neededExp": 8,
+      "effectWeapon": "LvUP能力上昇値確認",
+      "effectShield": "LvUP能力上昇値確認"
+    },
+    {
+      "analysisLv": 5,
+      "corruption": 0,
+      "neededExp": 16,
+      "effectWeapon": "強化上限アップ+100",
+      "effectShield": "強化上限アップ+100"
+    },
+    {
+      "analysisLv": 6,
+      "corruption": 50,
+      "neededExp": 32,
+      "effectWeapon": "攻撃力ブースト×1.3",
+      "effectShield": "特定ステータスブースト×1.1"
+    },
+    {
+      "analysisLv": 7,
+      "corruption": 100,
+      "neededExp": 40,
+      "effectWeapon": "強化上限アップ+1000",
+      "effectShield": "強化上限アップ+1000"
+    },
+    {
+      "analysisLv": 8,
+      "corruption": 150,
+      "neededExp": 48,
+      "effectWeapon": "強化ブースト×2",
+      "effectShield": "強化ブースト×2"
+    },
+    {
+      "analysisLv": 9,
+      "corruption": 200,
+      "neededExp": 56,
+      "effectWeapon": "セット装備ATKブースト×1.5",
+      "effectShield": "守備力ブースト×1.3"
+    },
+    {
+      "analysisLv": 10,
+      "corruption": 250,
+      "neededExp": 64,
+      "effectWeapon": "侵蝕度ブースト×2(×10→×20)",
+      "effectShield": "侵蝕度ブースト×2(×10→×20)"
+    },
+    {
+      "analysisLv": 11,
+      "corruption": 300,
+      "neededExp": 64,
+      "effectWeapon": "強化上限アップ+2000",
+      "effectShield": "強化上限アップ+2000"
+    },
+    {
+      "analysisLv": 12,
+      "corruption": 350,
+      "neededExp": 64,
+      "effectWeapon": "強化ブースト×2",
+      "effectShield": "強化ブースト×2"
+    },
+    {
+      "analysisLv": 13,
+      "corruption": 400,
+      "neededExp": 64,
+      "effectWeapon": "セット装備ブースト×1.5",
+      "effectShield": "HPブースト×1.3"
+    },
+    {
+      "analysisLv": 14,
+      "corruption": 450,
+      "neededExp": 64,
+      "effectWeapon": "強化上限アップ+3000",
+      "effectShield": "強化上限アップ+3000"
+    },
+    {
+      "analysisLv": 15,
+      "corruption": 500,
+      "neededExp": 64,
+      "effectWeapon": "侵蝕度ブースト×2",
+      "effectShield": "侵蝕度ブースト×2"
+    }
+  ],
+  "permanentBoostOptions": [
+    {
+      "key": "hp",
+      "label": "HP",
+      "perPoint": 5
+    },
+    {
+      "key": "atk",
+      "label": "ATK（STR）",
+      "perPoint": 3
+    },
+    {
+      "key": "def",
+      "label": "DEF（VIT）",
+      "perPoint": 3
+    },
+    {
+      "key": "spd",
+      "label": "SPD",
+      "perPoint": 1
+    },
+    {
+      "key": "luk",
+      "label": "LUK",
+      "perPoint": 1
+    }
+  ],
+  "rareAbilityUnlockCost": 50
+}</script>
+  
+</script>
 <script>__GAME_LOGIC__</script>
 </body>
 </html>
