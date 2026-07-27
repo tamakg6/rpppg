@@ -4351,7 +4351,7 @@ function resumeOffline() {
   const snap = state.exploreSnap; if (snap.finished) return;
   curExp = snap;
   const secs = snap.secsPerFloor || 300;
-  const due = Math.floor((Date.now() - state.exploreTs) / 1000 / secs);
+  state.exploreTs = state.exploreTs + due * snap.secsPerFloor * 1000;
   document.getElementById('explorePanel').classList.remove('hidden');
   document.getElementById('dngListCard').classList.add('hidden');
   document.getElementById('expDngName').textContent = snap.dungeonName;
